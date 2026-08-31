@@ -1,708 +1,894 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Central Command</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+    <title>Central Command — Brands</title>
 
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #000;
-        color: #fff;
-        min-height: 100vh;
-    }
-
-    /* =========================
-       LOGIN SCREEN
-    ========================= */
-
-    #loginScreen {
-        position: fixed;
-        inset: 0;
-        background: #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-    }
-
-    .login-box {
-        width: 360px;
-        max-width: 90%;
-        border: 1px solid #333;
-        background: #080808;
-        padding: 40px;
-        text-align: center;
-    }
-
-    .logo {
-        width: 55px;
-        height: 55px;
-        border: 2px solid #fff;
-        margin: 0 auto 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 20px;
-    }
-
-    .login-box h1 {
-        font-size: 24px;
-        letter-spacing: 3px;
-        margin-bottom: 8px;
-    }
-
-    .login-box p {
-        color: #888;
-        font-size: 12px;
-        margin-bottom: 30px;
-        letter-spacing: 1px;
-    }
-
-    .password-input {
-        width: 100%;
-        background: #000;
-        border: 1px solid #444;
-        color: #fff;
-        padding: 14px;
-        text-align: center;
-        font-size: 20px;
-        letter-spacing: 8px;
-        outline: none;
-    }
-
-    .password-input:focus {
-        border-color: #fff;
-    }
-
-    .login-button {
-        width: 100%;
-        margin-top: 15px;
-        padding: 14px;
-        border: none;
-        background: #fff;
-        color: #000;
-        font-weight: bold;
-        cursor: pointer;
-        letter-spacing: 2px;
-    }
-
-    .login-button:hover {
-        background: #ddd;
-    }
-
-    #loginError {
-        color: #ff5555;
-        font-size: 12px;
-        margin-top: 15px;
-        min-height: 15px;
-    }
-
-    /* =========================
-       MAIN SYSTEM
-    ========================= */
-
-    #system {
-        display: none;
-        min-height: 100vh;
-    }
-
-    .topbar {
-        height: 70px;
-        border-bottom: 1px solid #222;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 30px;
-        background: #050505;
-    }
-
-    .brand {
-        font-weight: bold;
-        letter-spacing: 3px;
-    }
-
-    .status {
-        color: #777;
-        font-size: 12px;
-    }
-
-    .layout {
-        display: flex;
-        min-height: calc(100vh - 70px);
-    }
-
-    .sidebar {
-        width: 230px;
-        border-right: 1px solid #222;
-        background: #050505;
-        padding: 25px 15px;
-    }
-
-    .sidebar-title {
-        color: #666;
-        font-size: 10px;
-        letter-spacing: 2px;
-        margin: 10px 12px;
-    }
-
-    .nav-button {
-        width: 100%;
-        background: transparent;
-        color: #aaa;
-        border: none;
-        text-align: left;
-        padding: 13px 12px;
-        cursor: pointer;
-        margin-bottom: 4px;
-        font-size: 13px;
-    }
-
-    .nav-button:hover,
-    .nav-button.active {
-        background: #151515;
-        color: #fff;
-    }
-
-    .main {
-        flex: 1;
-        padding: 35px;
-        overflow-y: auto;
-    }
-
-    .page {
-        display: none;
-    }
-
-    .page.active {
-        display: block;
-    }
-
-    .page-header {
-        margin-bottom: 30px;
-    }
-
-    .page-header h2 {
-        font-size: 28px;
-        margin-bottom: 8px;
-    }
-
-    .page-header p {
-        color: #777;
-        font-size: 13px;
-    }
-
-    /* Dashboard */
-
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        margin-bottom: 30px;
-    }
-
-    .card {
-        border: 1px solid #222;
-        background: #080808;
-        padding: 22px;
-    }
-
-    .card-label {
-        color: #777;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 12px;
-    }
-
-    .card-value {
-        font-size: 26px;
-        font-weight: bold;
-    }
-
-    /* Glossary */
-
-    .toolbar {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .search {
-        flex: 1;
-        background: #080808;
-        border: 1px solid #333;
-        padding: 12px;
-        color: #fff;
-        outline: none;
-    }
-
-    .add-button {
-        background: #fff;
-        color: #000;
-        border: none;
-        padding: 12px 20px;
-        cursor: pointer;
-        font-weight: bold;
-    }
-
-    .term {
-        border: 1px solid #222;
-        background: #080808;
-        padding: 20px;
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-    }
-
-    .term h3 {
-        margin-bottom: 8px;
-    }
-
-    .term p {
-        color: #888;
-        font-size: 13px;
-    }
-
-    .term-actions button {
-        background: transparent;
-        border: 1px solid #333;
-        color: #aaa;
-        padding: 7px 12px;
-        cursor: pointer;
-        margin-left: 5px;
-    }
-
-    .term-actions button:hover {
-        color: #fff;
-        border-color: #fff;
-    }
-
-    /* Tables */
-
-    .table-box {
-        border: 1px solid #222;
-        overflow-x: auto;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    th,
-    td {
-        padding: 15px;
-        text-align: left;
-        border-bottom: 1px solid #222;
-        font-size: 13px;
-    }
-
-    th {
-        color: #777;
-        font-size: 11px;
-        text-transform: uppercase;
-    }
-
-    /* Logout */
-
-    .logout {
-        position: absolute;
-        bottom: 20px;
-        left: 15px;
-        right: 15px;
-    }
-
-    .logout button {
-        width: 100%;
-        padding: 12px;
-        background: transparent;
-        border: 1px solid #333;
-        color: #888;
-        cursor: pointer;
-    }
-
-    .logout button:hover {
-        color: #fff;
-        border-color: #fff;
-    }
-
-    /* Responsive */
-
-    @media (max-width: 900px) {
-        .cards {
-            grid-template-columns: repeat(2, 1fr);
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
+
+        :root {
+            --black: #000000;
+            --dark: #0a0a0a;
+            --panel: #111111;
+            --border: #242424;
+            --text: #ffffff;
+            --muted: #8b8b8b;
+            --hover: #1a1a1a;
+        }
+
+        body {
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--black);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* =========================
+           APP
+        ========================= */
+
+        .app {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
 
         .sidebar {
-            width: 180px;
-        }
-    }
+            width: 260px;
+            height: 100vh;
 
-    @media (max-width: 650px) {
-        .layout {
+            background: #050505;
+            border-right: 1px solid var(--border);
+
+            display: flex;
             flex-direction: column;
         }
 
-        .sidebar {
-            width: 100%;
-            border-right: none;
-            border-bottom: 1px solid #222;
+        .sidebar-header {
+            height: 64px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 18px;
+
+            border-bottom: 1px solid var(--border);
         }
 
-        .logout {
-            position: static;
-            margin-top: 15px;
+        .brand-system-name {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
+
+        .new-brand {
+            margin: 18px 14px;
+
+            padding: 11px 14px;
+
+            background: white;
+            color: black;
+
+            border: none;
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.15s;
+        }
+
+        .new-brand:hover {
+            background: #dddddd;
+        }
+
+        .sidebar-label {
+            color: #666;
+            font-size: 10px;
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            padding: 0 18px;
+            margin-bottom: 8px;
+        }
+
+        .brand-list {
+            flex: 1;
+
+            overflow-y: auto;
+
+            padding: 0 8px;
+        }
+
+        .brand-item {
+            width: 100%;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 9px 10px;
+
+            border-radius: 7px;
+
+            background: transparent;
+            border: none;
+
+            color: #aaa;
+
+            text-align: left;
+
+            margin-bottom: 2px;
+
+            transition: 0.15s;
+        }
+
+        .brand-item:hover {
+            background: var(--hover);
+            color: white;
+        }
+
+        .brand-item.active {
+            background: #1b1b1b;
+            color: white;
+        }
+
+        .brand-icon {
+            width: 28px;
+            height: 28px;
+
+            border-radius: 6px;
+
+            background: #222;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+        }
+
+        .brand-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .brand-icon-text {
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .brand-item-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            font-size: 13px;
+        }
+
+        .sidebar-footer {
+            padding: 15px;
+
+            border-top: 1px solid var(--border);
+
+            color: #555;
+
+            font-size: 11px;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
 
         .main {
-            padding: 20px;
+            flex: 1;
+            height: 100vh;
+
+            display: flex;
+            flex-direction: column;
         }
 
-        .cards {
-            grid-template-columns: 1fr;
+        .topbar {
+            height: 64px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 30px;
+
+            border-bottom: 1px solid var(--border);
         }
-    }
-</style>
+
+        .topbar-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .topbar-status {
+            font-size: 11px;
+            color: #666;
+        }
+
+        .content {
+            flex: 1;
+
+            overflow-y: auto;
+
+            padding: 55px 30px;
+        }
+
+        .content-inner {
+            width: 100%;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty-state {
+            min-height: calc(100vh - 170px);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+        }
+
+        .empty-logo {
+            width: 58px;
+            height: 58px;
+
+            border: 1px solid #333;
+            border-radius: 14px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+            font-weight: 700;
+
+            margin-bottom: 22px;
+        }
+
+        .empty-state h1 {
+            font-size: 27px;
+            font-weight: 600;
+
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: var(--muted);
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+        .primary-button {
+            background: white;
+            color: black;
+
+            border: none;
+            border-radius: 7px;
+
+            padding: 11px 18px;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .primary-button:hover {
+            background: #ddd;
+        }
+
+        /* =========================
+           BRAND VIEW
+        ========================= */
+
+        .brand-view {
+            padding-top: 10px;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            padding-bottom: 28px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .large-logo {
+            width: 82px;
+            height: 82px;
+
+            border-radius: 16px;
+
+            background: #151515;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            border: 1px solid #292929;
+
+            flex-shrink: 0;
+        }
+
+        .large-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .large-logo-text {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .brand-header h1 {
+            font-size: 30px;
+            font-weight: 600;
+
+            margin-bottom: 6px;
+        }
+
+        .brand-header p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .brand-description {
+            margin-top: 30px;
+
+            color: #bdbdbd;
+
+            font-size: 15px;
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+        }
+
+        .brand-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 35px;
+        }
+
+        .secondary-button {
+            padding: 10px 16px;
+
+            border: 1px solid #333;
+            border-radius: 7px;
+
+            background: transparent;
+            color: white;
+
+            font-size: 13px;
+        }
+
+        .secondary-button:hover {
+            background: #171717;
+        }
+
+        .danger-button {
+            padding: 10px 16px;
+
+            border: 1px solid #442020;
+            border-radius: 7px;
+
+            background: transparent;
+            color: #d88;
+
+            font-size: 13px;
+        }
+
+        .danger-button:hover {
+            background: #1c1010;
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.75);
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            z-index: 100;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            width: 470px;
+            max-width: calc(100% - 30px);
+
+            background: #0b0b0b;
+
+            border: 1px solid #292929;
+            border-radius: 12px;
+
+            padding: 25px;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+        .modal-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .close-button {
+            width: 30px;
+            height: 30px;
+
+            border: none;
+            border-radius: 6px;
+
+            background: transparent;
+            color: #777;
+
+            font-size: 18px;
+        }
+
+        .close-button:hover {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+
+            background: #050505;
+
+            border: 1px solid #303030;
+            border-radius: 7px;
+
+            color: white;
+
+            padding: 11px 12px;
+
+            outline: none;
+
+            font-size: 13px;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: #666;
+        }
+
+        .form-textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        /* LOGO UPLOAD */
+
+        .logo-upload {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-preview {
+            width: 65px;
+            height: 65px;
+
+            border-radius: 12px;
+
+            background: #151515;
+
+            border: 1px solid #303030;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            flex-shrink: 0;
+        }
+
+        .logo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-placeholder {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .upload-label {
+            display: inline-block;
+
+            padding: 9px 13px;
+
+            border: 1px solid #333;
+            border-radius: 7px;
+
+            color: #ccc;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+        .upload-label:hover {
+            background: #171717;
+        }
+
+        #logoInput {
+            display: none;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .cancel-button {
+            padding: 10px 15px;
+
+            border: 1px solid #333;
+            border-radius: 7px;
+
+            background: transparent;
+            color: #aaa;
+
+            font-size: 13px;
+        }
+
+        .save-button {
+            padding: 10px 17px;
+
+            border: none;
+            border-radius: 7px;
+
+            background: white;
+            color: black;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .save-button:hover {
+            background: #ddd;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                width: 210px;
+            }
+
+            .content {
+                padding: 35px 20px;
+            }
+
+            .brand-header h1 {
+                font-size: 24px;
+            }
+
+            .topbar {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 560px) {
+
+            .sidebar {
+                width: 70px;
+            }
+
+            .sidebar-header {
+                justify-content: center;
+                padding: 0;
+            }
+
+            .brand-system-name {
+                font-size: 0;
+            }
+
+            .brand-system-name::after {
+                content: "CC";
+                font-size: 14px;
+            }
+
+            .new-brand {
+                margin: 15px auto;
+                width: 40px;
+                height: 40px;
+                padding: 0;
+                font-size: 0;
+            }
+
+            .new-brand::after {
+                content: "+";
+                font-size: 20px;
+            }
+
+            .sidebar-label {
+                display: none;
+            }
+
+            .brand-item {
+                justify-content: center;
+                padding: 8px;
+            }
+
+            .brand-item-name {
+                display: none;
+            }
+
+            .sidebar-footer {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
+<div class="app">
 
-<div id="loginScreen">
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
 
-    <div class="login-box">
+    <aside class="sidebar">
 
-        <div class="logo">CC</div>
+        <div class="sidebar-header">
+            <div class="brand-system-name">
+                CENTRAL COMMAND
+            </div>
+        </div>
 
-        <h1>CENTRAL COMMAND</h1>
-
-        <p>AUTHORIZED ACCESS ONLY</p>
-
-        <input
-            id="password"
-            class="password-input"
-            type="password"
-            maxlength="4"
-            placeholder="••••"
-            autocomplete="off"
-        >
-
-        <button class="login-button" onclick="login()">
-            ENTER SYSTEM
+        <button class="new-brand" onclick="openCreateModal()">
+            + New Brand
         </button>
 
-        <div id="loginError"></div>
+        <div class="sidebar-label">
+            BRANDS
+        </div>
 
-    </div>
+        <div id="brandList" class="brand-list"></div>
+
+        <div class="sidebar-footer">
+            Central Command V0.1.0
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div id="topbarTitle" class="topbar-title">
+                Brands
+            </div>
+
+            <div class="topbar-status">
+                SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+            <div id="contentInner" class="content-inner">
+
+                <!-- Content generated by JavaScript -->
+
+            </div>
+
+        </div>
+
+    </main>
 
 </div>
 
 
 <!-- =========================
-     MAIN SYSTEM
+     CREATE / EDIT MODAL
 ========================= -->
 
-<div id="system">
+<div id="modalOverlay" class="modal-overlay">
 
-    <div class="topbar">
+    <div class="modal">
 
-        <div class="brand">
-            CENTRAL COMMAND
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Create Brand
+            </h2>
+
+            <button
+                class="close-button"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
         </div>
 
-        <div class="status">
-            SYSTEM ONLINE
-        </div>
 
-    </div>
+        <form id="brandForm">
 
+            <div class="form-group">
 
-    <div class="layout">
+                <label>
+                    Brand Logo
+                </label>
 
-        <!-- SIDEBAR -->
+                <div class="logo-upload">
 
-        <aside class="sidebar">
+                    <div id="logoPreview" class="logo-preview">
+                        <div class="logo-placeholder">
+                            +
+                        </div>
+                    </div>
 
-            <div class="sidebar-title">
-                CONTROL
+                    <div>
+                        <label
+                            for="logoInput"
+                            class="upload-label"
+                        >
+                            Choose Image
+                        </label>
+
+                        <input
+                            id="logoInput"
+                            type="file"
+                            accept="image/*"
+                        >
+                    </div>
+
+                </div>
+
             </div>
 
-            <button class="nav-button active" onclick="showPage('dashboard', this)">
-                Dashboard
-            </button>
 
-            <button class="nav-button" onclick="showPage('glossary', this)">
-                Glossary
-            </button>
+            <div class="form-group">
 
-            <button class="nav-button" onclick="showPage('organizations', this)">
-                Organizations
-            </button>
+                <label for="brandName">
+                    Brand Name
+                </label>
 
-            <button class="nav-button" onclick="showPage('finance', this)">
-                Finance
-            </button>
+                <input
+                    id="brandName"
+                    class="form-input"
+                    type="text"
+                    placeholder="Example: Central Foods"
+                    required
+                >
 
-            <button class="nav-button" onclick="showPage('resources', this)">
-                Resources
-            </button>
+            </div>
 
-            <div class="logout">
-                <button onclick="logout()">
-                    LOCK SYSTEM
+
+            <div class="form-group">
+
+                <label for="brandDescription">
+                    Description
+                </label>
+
+                <textarea
+                    id="brandDescription"
+                    class="form-textarea"
+                    placeholder="Describe this brand..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    onclick="closeModal()"
+                >
+                    Cancel
                 </button>
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    Save Brand
+                </button>
+
             </div>
 
-        </aside>
-
-
-        <!-- MAIN -->
-
-        <main class="main">
-
-
-            <!-- DASHBOARD -->
-
-            <section id="dashboard" class="page active">
-
-                <div class="page-header">
-                    <h2>Dashboard</h2>
-                    <p>Central overview of organizational operations.</p>
-                </div>
-
-                <div class="cards">
-
-                    <div class="card">
-                        <div class="card-label">
-                            Organizations
-                        </div>
-
-                        <div class="card-value">
-                            0
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-label">
-                            Revenue
-                        </div>
-
-                        <div class="card-value">
-                            $0
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-label">
-                            Resources
-                        </div>
-
-                        <div class="card-value">
-                            0
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-label">
-                            Status
-                        </div>
-
-                        <div class="card-value">
-                            ACTIVE
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- GLOSSARY -->
-
-            <section id="glossary" class="page">
-
-                <div class="page-header">
-
-                    <h2>Business Glossary</h2>
-
-                    <p>
-                        Central dictionary of organizational and financial terminology.
-                    </p>
-
-                </div>
-
-                <div class="toolbar">
-
-                    <input
-                        id="search"
-                        class="search"
-                        type="text"
-                        placeholder="Search terms..."
-                        oninput="searchTerms()"
-                    >
-
-                    <button class="add-button" onclick="addTerm()">
-                        + ADD TERM
-                    </button>
-
-                </div>
-
-                <div id="terms"></div>
-
-            </section>
-
-
-            <!-- ORGANIZATIONS -->
-
-            <section id="organizations" class="page">
-
-                <div class="page-header">
-
-                    <h2>Organizations</h2>
-
-                    <p>
-                        Manage organizations under Central Command.
-                    </p>
-
-                </div>
-
-                <div class="table-box">
-
-                    <table>
-
-                        <thead>
-                            <tr>
-                                <th>Organization</th>
-                                <th>Status</th>
-                                <th>Revenue</th>
-                                <th>Resources</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                            <tr>
-                                <td>No organizations added</td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>—</td>
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            </section>
-
-
-            <!-- FINANCE -->
-
-            <section id="finance" class="page">
-
-                <div class="page-header">
-
-                    <h2>Finance</h2>
-
-                    <p>
-                        Central financial overview.
-                    </p>
-
-                </div>
-
-                <div class="cards">
-
-                    <div class="card">
-                        <div class="card-label">
-                            Total Revenue
-                        </div>
-                        <div class="card-value">
-                            $0
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-label">
-                            Expenses
-                        </div>
-                        <div class="card-value">
-                            $0
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-label">
-                            Net
-                        </div>
-                        <div class="card-value">
-                            $0
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- RESOURCES -->
-
-            <section id="resources" class="page">
-
-                <div class="page-header">
-
-                    <h2>Resources</h2>
-
-                    <p>
-                        Central resource management.
-                    </p>
-
-                </div>
-
-                <div class="table-box">
-
-                    <table>
-
-                        <thead>
-                            <tr>
-                                <th>Resource</th>
-                                <th>Quantity</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                            <tr>
-                                <td>No resources added</td>
-                                <td>0</td>
-                                <td>—</td>
-                            </tr>
-
-                        </tbody>
-
-                    </table>
-
-                </div>
-
-            </section>
-
-
-        </main>
+        </form>
 
     </div>
 
@@ -712,256 +898,579 @@
 <script>
 
     /* =========================
-       PASSWORD
+       DATA
     ========================= */
 
-    const SYSTEM_PASSWORD = "4791";
+    let brands = JSON.parse(
+        localStorage.getItem("centralCommandBrands")
+    ) || [];
+
+    let selectedBrandId = null;
+
+    let editingBrandId = null;
+
+    let currentLogo = "";
 
 
-    function login() {
+    /* =========================
+       ELEMENTS
+    ========================= */
 
-        const password =
-            document.getElementById("password").value;
+    const brandList =
+        document.getElementById("brandList");
 
-        const error =
-            document.getElementById("loginError");
+    const contentInner =
+        document.getElementById("contentInner");
 
-        if (password === SYSTEM_PASSWORD) {
+    const topbarTitle =
+        document.getElementById("topbarTitle");
 
-            document.getElementById("loginScreen").style.display = "none";
+    const modalOverlay =
+        document.getElementById("modalOverlay");
 
-            document.getElementById("system").style.display = "block";
+    const brandForm =
+        document.getElementById("brandForm");
 
-            error.textContent = "";
+    const brandName =
+        document.getElementById("brandName");
+
+    const brandDescription =
+        document.getElementById("brandDescription");
+
+    const logoInput =
+        document.getElementById("logoInput");
+
+    const logoPreview =
+        document.getElementById("logoPreview");
+
+    const modalTitle =
+        document.getElementById("modalTitle");
+
+
+    /* =========================
+       SAVE DATA
+    ========================= */
+
+    function saveData() {
+
+        localStorage.setItem(
+            "centralCommandBrands",
+            JSON.stringify(brands)
+        );
+
+    }
+
+
+    /* =========================
+       BRAND LIST
+    ========================= */
+
+    function renderBrandList() {
+
+        brandList.innerHTML = "";
+
+        brands.forEach(brand => {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "brand-item" +
+                (brand.id === selectedBrandId
+                    ? " active"
+                    : "");
+
+            button.onclick = () => {
+                selectBrand(brand.id);
+            };
+
+
+            const icon =
+                document.createElement("div");
+
+            icon.className = "brand-icon";
+
+
+            if (brand.logo) {
+
+                const image =
+                    document.createElement("img");
+
+                image.src = brand.logo;
+
+                icon.appendChild(image);
+
+            } else {
+
+                const text =
+                    document.createElement("div");
+
+                text.className =
+                    "brand-icon-text";
+
+                text.textContent =
+                    getInitials(brand.name);
+
+                icon.appendChild(text);
+
+            }
+
+
+            const name =
+                document.createElement("div");
+
+            name.className =
+                "brand-item-name";
+
+            name.textContent =
+                brand.name;
+
+
+            button.appendChild(icon);
+            button.appendChild(name);
+
+            brandList.appendChild(button);
+
+        });
+
+    }
+
+
+    /* =========================
+       SELECT BRAND
+    ========================= */
+
+    function selectBrand(id) {
+
+        selectedBrandId = id;
+
+        renderBrandList();
+
+        renderBrand();
+
+    }
+
+
+    /* =========================
+       RENDER BRAND
+    ========================= */
+
+    function renderBrand() {
+
+        const brand =
+            brands.find(
+                item => item.id === selectedBrandId
+            );
+
+
+        if (!brand) {
+
+            renderEmptyState();
+
+            return;
+
+        }
+
+
+        topbarTitle.textContent =
+            brand.name;
+
+
+        const logo =
+            brand.logo
+                ? `<img src="${brand.logo}" alt="">`
+                : `<div class="large-logo-text">
+                       ${escapeHTML(getInitials(brand.name))}
+                   </div>`;
+
+
+        contentInner.innerHTML = `
+
+            <div class="brand-view">
+
+                <div class="brand-header">
+
+                    <div class="large-logo">
+                        ${logo}
+                    </div>
+
+                    <div>
+
+                        <h1>
+                            ${escapeHTML(brand.name)}
+                        </h1>
+
+                        <p>
+                            Brand
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="brand-description">
+
+                    ${escapeHTML(
+                        brand.description ||
+                        "No description provided."
+                    )}
+
+                </div>
+
+
+                <div class="brand-actions">
+
+                    <button
+                        class="secondary-button"
+                        onclick="openEditModal('${brand.id}')"
+                    >
+                        Edit Brand
+                    </button>
+
+                    <button
+                        class="danger-button"
+                        onclick="deleteBrand('${brand.id}')"
+                    >
+                        Delete Brand
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================
+       EMPTY STATE
+    ========================= */
+
+    function renderEmptyState() {
+
+        topbarTitle.textContent =
+            "Brands";
+
+
+        contentInner.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-logo">
+                    CC
+                </div>
+
+                <h1>
+                    Create your first brand
+                </h1>
+
+                <p>
+                    Manage your brands from one central system.
+                </p>
+
+                <button
+                    class="primary-button"
+                    onclick="openCreateModal()"
+                >
+                    + Create Brand
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================
+       CREATE MODAL
+    ========================= */
+
+    function openCreateModal() {
+
+        editingBrandId = null;
+
+        currentLogo = "";
+
+        modalTitle.textContent =
+            "Create Brand";
+
+        brandName.value = "";
+
+        brandDescription.value = "";
+
+        logoInput.value = "";
+
+        showLogoPreview("");
+
+        modalOverlay.classList.add("show");
+
+        setTimeout(() => {
+            brandName.focus();
+        }, 100);
+
+    }
+
+
+    /* =========================
+       EDIT MODAL
+    ========================= */
+
+    function openEditModal(id) {
+
+        const brand =
+            brands.find(
+                item => item.id === id
+            );
+
+        if (!brand) return;
+
+        editingBrandId = id;
+
+        currentLogo =
+            brand.logo || "";
+
+        modalTitle.textContent =
+            "Edit Brand";
+
+        brandName.value =
+            brand.name;
+
+        brandDescription.value =
+            brand.description || "";
+
+        logoInput.value = "";
+
+        showLogoPreview(currentLogo);
+
+        modalOverlay.classList.add("show");
+
+    }
+
+
+    /* =========================
+       CLOSE MODAL
+    ========================= */
+
+    function closeModal() {
+
+        modalOverlay.classList.remove("show");
+
+    }
+
+
+    /* =========================
+       LOGO PREVIEW
+    ========================= */
+
+    logoInput.addEventListener(
+        "change",
+        function() {
+
+            const file =
+                this.files[0];
+
+            if (!file) return;
+
+            const reader =
+                new FileReader();
+
+            reader.onload = function(event) {
+
+                currentLogo =
+                    event.target.result;
+
+                showLogoPreview(
+                    currentLogo
+                );
+
+            };
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+
+    function showLogoPreview(src) {
+
+        if (src) {
+
+            logoPreview.innerHTML =
+                `<img src="${src}" alt="Logo">`;
 
         } else {
 
-            error.textContent = "INVALID ACCESS CODE";
-
-            document.getElementById("password").value = "";
+            logoPreview.innerHTML =
+                `<div class="logo-placeholder">
+                    +
+                </div>`;
 
         }
 
     }
 
 
-    /* ENTER KEY */
+    /* =========================
+       SAVE BRAND
+    ========================= */
 
-    document
-        .getElementById("password")
-        .addEventListener("keydown", function(event) {
+    brandForm.addEventListener(
+        "submit",
+        function(event) {
 
-            if (event.key === "Enter") {
-                login();
+            event.preventDefault();
+
+
+            const name =
+                brandName.value.trim();
+
+            const description =
+                brandDescription.value.trim();
+
+
+            if (!name) {
+
+                alert(
+                    "Please enter a brand name."
+                );
+
+                return;
+
             }
 
-        });
+
+            if (editingBrandId) {
+
+                const brand =
+                    brands.find(
+                        item =>
+                            item.id === editingBrandId
+                    );
+
+                if (!brand) return;
+
+                brand.name =
+                    name;
+
+                brand.description =
+                    description;
+
+                brand.logo =
+                    currentLogo;
+
+                selectedBrandId =
+                    brand.id;
+
+            } else {
+
+                const newBrand = {
+
+                    id:
+                        Date.now().toString(),
+
+                    name:
+                        name,
+
+                    description:
+                        description,
+
+                    logo:
+                        currentLogo,
+
+                    createdAt:
+                        new Date().toISOString()
+
+                };
 
 
-    /* =========================
-       LOGOUT / LOCK
-    ========================= */
+                brands.push(newBrand);
 
-    function logout() {
+                selectedBrandId =
+                    newBrand.id;
 
-        document.getElementById("system").style.display = "none";
-
-        document.getElementById("loginScreen").style.display = "flex";
-
-        document.getElementById("password").value = "";
-
-    }
+            }
 
 
-    /* =========================
-       NAVIGATION
-    ========================= */
+            saveData();
 
-    function showPage(pageId, button) {
+            closeModal();
 
-        document
-            .querySelectorAll(".page")
-            .forEach(page => {
-                page.classList.remove("active");
-            });
+            renderBrandList();
 
-        document
-            .getElementById(pageId)
-            .classList.add("active");
+            renderBrand();
 
-        document
-            .querySelectorAll(".nav-button")
-            .forEach(btn => {
-                btn.classList.remove("active");
-            });
-
-        button.classList.add("active");
-
-    }
-
-
-    /* =========================
-       GLOSSARY
-    ========================= */
-
-    let terms = [
-        {
-            name: "Revenue",
-            definition: "Income generated by an organization through its normal business activities."
-        },
-        {
-            name: "Asset",
-            definition: "A resource controlled by an organization that has economic value."
-        },
-        {
-            name: "Expense",
-            definition: "A cost incurred by an organization in order to operate."
-        },
-        {
-            name: "Profit",
-            definition: "The amount remaining after expenses are deducted from revenue."
         }
-    ];
+    );
 
 
-    function renderTerms(list = terms) {
+    /* =========================
+       DELETE BRAND
+    ========================= */
 
-        const container =
-            document.getElementById("terms");
+    function deleteBrand(id) {
 
-        container.innerHTML = "";
-
-        list.forEach((term, index) => {
-
-            const div =
-                document.createElement("div");
-
-            div.className = "term";
-
-            div.innerHTML = `
-
-                <div>
-
-                    <h3>${escapeHTML(term.name)}</h3>
-
-                    <p>
-                        ${escapeHTML(term.definition)}
-                    </p>
-
-                </div>
-
-                <div class="term-actions">
-
-                    <button onclick="editTerm(${index})">
-                        EDIT
-                    </button>
-
-                    <button onclick="deleteTerm(${index})">
-                        DELETE
-                    </button>
-
-                </div>
-
-            `;
-
-            container.appendChild(div);
-
-        });
-
-    }
-
-
-    function addTerm() {
-
-        const name =
-            prompt("Enter the business term:");
-
-        if (!name) return;
-
-        const definition =
-            prompt("Enter the definition:");
-
-        if (!definition) return;
-
-        terms.push({
-            name: name,
-            definition: definition
-        });
-
-        renderTerms();
-
-    }
-
-
-    function editTerm(index) {
-
-        const newName =
-            prompt(
-                "Edit term:",
-                terms[index].name
+        const brand =
+            brands.find(
+                item => item.id === id
             );
 
-        if (!newName) return;
+        if (!brand) return;
 
-        const newDefinition =
-            prompt(
-                "Edit definition:",
-                terms[index].definition
-            );
-
-        if (!newDefinition) return;
-
-        terms[index].name = newName;
-
-        terms[index].definition = newDefinition;
-
-        renderTerms();
-
-    }
-
-
-    function deleteTerm(index) {
 
         const confirmed =
             confirm(
-                "Delete this glossary term?"
+                `Delete "${brand.name}"? This cannot be undone.`
             );
+
 
         if (!confirmed) return;
 
-        terms.splice(index, 1);
 
-        renderTerms();
-
-    }
-
-
-    function searchTerms() {
-
-        const query =
-            document
-                .getElementById("search")
-                .value
-                .toLowerCase();
-
-        const filtered =
-            terms.filter(term =>
-                term.name.toLowerCase().includes(query) ||
-                term.definition.toLowerCase().includes(query)
+        brands =
+            brands.filter(
+                item => item.id !== id
             );
 
-        renderTerms(filtered);
+
+        selectedBrandId = null;
+
+        saveData();
+
+        renderBrandList();
+
+        renderEmptyState();
 
     }
 
 
     /* =========================
-       SECURITY / HTML ESCAPING
+       INITIALS
+    ========================= */
+
+    function getInitials(name) {
+
+        return name
+            .split(" ")
+            .filter(Boolean)
+            .slice(0, 2)
+            .map(word =>
+                word.charAt(0).toUpperCase()
+            )
+            .join("");
+
+    }
+
+
+    /* =========================
+       HTML ESCAPE
     ========================= */
 
     function escapeHTML(text) {
 
-        return text
+        return String(text)
             .replaceAll("&", "&amp;")
             .replaceAll("<", "&lt;")
             .replaceAll(">", "&gt;")
@@ -971,9 +1480,65 @@
     }
 
 
-    /* INITIALIZE */
+    /* =========================
+       CLOSE MODAL ON BACKDROP
+    ========================= */
 
-    renderTerms();
+    modalOverlay.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === modalOverlay
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       ESC KEY
+    ========================= */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Escape" &&
+                modalOverlay.classList.contains("show")
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       INITIALIZE
+    ========================= */
+
+    renderBrandList();
+
+    if (brands.length > 0) {
+
+        selectedBrandId =
+            brands[0].id;
+
+        renderBrand();
+
+    } else {
+
+        renderEmptyState();
+
+    }
 
 </script>
 

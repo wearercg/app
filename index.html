@@ -1,751 +1,1062 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Central Command — Brands</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --black: #000000;
-            --dark: #0a0a0a;
-            --panel: #111111;
-            --border: #242424;
-            --text: #ffffff;
-            --muted: #8b8b8b;
-            --hover: #1a1a1a;
-        }
-
-        body {
-            font-family:
-                Inter,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            background: var(--black);
-            color: var(--text);
-            height: 100vh;
-            overflow: hidden;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Central Command</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --black: #000;
+    --dark: #080808;
+    --panel: #101010;
+    --border: #242424;
+    --hover: #181818;
+    --text: #fff;
+    --muted: #888;
+}
+
+body {
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-        button,
-        input,
-        textarea {
-            font: inherit;
-        }
+    background: var(--black);
+    color: var(--text);
 
-        button {
-            cursor: pointer;
-        }
+    height: 100vh;
+    overflow: hidden;
+}
 
-        /* =========================
-           APP
-        ========================= */
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
 
-        .app {
-            display: flex;
-            height: 100vh;
-            width: 100%;
-        }
+button {
+    cursor: pointer;
+}
 
-        /* =========================
-           SIDEBAR
-        ========================= */
+/* =========================
+   APP
+========================= */
 
-        .sidebar {
-            width: 260px;
-            height: 100vh;
+.app {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
 
-            background: #050505;
-            border-right: 1px solid var(--border);
+/* =========================
+   SIDEBAR
+========================= */
 
-            display: flex;
-            flex-direction: column;
-        }
+.sidebar {
+    width: 260px;
+    height: 100vh;
 
-        .sidebar-header {
-            height: 64px;
+    background: #050505;
 
-            display: flex;
-            align-items: center;
+    border-right: 1px solid var(--border);
 
-            padding: 0 18px;
+    display: flex;
+    flex-direction: column;
+}
 
-            border-bottom: 1px solid var(--border);
-        }
+.sidebar-header {
+    height: 64px;
 
-        .brand-system-name {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+    display: flex;
+    align-items: center;
 
-        .new-brand {
-            margin: 18px 14px;
+    padding: 0 18px;
 
-            padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+}
 
-            background: white;
-            color: black;
+.system-name {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
 
-            border: none;
-            border-radius: 7px;
+.new-button {
+    margin: 18px 14px;
 
-            font-size: 13px;
-            font-weight: 600;
+    background: white;
+    color: black;
 
-            transition: 0.15s;
-        }
+    border: none;
+    border-radius: 7px;
 
-        .new-brand:hover {
-            background: #dddddd;
-        }
+    padding: 11px 14px;
 
-        .sidebar-label {
-            color: #666;
-            font-size: 10px;
-            font-weight: 600;
+    font-size: 13px;
+    font-weight: 600;
+}
 
-            letter-spacing: 1.5px;
+.new-button:hover {
+    background: #ddd;
+}
 
-            padding: 0 18px;
-            margin-bottom: 8px;
-        }
+.sidebar-section {
+    margin-top: 8px;
+}
 
-        .brand-list {
-            flex: 1;
+.sidebar-label {
+    padding: 0 18px;
+    margin-bottom: 7px;
 
-            overflow-y: auto;
+    color: #666;
 
-            padding: 0 8px;
-        }
+    font-size: 10px;
+    font-weight: 600;
 
-        .brand-item {
-            width: 100%;
+    letter-spacing: 1.5px;
+}
 
-            display: flex;
-            align-items: center;
-            gap: 10px;
+.nav-button {
+    width: calc(100% - 16px);
 
-            padding: 9px 10px;
+    margin: 2px 8px;
 
-            border-radius: 7px;
+    padding: 10px;
 
-            background: transparent;
-            border: none;
+    background: transparent;
 
-            color: #aaa;
+    border: none;
+    border-radius: 7px;
 
-            text-align: left;
+    color: #999;
 
-            margin-bottom: 2px;
+    text-align: left;
 
-            transition: 0.15s;
-        }
+    font-size: 13px;
+}
 
-        .brand-item:hover {
-            background: var(--hover);
-            color: white;
-        }
+.nav-button:hover {
+    background: var(--hover);
+    color: white;
+}
 
-        .brand-item.active {
-            background: #1b1b1b;
-            color: white;
-        }
+.nav-button.active {
+    background: #1b1b1b;
+    color: white;
+}
 
-        .brand-icon {
-            width: 28px;
-            height: 28px;
+.brand-list {
+    flex: 1;
 
-            border-radius: 6px;
+    overflow-y: auto;
 
-            background: #222;
+    margin-top: 12px;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+.brand-list-title {
+    padding: 0 18px;
 
-            overflow: hidden;
+    color: #555;
 
-            flex-shrink: 0;
-        }
+    font-size: 10px;
+    font-weight: 600;
 
-        .brand-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    letter-spacing: 1.5px;
 
-        .brand-icon-text {
-            font-size: 11px;
-            font-weight: 700;
-        }
+    margin-bottom: 7px;
+}
 
-        .brand-item-name {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+.brand-item {
+    width: calc(100% - 16px);
 
-            font-size: 13px;
-        }
+    margin: 2px 8px;
 
-        .sidebar-footer {
-            padding: 15px;
+    padding: 8px 10px;
 
-            border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
 
-            color: #555;
+    gap: 10px;
 
-            font-size: 11px;
-        }
+    border: none;
+    border-radius: 7px;
 
-        /* =========================
-           MAIN
-        ========================= */
+    background: transparent;
 
-        .main {
-            flex: 1;
-            height: 100vh;
+    color: #999;
 
-            display: flex;
-            flex-direction: column;
-        }
+    text-align: left;
+}
 
-        .topbar {
-            height: 64px;
+.brand-item:hover {
+    background: var(--hover);
+    color: white;
+}
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+.brand-item.active {
+    background: #1b1b1b;
+    color: white;
+}
 
-            padding: 0 30px;
+.brand-icon {
+    width: 28px;
+    height: 28px;
 
-            border-bottom: 1px solid var(--border);
-        }
+    flex-shrink: 0;
 
-        .topbar-title {
-            font-size: 14px;
-            font-weight: 500;
-        }
+    background: #202020;
 
-        .topbar-status {
-            font-size: 11px;
-            color: #666;
-        }
+    border-radius: 6px;
 
-        .content {
-            flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-            overflow-y: auto;
+    overflow: hidden;
+}
 
-            padding: 55px 30px;
-        }
+.brand-icon img {
+    width: 100%;
+    height: 100%;
 
-        .content-inner {
-            width: 100%;
-            max-width: 850px;
-            margin: 0 auto;
-        }
+    object-fit: cover;
+}
 
-        /* =========================
-           EMPTY STATE
-        ========================= */
+.brand-icon-text {
+    font-size: 10px;
+    font-weight: 700;
+}
 
-        .empty-state {
-            min-height: calc(100vh - 170px);
+.brand-name {
+    font-size: 13px;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
-            text-align: center;
-        }
+.sidebar-footer {
+    padding: 15px;
 
-        .empty-logo {
-            width: 58px;
-            height: 58px;
+    border-top: 1px solid var(--border);
 
-            border: 1px solid #333;
-            border-radius: 14px;
+    color: #555;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    font-size: 11px;
+}
 
-            font-size: 22px;
-            font-weight: 700;
+/* =========================
+   MAIN
+========================= */
 
-            margin-bottom: 22px;
-        }
+.main {
+    flex: 1;
 
-        .empty-state h1 {
-            font-size: 27px;
-            font-weight: 600;
+    height: 100vh;
 
-            margin-bottom: 10px;
-        }
+    display: flex;
+    flex-direction: column;
+}
 
-        .empty-state p {
-            color: var(--muted);
-            font-size: 14px;
+.topbar {
+    height: 64px;
 
-            margin-bottom: 25px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .primary-button {
-            background: white;
-            color: black;
+    padding: 0 30px;
 
-            border: none;
-            border-radius: 7px;
+    border-bottom: 1px solid var(--border);
+}
 
-            padding: 11px 18px;
+.topbar-title {
+    font-size: 14px;
+    font-weight: 500;
+}
 
-            font-size: 13px;
-            font-weight: 600;
-        }
+.system-status {
+    color: #555;
 
-        .primary-button:hover {
-            background: #ddd;
-        }
+    font-size: 11px;
+}
 
-        /* =========================
-           BRAND VIEW
-        ========================= */
+.content {
+    flex: 1;
 
-        .brand-view {
-            padding-top: 10px;
-        }
+    overflow-y: auto;
 
-        .brand-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+    padding: 50px 30px;
+}
 
-            padding-bottom: 28px;
+.content-inner {
+    width: 100%;
+    max-width: 900px;
 
-            border-bottom: 1px solid var(--border);
-        }
+    margin: 0 auto;
+}
 
-        .large-logo {
-            width: 82px;
-            height: 82px;
+/* =========================
+   EMPTY STATE
+========================= */
 
-            border-radius: 16px;
+.empty-state {
+    min-height: calc(100vh - 170px);
 
-            background: #151515;
+    display: flex;
+    flex-direction: column;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    align-items: center;
+    justify-content: center;
 
-            overflow: hidden;
+    text-align: center;
+}
 
-            border: 1px solid #292929;
+.empty-logo {
+    width: 60px;
+    height: 60px;
 
-            flex-shrink: 0;
-        }
+    border: 1px solid #333;
 
-        .large-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    border-radius: 14px;
 
-        .large-logo-text {
-            font-size: 28px;
-            font-weight: 700;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .brand-header h1 {
-            font-size: 30px;
-            font-weight: 600;
+    font-weight: 700;
+    font-size: 20px;
 
-            margin-bottom: 6px;
-        }
+    margin-bottom: 22px;
+}
 
-        .brand-header p {
-            color: var(--muted);
-            font-size: 14px;
-        }
+.empty-state h1 {
+    font-size: 28px;
+    font-weight: 600;
 
-        .brand-description {
-            margin-top: 30px;
+    margin-bottom: 10px;
+}
 
-            color: #bdbdbd;
+.empty-state p {
+    color: var(--muted);
 
-            font-size: 15px;
-            line-height: 1.7;
+    font-size: 14px;
 
-            white-space: pre-wrap;
-        }
+    margin-bottom: 25px;
+}
 
-        .brand-actions {
-            display: flex;
-            gap: 10px;
+.primary-button {
+    background: white;
+    color: black;
 
-            margin-top: 35px;
-        }
+    border: none;
+    border-radius: 7px;
 
-        .secondary-button {
-            padding: 10px 16px;
+    padding: 11px 18px;
 
-            border: 1px solid #333;
-            border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+}
 
-            background: transparent;
-            color: white;
+.primary-button:hover {
+    background: #ddd;
+}
 
-            font-size: 13px;
-        }
+/* =========================
+   BRAND VIEW
+========================= */
 
-        .secondary-button:hover {
-            background: #171717;
-        }
+.brand-header {
+    display: flex;
 
-        .danger-button {
-            padding: 10px 16px;
+    align-items: center;
 
-            border: 1px solid #442020;
-            border-radius: 7px;
+    gap: 20px;
 
-            background: transparent;
-            color: #d88;
+    padding-bottom: 28px;
 
-            font-size: 13px;
-        }
+    border-bottom: 1px solid var(--border);
+}
 
-        .danger-button:hover {
-            background: #1c1010;
-        }
+.large-logo {
+    width: 82px;
+    height: 82px;
 
-        /* =========================
-           MODAL
-        ========================= */
+    flex-shrink: 0;
 
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
+    background: #151515;
 
-            background: rgba(0, 0, 0, 0.75);
+    border: 1px solid #292929;
 
-            display: none;
-            align-items: center;
-            justify-content: center;
+    border-radius: 16px;
 
-            z-index: 100;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .modal-overlay.show {
-            display: flex;
-        }
+    overflow: hidden;
+}
 
-        .modal {
-            width: 470px;
-            max-width: calc(100% - 30px);
+.large-logo img {
+    width: 100%;
+    height: 100%;
 
-            background: #0b0b0b;
+    object-fit: cover;
+}
 
-            border: 1px solid #292929;
-            border-radius: 12px;
+.large-logo-text {
+    font-size: 28px;
+    font-weight: 700;
+}
 
-            padding: 25px;
+.brand-header h1 {
+    font-size: 30px;
+    font-weight: 600;
 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
+    margin-bottom: 5px;
+}
 
-        .modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+.brand-header p {
+    color: var(--muted);
 
-            margin-bottom: 25px;
-        }
+    font-size: 13px;
+}
 
-        .modal-header h2 {
-            font-size: 18px;
-            font-weight: 600;
-        }
+.description {
+    margin-top: 30px;
 
-        .close-button {
-            width: 30px;
-            height: 30px;
+    color: #bbb;
 
-            border: none;
-            border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.7;
 
-            background: transparent;
-            color: #777;
+    white-space: pre-wrap;
+}
 
-            font-size: 18px;
-        }
+.actions {
+    display: flex;
 
-        .close-button:hover {
-            background: #1a1a1a;
-            color: white;
-        }
+    gap: 10px;
 
-        .form-group {
-            margin-bottom: 19px;
-        }
+    margin-top: 30px;
+}
 
-        .form-group label {
-            display: block;
+.secondary-button {
+    padding: 10px 16px;
 
-            margin-bottom: 7px;
+    background: transparent;
 
-            font-size: 12px;
-            color: #aaa;
-        }
+    color: white;
 
-        .form-input,
-        .form-textarea {
-            width: 100%;
+    border: 1px solid #333;
 
-            background: #050505;
+    border-radius: 7px;
 
-            border: 1px solid #303030;
-            border-radius: 7px;
+    font-size: 13px;
+}
 
-            color: white;
+.secondary-button:hover {
+    background: #171717;
+}
 
-            padding: 11px 12px;
+.danger-button {
+    padding: 10px 16px;
 
-            outline: none;
+    background: transparent;
 
-            font-size: 13px;
-        }
+    color: #d88;
 
-        .form-input:focus,
-        .form-textarea:focus {
-            border-color: #666;
-        }
+    border: 1px solid #442020;
 
-        .form-textarea {
-            min-height: 110px;
-            resize: vertical;
-        }
+    border-radius: 7px;
 
-        /* LOGO UPLOAD */
+    font-size: 13px;
+}
 
-        .logo-upload {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+.danger-button:hover {
+    background: #1c1010;
+}
 
-        .logo-preview {
-            width: 65px;
-            height: 65px;
+/* =========================
+   BUSINESS IDEAS
+========================= */
 
-            border-radius: 12px;
+.page-header {
+    margin-bottom: 30px;
+}
 
-            background: #151515;
+.page-header h1 {
+    font-size: 28px;
 
-            border: 1px solid #303030;
+    font-weight: 600;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    margin-bottom: 8px;
+}
 
-            overflow: hidden;
+.page-header p {
+    color: var(--muted);
 
-            flex-shrink: 0;
-        }
+    font-size: 14px;
+}
 
-        .logo-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.toolbar {
+    display: flex;
 
-        .logo-placeholder {
-            font-size: 20px;
-            color: #555;
-        }
+    gap: 10px;
 
-        .upload-label {
-            display: inline-block;
+    margin-bottom: 20px;
+}
 
-            padding: 9px 13px;
+.search {
+    flex: 1;
 
-            border: 1px solid #333;
-            border-radius: 7px;
+    background: #090909;
 
-            color: #ccc;
+    border: 1px solid #303030;
 
-            font-size: 12px;
+    border-radius: 7px;
 
-            cursor: pointer;
-        }
+    color: white;
 
-        .upload-label:hover {
-            background: #171717;
-        }
+    padding: 11px 13px;
 
-        #logoInput {
-            display: none;
-        }
+    outline: none;
+}
 
-        .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
+.search:focus {
+    border-color: #666;
+}
 
-            margin-top: 25px;
-        }
+.idea-card {
+    border: 1px solid var(--border);
 
-        .cancel-button {
-            padding: 10px 15px;
+    background: #090909;
 
-            border: 1px solid #333;
-            border-radius: 7px;
+    border-radius: 10px;
 
-            background: transparent;
-            color: #aaa;
+    padding: 20px;
 
-            font-size: 13px;
-        }
+    margin-bottom: 10px;
+}
 
-        .save-button {
-            padding: 10px 17px;
+.idea-top {
+    display: flex;
 
-            border: none;
-            border-radius: 7px;
+    justify-content: space-between;
 
-            background: white;
-            color: black;
+    gap: 20px;
 
-            font-size: 13px;
-            font-weight: 600;
-        }
+    margin-bottom: 10px;
+}
 
-        .save-button:hover {
-            background: #ddd;
-        }
+.idea-title {
+    font-size: 17px;
 
-        /* =========================
-           MOBILE
-        ========================= */
+    font-weight: 600;
 
-        @media (max-width: 700px) {
+    margin-bottom: 5px;
+}
 
-            .sidebar {
-                width: 210px;
-            }
+.idea-category {
+    color: #777;
 
-            .content {
-                padding: 35px 20px;
-            }
+    font-size: 11px;
 
-            .brand-header h1 {
-                font-size: 24px;
-            }
+    text-transform: uppercase;
 
-            .topbar {
-                padding: 0 20px;
-            }
-        }
+    letter-spacing: 1px;
+}
 
-        @media (max-width: 560px) {
+.idea-description {
+    color: #aaa;
 
-            .sidebar {
-                width: 70px;
-            }
+    font-size: 13px;
 
-            .sidebar-header {
-                justify-content: center;
-                padding: 0;
-            }
+    line-height: 1.6;
 
-            .brand-system-name {
-                font-size: 0;
-            }
+    margin-top: 12px;
+}
 
-            .brand-system-name::after {
-                content: "CC";
-                font-size: 14px;
-            }
+.idea-metrics {
+    display: grid;
 
-            .new-brand {
-                margin: 15px auto;
-                width: 40px;
-                height: 40px;
-                padding: 0;
-                font-size: 0;
-            }
+    grid-template-columns: repeat(3, 1fr);
 
-            .new-brand::after {
-                content: "+";
-                font-size: 20px;
-            }
+    gap: 10px;
 
-            .sidebar-label {
-                display: none;
-            }
+    margin-top: 18px;
+}
 
-            .brand-item {
-                justify-content: center;
-                padding: 8px;
-            }
+.metric {
+    padding: 12px;
 
-            .brand-item-name {
-                display: none;
-            }
+    background: #111;
 
-            .sidebar-footer {
-                display: none;
-            }
-        }
-    </style>
+    border-radius: 7px;
+}
+
+.metric-label {
+    color: #666;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+}
+
+.metric-value {
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.idea-status {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 5px 9px;
+
+    background: #191919;
+
+    border-radius: 5px;
+
+    color: #aaa;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .7px;
+}
+
+.idea-actions {
+    display: flex;
+
+    gap: 7px;
+
+    margin-top: 17px;
+}
+
+.small-button {
+    padding: 7px 11px;
+
+    background: transparent;
+
+    border: 1px solid #333;
+
+    border-radius: 6px;
+
+    color: #aaa;
+
+    font-size: 11px;
+}
+
+.small-button:hover {
+    color: white;
+
+    border-color: #666;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.78);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 100;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal {
+    width: 500px;
+
+    max-width: calc(100% - 30px);
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    background: #0b0b0b;
+
+    border: 1px solid #292929;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.modal-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+.close-button {
+    width: 30px;
+    height: 30px;
+
+    background: transparent;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: #777;
+
+    font-size: 18px;
+}
+
+.close-button:hover {
+    background: #1a1a1a;
+
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #aaa;
+
+    font-size: 12px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+
+    background: #050505;
+
+    border: 1px solid #303030;
+
+    border-radius: 7px;
+
+    color: white;
+
+    padding: 11px 12px;
+
+    outline: none;
+
+    font-size: 13px;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: #666;
+}
+
+.form-textarea {
+    min-height: 110px;
+
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.modal-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.cancel-button {
+    padding: 10px 15px;
+
+    background: transparent;
+
+    border: 1px solid #333;
+
+    border-radius: 7px;
+
+    color: #aaa;
+
+    font-size: 13px;
+}
+
+.save-button {
+    padding: 10px 17px;
+
+    background: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    color: black;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.save-button:hover {
+    background: #ddd;
+}
+
+/* =========================
+   LOGO UPLOAD
+========================= */
+
+.logo-upload {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.logo-preview {
+    width: 65px;
+    height: 65px;
+
+    background: #151515;
+
+    border: 1px solid #303030;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.logo-preview img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.logo-placeholder {
+    color: #555;
+
+    font-size: 20px;
+}
+
+.upload-label {
+    display: inline-block;
+
+    padding: 9px 13px;
+
+    border: 1px solid #333;
+
+    border-radius: 7px;
+
+    color: #ccc;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.upload-label:hover {
+    background: #171717;
+}
+
+#logoInput {
+    display: none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .content {
+        padding: 35px 20px;
+    }
+
+    .idea-metrics {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:560px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .system-name {
+        font-size: 0;
+    }
+
+    .system-name::after {
+        content: "CC";
+
+        font-size: 14px;
+    }
+
+    .new-button {
+        width: 40px;
+        height: 40px;
+
+        margin: 15px auto;
+
+        padding: 0;
+
+        font-size: 0;
+    }
+
+    .new-button::after {
+        content: "+";
+
+        font-size: 20px;
+    }
+
+    .sidebar-label,
+    .brand-list-title,
+    .brand-name,
+    .sidebar-footer {
+        display: none;
+    }
+
+    .nav-button {
+        text-align: center;
+
+        font-size: 0;
+    }
+
+    .nav-button:first-letter {
+        font-size: 18px;
+    }
+
+}
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- =========================
-         SIDEBAR
-    ========================= -->
+    <!-- SIDEBAR -->
 
     <aside class="sidebar">
 
         <div class="sidebar-header">
-            <div class="brand-system-name">
+
+            <div class="system-name">
                 CENTRAL COMMAND
             </div>
+
         </div>
 
-        <button class="new-brand" onclick="openCreateModal()">
+
+        <button
+            class="new-button"
+            onclick="openCreateBrandModal()"
+        >
             + New Brand
         </button>
 
-        <div class="sidebar-label">
-            BRANDS
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-label">
+                SYSTEM
+            </div>
+
+            <button
+                id="brandsNav"
+                class="nav-button active"
+                onclick="showBrands()"
+            >
+                Brands
+            </button>
+
+            <button
+                id="ideasNav"
+                class="nav-button"
+                onclick="showIdeas()"
+            >
+                Business Ideas
+            </button>
+
         </div>
 
-        <div id="brandList" class="brand-list"></div>
+
+        <div class="brand-list">
+
+            <div class="brand-list-title">
+                BRANDS
+            </div>
+
+            <div id="brandList"></div>
+
+        </div>
+
 
         <div class="sidebar-footer">
-            Central Command V0.1.0
+            Central Command V0.2.0
         </div>
 
     </aside>
 
 
-    <!-- =========================
-         MAIN
-    ========================= -->
+    <!-- MAIN -->
 
     <main class="main">
 
@@ -755,7 +1066,7 @@
                 Brands
             </div>
 
-            <div class="topbar-status">
+            <div class="system-status">
                 SYSTEM ONLINE
             </div>
 
@@ -764,11 +1075,10 @@
 
         <div class="content">
 
-            <div id="contentInner" class="content-inner">
-
-                <!-- Content generated by JavaScript -->
-
-            </div>
+            <div
+                id="contentInner"
+                class="content-inner"
+            ></div>
 
         </div>
 
@@ -778,10 +1088,13 @@
 
 
 <!-- =========================
-     CREATE / EDIT MODAL
+     MODAL
 ========================= -->
 
-<div id="modalOverlay" class="modal-overlay">
+<div
+    id="modalOverlay"
+    class="modal-overlay"
+>
 
     <div class="modal">
 
@@ -803,6 +1116,8 @@
 
         <form id="brandForm">
 
+            <!-- BRAND LOGO -->
+
             <div class="form-group">
 
                 <label>
@@ -811,13 +1126,18 @@
 
                 <div class="logo-upload">
 
-                    <div id="logoPreview" class="logo-preview">
+                    <div
+                        id="logoPreview"
+                        class="logo-preview"
+                    >
                         <div class="logo-placeholder">
                             +
                         </div>
                     </div>
 
+
                     <div>
+
                         <label
                             for="logoInput"
                             class="upload-label"
@@ -830,6 +1150,7 @@
                             type="file"
                             accept="image/*"
                         >
+
                     </div>
 
                 </div>
@@ -837,9 +1158,11 @@
             </div>
 
 
+            <!-- NAME -->
+
             <div class="form-group">
 
-                <label for="brandName">
+                <label>
                     Brand Name
                 </label>
 
@@ -854,16 +1177,18 @@
             </div>
 
 
+            <!-- DESCRIPTION -->
+
             <div class="form-group">
 
-                <label for="brandDescription">
+                <label>
                     Description
                 </label>
 
                 <textarea
                     id="brandDescription"
                     class="form-textarea"
-                    placeholder="Describe this brand..."
+                    placeholder="Describe the brand..."
                 ></textarea>
 
             </div>
@@ -895,429 +1220,817 @@
 </div>
 
 
-<script>
+<!-- =========================
+     BUSINESS IDEA MODAL
+========================= -->
 
-    /* =========================
-       DATA
-    ========================= */
+<div
+    id="ideaModalOverlay"
+    class="modal-overlay"
+>
 
-    let brands = JSON.parse(
-        localStorage.getItem("centralCommandBrands")
-    ) || [];
+    <div class="modal">
 
-    let selectedBrandId = null;
+        <div class="modal-header">
 
-    let editingBrandId = null;
+            <h2 id="ideaModalTitle">
+                New Business Idea
+            </h2>
 
-    let currentLogo = "";
+            <button
+                class="close-button"
+                onclick="closeIdeaModal()"
+            >
+                ×
+            </button>
 
+        </div>
 
-    /* =========================
-       ELEMENTS
-    ========================= */
 
-    const brandList =
-        document.getElementById("brandList");
+        <form id="ideaForm">
 
-    const contentInner =
-        document.getElementById("contentInner");
+            <!-- IDEA NAME -->
 
-    const topbarTitle =
-        document.getElementById("topbarTitle");
+            <div class="form-group">
 
-    const modalOverlay =
-        document.getElementById("modalOverlay");
+                <label>
+                    Business Idea
+                </label>
 
-    const brandForm =
-        document.getElementById("brandForm");
+                <input
+                    id="ideaName"
+                    class="form-input"
+                    type="text"
+                    placeholder="Example: Online Grocery Platform"
+                    required
+                >
 
-    const brandName =
-        document.getElementById("brandName");
+            </div>
 
-    const brandDescription =
-        document.getElementById("brandDescription");
 
-    const logoInput =
-        document.getElementById("logoInput");
+            <!-- CATEGORY -->
 
-    const logoPreview =
-        document.getElementById("logoPreview");
+            <div class="form-group">
 
-    const modalTitle =
-        document.getElementById("modalTitle");
+                <label>
+                    Industry / Category
+                </label>
 
+                <select
+                    id="ideaCategory"
+                    class="form-select"
+                >
 
-    /* =========================
-       SAVE DATA
-    ========================= */
+                    <option value="Technology">
+                        Technology
+                    </option>
 
-    function saveData() {
+                    <option value="Finance">
+                        Finance
+                    </option>
 
-        localStorage.setItem(
-            "centralCommandBrands",
-            JSON.stringify(brands)
-        );
+                    <option value="Food & Beverage">
+                        Food & Beverage
+                    </option>
 
-    }
+                    <option value="Retail">
+                        Retail
+                    </option>
 
+                    <option value="Healthcare">
+                        Healthcare
+                    </option>
 
-    /* =========================
-       BRAND LIST
-    ========================= */
+                    <option value="Education">
+                        Education
+                    </option>
 
-    function renderBrandList() {
+                    <option value="Transportation">
+                        Transportation
+                    </option>
 
-        brandList.innerHTML = "";
+                    <option value="Real Estate">
+                        Real Estate
+                    </option>
 
-        brands.forEach(brand => {
+                    <option value="Media">
+                        Media
+                    </option>
 
-            const button =
-                document.createElement("button");
+                    <option value="Other">
+                        Other
+                    </option>
 
-            button.className =
-                "brand-item" +
-                (brand.id === selectedBrandId
-                    ? " active"
-                    : "");
+                </select>
 
-            button.onclick = () => {
-                selectBrand(brand.id);
-            };
+            </div>
 
 
-            const icon =
-                document.createElement("div");
+            <!-- DESCRIPTION -->
 
-            icon.className = "brand-icon";
+            <div class="form-group">
 
+                <label>
+                    Description
+                </label>
 
-            if (brand.logo) {
+                <textarea
+                    id="ideaDescription"
+                    class="form-textarea"
+                    placeholder="Describe the business idea..."
+                ></textarea>
 
-                const image =
-                    document.createElement("img");
+            </div>
 
-                image.src = brand.logo;
 
-                icon.appendChild(image);
+            <!-- FINANCIALS -->
 
-            } else {
+            <div class="form-row">
 
-                const text =
-                    document.createElement("div");
+                <div class="form-group">
 
-                text.className =
-                    "brand-icon-text";
+                    <label>
+                        Estimated Startup Cost
+                    </label>
 
-                text.textContent =
-                    getInitials(brand.name);
-
-                icon.appendChild(text);
-
-            }
-
-
-            const name =
-                document.createElement("div");
-
-            name.className =
-                "brand-item-name";
-
-            name.textContent =
-                brand.name;
-
-
-            button.appendChild(icon);
-            button.appendChild(name);
-
-            brandList.appendChild(button);
-
-        });
-
-    }
-
-
-    /* =========================
-       SELECT BRAND
-    ========================= */
-
-    function selectBrand(id) {
-
-        selectedBrandId = id;
-
-        renderBrandList();
-
-        renderBrand();
-
-    }
-
-
-    /* =========================
-       RENDER BRAND
-    ========================= */
-
-    function renderBrand() {
-
-        const brand =
-            brands.find(
-                item => item.id === selectedBrandId
-            );
-
-
-        if (!brand) {
-
-            renderEmptyState();
-
-            return;
-
-        }
-
-
-        topbarTitle.textContent =
-            brand.name;
-
-
-        const logo =
-            brand.logo
-                ? `<img src="${brand.logo}" alt="">`
-                : `<div class="large-logo-text">
-                       ${escapeHTML(getInitials(brand.name))}
-                   </div>`;
-
-
-        contentInner.innerHTML = `
-
-            <div class="brand-view">
-
-                <div class="brand-header">
-
-                    <div class="large-logo">
-                        ${logo}
-                    </div>
-
-                    <div>
-
-                        <h1>
-                            ${escapeHTML(brand.name)}
-                        </h1>
-
-                        <p>
-                            Brand
-                        </p>
-
-                    </div>
+                    <input
+                        id="ideaCost"
+                        class="form-input"
+                        type="text"
+                        placeholder="$10,000"
+                    >
 
                 </div>
 
 
-                <div class="brand-description">
+                <div class="form-group">
 
-                    ${escapeHTML(
-                        brand.description ||
-                        "No description provided."
-                    )}
+                    <label>
+                        Potential Revenue
+                    </label>
 
-                </div>
-
-
-                <div class="brand-actions">
-
-                    <button
-                        class="secondary-button"
-                        onclick="openEditModal('${brand.id}')"
+                    <input
+                        id="ideaRevenue"
+                        class="form-input"
+                        type="text"
+                        placeholder="$100,000 / year"
                     >
-                        Edit Brand
-                    </button>
-
-                    <button
-                        class="danger-button"
-                        onclick="deleteBrand('${brand.id}')"
-                    >
-                        Delete Brand
-                    </button>
 
                 </div>
 
             </div>
 
-        `;
 
-    }
+            <!-- STATUS -->
+
+            <div class="form-group">
+
+                <label>
+                    Status
+                </label>
+
+                <select
+                    id="ideaStatus"
+                    class="form-select"
+                >
+
+                    <option value="Idea">
+                        Idea
+                    </option>
+
+                    <option value="Researching">
+                        Researching
+                    </option>
+
+                    <option value="Planning">
+                        Planning
+                    </option>
+
+                    <option value="Building">
+                        Building
+                    </option>
+
+                    <option value="Launched">
+                        Launched
+                    </option>
+
+                    <option value="Paused">
+                        Paused
+                    </option>
+
+                </select>
+
+            </div>
 
 
-    /* =========================
-       EMPTY STATE
-    ========================= */
-
-    function renderEmptyState() {
-
-        topbarTitle.textContent =
-            "Brands";
-
-
-        contentInner.innerHTML = `
-
-            <div class="empty-state">
-
-                <div class="empty-logo">
-                    CC
-                </div>
-
-                <h1>
-                    Create your first brand
-                </h1>
-
-                <p>
-                    Manage your brands from one central system.
-                </p>
+            <div class="modal-actions">
 
                 <button
-                    class="primary-button"
-                    onclick="openCreateModal()"
+                    type="button"
+                    class="cancel-button"
+                    onclick="closeIdeaModal()"
                 >
-                    + Create Brand
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    Save Idea
                 </button>
 
             </div>
 
-        `;
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let brands =
+    JSON.parse(
+        localStorage.getItem(
+            "centralCommandBrands"
+        )
+    ) || [];
+
+
+let businessIdeas =
+    JSON.parse(
+        localStorage.getItem(
+            "centralCommandBusinessIdeas"
+        )
+    ) || [];
+
+
+let selectedBrandId = null;
+
+let editingBrandId = null;
+
+let editingIdeaId = null;
+
+let currentLogo = "";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const contentInner =
+    document.getElementById(
+        "contentInner"
+    );
+
+const brandList =
+    document.getElementById(
+        "brandList"
+    );
+
+const topbarTitle =
+    document.getElementById(
+        "topbarTitle"
+    );
+
+const modalOverlay =
+    document.getElementById(
+        "modalOverlay"
+    );
+
+const ideaModalOverlay =
+    document.getElementById(
+        "ideaModalOverlay"
+    );
+
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+function saveBrands() {
+
+    localStorage.setItem(
+        "centralCommandBrands",
+        JSON.stringify(brands)
+    );
+
+}
+
+
+function saveIdeas() {
+
+    localStorage.setItem(
+        "centralCommandBusinessIdeas",
+        JSON.stringify(businessIdeas)
+    );
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function setActiveNav(active) {
+
+    document
+        .getElementById("brandsNav")
+        .classList.remove("active");
+
+    document
+        .getElementById("ideasNav")
+        .classList.remove("active");
+
+    document
+        .getElementById(active)
+        .classList.add("active");
+
+}
+
+
+function showBrands() {
+
+    setActiveNav("brandsNav");
+
+    renderBrandList();
+
+    if (selectedBrandId) {
+
+        renderBrand();
+
+    } else {
+
+        renderEmptyState();
 
     }
 
-
-    /* =========================
-       CREATE MODAL
-    ========================= */
-
-    function openCreateModal() {
-
-        editingBrandId = null;
-
-        currentLogo = "";
-
-        modalTitle.textContent =
-            "Create Brand";
-
-        brandName.value = "";
-
-        brandDescription.value = "";
-
-        logoInput.value = "";
-
-        showLogoPreview("");
-
-        modalOverlay.classList.add("show");
-
-        setTimeout(() => {
-            brandName.focus();
-        }, 100);
-
-    }
+}
 
 
-    /* =========================
-       EDIT MODAL
-    ========================= */
+function showIdeas() {
 
-    function openEditModal(id) {
+    setActiveNav("ideasNav");
 
-        const brand =
-            brands.find(
-                item => item.id === id
+    renderIdeas();
+
+}
+
+
+/* =====================================================
+   BRAND LIST
+===================================================== */
+
+function renderBrandList() {
+
+    brandList.innerHTML = "";
+
+
+    brands.forEach(brand => {
+
+        const button =
+            document.createElement(
+                "button"
             );
 
-        if (!brand) return;
+        button.className =
+            "brand-item" +
+            (
+                brand.id === selectedBrandId
+                    ? " active"
+                    : ""
+            );
 
-        editingBrandId = id;
 
-        currentLogo =
-            brand.logo || "";
+        button.onclick = () => {
 
-        modalTitle.textContent =
-            "Edit Brand";
+            selectedBrandId =
+                brand.id;
 
-        brandName.value =
+            showBrands();
+
+        };
+
+
+        const icon =
+            document.createElement(
+                "div"
+            );
+
+        icon.className =
+            "brand-icon";
+
+
+        if (brand.logo) {
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+            image.src =
+                brand.logo;
+
+            icon.appendChild(image);
+
+        } else {
+
+            const text =
+                document.createElement(
+                    "div"
+                );
+
+            text.className =
+                "brand-icon-text";
+
+            text.textContent =
+                getInitials(
+                    brand.name
+                );
+
+            icon.appendChild(text);
+
+        }
+
+
+        const name =
+            document.createElement(
+                "div"
+            );
+
+        name.className =
+            "brand-name";
+
+        name.textContent =
             brand.name;
 
-        brandDescription.value =
-            brand.description || "";
 
-        logoInput.value = "";
+        button.appendChild(icon);
 
-        showLogoPreview(currentLogo);
+        button.appendChild(name);
 
-        modalOverlay.classList.add("show");
+        brandList.appendChild(button);
+
+    });
+
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+function renderEmptyState() {
+
+    topbarTitle.textContent =
+        "Brands";
+
+
+    contentInner.innerHTML = `
+
+        <div class="empty-state">
+
+            <div class="empty-logo">
+                CC
+            </div>
+
+            <h1>
+                Create your first brand
+            </h1>
+
+            <p>
+                Manage your brands from one central system.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="openCreateBrandModal()"
+            >
+                + Create Brand
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   BRAND VIEW
+===================================================== */
+
+function renderBrand() {
+
+    const brand =
+        brands.find(
+            item =>
+                item.id ===
+                selectedBrandId
+        );
+
+
+    if (!brand) {
+
+        renderEmptyState();
+
+        return;
 
     }
 
 
-    /* =========================
-       CLOSE MODAL
-    ========================= */
-
-    function closeModal() {
-
-        modalOverlay.classList.remove("show");
-
-    }
+    topbarTitle.textContent =
+        brand.name;
 
 
-    /* =========================
-       LOGO PREVIEW
-    ========================= */
+    const logo =
+        brand.logo
 
-    logoInput.addEventListener(
+            ? `
+                <img
+                    src="${brand.logo}"
+                    alt="Brand Logo"
+                >
+              `
+
+            : `
+                <div class="large-logo-text">
+                    ${escapeHTML(
+                        getInitials(
+                            brand.name
+                        )
+                    )}
+                </div>
+              `;
+
+
+    contentInner.innerHTML = `
+
+        <div>
+
+            <div class="brand-header">
+
+                <div class="large-logo">
+
+                    ${logo}
+
+                </div>
+
+
+                <div>
+
+                    <h1>
+                        ${escapeHTML(
+                            brand.name
+                        )}
+                    </h1>
+
+                    <p>
+                        Brand
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="description">
+
+                ${escapeHTML(
+                    brand.description ||
+                    "No description provided."
+                )}
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    class="secondary-button"
+                    onclick="openEditBrandModal(
+                        '${brand.id}'
+                    )"
+                >
+                    Edit Brand
+                </button>
+
+
+                <button
+                    class="danger-button"
+                    onclick="deleteBrand(
+                        '${brand.id}'
+                    )"
+                >
+                    Delete Brand
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   CREATE BRAND
+===================================================== */
+
+function openCreateBrandModal() {
+
+    editingBrandId = null;
+
+    currentLogo = "";
+
+    document
+        .getElementById(
+            "modalTitle"
+        )
+        .textContent =
+        "Create Brand";
+
+
+    document
+        .getElementById(
+            "brandForm"
+        )
+        .reset();
+
+
+    showLogoPreview("");
+
+
+    modalOverlay.classList.add(
+        "show"
+    );
+
+}
+
+
+function openEditBrandModal(id) {
+
+    const brand =
+        brands.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!brand) return;
+
+
+    editingBrandId =
+        id;
+
+    currentLogo =
+        brand.logo || "";
+
+
+    document
+        .getElementById(
+            "modalTitle"
+        )
+        .textContent =
+        "Edit Brand";
+
+
+    document
+        .getElementById(
+            "brandName"
+        )
+        .value =
+        brand.name;
+
+
+    document
+        .getElementById(
+            "brandDescription"
+        )
+        .value =
+        brand.description || "";
+
+
+    document
+        .getElementById(
+            "logoInput"
+        )
+        .value = "";
+
+
+    showLogoPreview(
+        currentLogo
+    );
+
+
+    modalOverlay.classList.add(
+        "show"
+    );
+
+}
+
+
+function closeModal() {
+
+    modalOverlay.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+document
+    .getElementById(
+        "logoInput"
+    )
+    .addEventListener(
         "change",
         function() {
 
             const file =
                 this.files[0];
 
+
             if (!file) return;
+
 
             const reader =
                 new FileReader();
 
-            reader.onload = function(event) {
 
-                currentLogo =
-                    event.target.result;
+            reader.onload =
+                function(event) {
 
-                showLogoPreview(
-                    currentLogo
-                );
+                    currentLogo =
+                        event.target.result;
 
-            };
+                    showLogoPreview(
+                        currentLogo
+                    );
 
-            reader.readAsDataURL(file);
+                };
+
+
+            reader.readAsDataURL(
+                file
+            );
 
         }
     );
 
 
-    function showLogoPreview(src) {
+function showLogoPreview(src) {
 
-        if (src) {
+    const preview =
+        document.getElementById(
+            "logoPreview"
+        );
 
-            logoPreview.innerHTML =
-                `<img src="${src}" alt="Logo">`;
 
-        } else {
+    if (src) {
 
-            logoPreview.innerHTML =
-                `<div class="logo-placeholder">
+        preview.innerHTML =
+            `
+                <img
+                    src="${src}"
+                    alt="Logo"
+                >
+            `;
+
+    } else {
+
+        preview.innerHTML =
+            `
+                <div class="logo-placeholder">
                     +
-                </div>`;
-
-        }
+                </div>
+            `;
 
     }
 
+}
 
-    /* =========================
-       SAVE BRAND
-    ========================= */
 
-    brandForm.addEventListener(
+/* =====================================================
+   SAVE BRAND
+===================================================== */
+
+document
+    .getElementById(
+        "brandForm"
+    )
+    .addEventListener(
         "submit",
         function(event) {
 
@@ -1325,10 +2038,21 @@
 
 
             const name =
-                brandName.value.trim();
+                document
+                    .getElementById(
+                        "brandName"
+                    )
+                    .value
+                    .trim();
+
 
             const description =
-                brandDescription.value.trim();
+                document
+                    .getElementById(
+                        "brandDescription"
+                    )
+                    .value
+                    .trim();
 
 
             if (!name) {
@@ -1347,10 +2071,13 @@
                 const brand =
                     brands.find(
                         item =>
-                            item.id === editingBrandId
+                            item.id ===
+                            editingBrandId
                     );
 
+
                 if (!brand) return;
+
 
                 brand.name =
                     name;
@@ -1360,6 +2087,7 @@
 
                 brand.logo =
                     currentLogo;
+
 
                 selectedBrandId =
                     brand.id;
@@ -1386,7 +2114,10 @@
                 };
 
 
-                brands.push(newBrand);
+                brands.push(
+                    newBrand
+                );
+
 
                 selectedBrandId =
                     newBrand.id;
@@ -1394,7 +2125,7 @@
             }
 
 
-            saveData();
+            saveBrands();
 
             closeModal();
 
@@ -1406,139 +2137,723 @@
     );
 
 
-    /* =========================
-       DELETE BRAND
-    ========================= */
+/* =====================================================
+   DELETE BRAND
+===================================================== */
 
-    function deleteBrand(id) {
+function deleteBrand(id) {
 
-        const brand =
-            brands.find(
-                item => item.id === id
-            );
-
-        if (!brand) return;
-
-
-        const confirmed =
-            confirm(
-                `Delete "${brand.name}"? This cannot be undone.`
-            );
+    const brand =
+        brands.find(
+            item =>
+                item.id === id
+        );
 
 
-        if (!confirmed) return;
+    if (!brand) return;
 
 
-        brands =
-            brands.filter(
-                item => item.id !== id
-            );
+    const confirmed =
+        confirm(
+            `Delete "${brand.name}"?`
+        );
 
 
-        selectedBrandId = null;
-
-        saveData();
-
-        renderBrandList();
-
-        renderEmptyState();
-
-    }
+    if (!confirmed) return;
 
 
-    /* =========================
-       INITIALS
-    ========================= */
-
-    function getInitials(name) {
-
-        return name
-            .split(" ")
-            .filter(Boolean)
-            .slice(0, 2)
-            .map(word =>
-                word.charAt(0).toUpperCase()
-            )
-            .join("");
-
-    }
+    brands =
+        brands.filter(
+            item =>
+                item.id !== id
+        );
 
 
-    /* =========================
-       HTML ESCAPE
-    ========================= */
-
-    function escapeHTML(text) {
-
-        return String(text)
-            .replaceAll("&", "&amp;")
-            .replaceAll("<", "&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll('"', "&quot;")
-            .replaceAll("'", "&#039;");
-
-    }
+    selectedBrandId =
+        null;
 
 
-    /* =========================
-       CLOSE MODAL ON BACKDROP
-    ========================= */
-
-    modalOverlay.addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === modalOverlay
-            ) {
-
-                closeModal();
-
-            }
-
-        }
-    );
-
-
-    /* =========================
-       ESC KEY
-    ========================= */
-
-    document.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (
-                event.key === "Escape" &&
-                modalOverlay.classList.contains("show")
-            ) {
-
-                closeModal();
-
-            }
-
-        }
-    );
-
-
-    /* =========================
-       INITIALIZE
-    ========================= */
+    saveBrands();
 
     renderBrandList();
 
-    if (brands.length > 0) {
+    renderEmptyState();
 
-        selectedBrandId =
-            brands[0].id;
+}
 
-        renderBrand();
 
-    } else {
+/* =====================================================
+   BUSINESS IDEAS
+===================================================== */
 
-        renderEmptyState();
+function renderIdeas(
+    searchQuery = ""
+) {
+
+    topbarTitle.textContent =
+        "Business Ideas";
+
+
+    const query =
+        searchQuery
+            .toLowerCase()
+            .trim();
+
+
+    const filteredIdeas =
+        businessIdeas.filter(
+            idea =>
+
+                idea.name
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                idea.description
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                idea.category
+                    .toLowerCase()
+                    .includes(query)
+        );
+
+
+    contentInner.innerHTML = `
+
+        <div>
+
+            <div class="page-header">
+
+                <h1>
+                    Business Ideas
+                </h1>
+
+                <p>
+                    Build and manage your business idea database.
+                </p>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <input
+                    id="ideaSearch"
+                    class="search"
+                    type="text"
+                    placeholder="Search business ideas..."
+                    value="${escapeHTML(
+                        searchQuery
+                    )}"
+                    oninput="renderIdeas(this.value)"
+                >
+
+
+                <button
+                    class="primary-button"
+                    onclick="openCreateIdeaModal()"
+                >
+                    + New Idea
+                </button>
+
+            </div>
+
+
+            <div>
+
+                ${
+                    filteredIdeas.length === 0
+
+                    ?
+
+                    `
+                        <div
+                            style="
+                                border:1px solid #222;
+                                padding:40px;
+                                text-align:center;
+                                border-radius:10px;
+                                color:#666;
+                            "
+                        >
+                            No business ideas found.
+                        </div>
+                    `
+
+                    :
+
+                    filteredIdeas
+                        .map(
+                            idea =>
+                                createIdeaCard(
+                                    idea
+                                )
+                        )
+                        .join("")
+                }
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function createIdeaCard(idea) {
+
+    return `
+
+        <div class="idea-card">
+
+            <div class="idea-top">
+
+                <div>
+
+                    <div class="idea-title">
+
+                        ${escapeHTML(
+                            idea.name
+                        )}
+
+                    </div>
+
+
+                    <div class="idea-category">
+
+                        ${escapeHTML(
+                            idea.category
+                        )}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="idea-description">
+
+                ${escapeHTML(
+                    idea.description ||
+                    "No description provided."
+                )}
+
+            </div>
+
+
+            <div class="idea-metrics">
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Startup Cost
+                    </div>
+
+                    <div class="metric-value">
+
+                        ${escapeHTML(
+                            idea.cost ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Potential Revenue
+                    </div>
+
+                    <div class="metric-value">
+
+                        ${escapeHTML(
+                            idea.revenue ||
+                            "Not specified"
+                        )}
+
+                    </div>
+
+                </div>
+
+
+                <div class="metric">
+
+                    <div class="metric-label">
+                        Status
+                    </div>
+
+                    <div class="metric-value">
+
+                        ${escapeHTML(
+                            idea.status
+                        )}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="idea-actions">
+
+                <button
+                    class="small-button"
+                    onclick="openEditIdeaModal(
+                        '${idea.id}'
+                    )"
+                >
+                    Edit
+                </button>
+
+
+                <button
+                    class="small-button"
+                    onclick="deleteIdea(
+                        '${idea.id}'
+                    )"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   CREATE IDEA
+===================================================== */
+
+function openCreateIdeaModal() {
+
+    editingIdeaId =
+        null;
+
+
+    document
+        .getElementById(
+            "ideaModalTitle"
+        )
+        .textContent =
+        "New Business Idea";
+
+
+    document
+        .getElementById(
+            "ideaForm"
+        )
+        .reset();
+
+
+    ideaModalOverlay.classList.add(
+        "show"
+    );
+
+}
+
+
+function openEditIdeaModal(id) {
+
+    const idea =
+        businessIdeas.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!idea) return;
+
+
+    editingIdeaId =
+        id;
+
+
+    document
+        .getElementById(
+            "ideaModalTitle"
+        )
+        .textContent =
+        "Edit Business Idea";
+
+
+    document
+        .getElementById(
+            "ideaName"
+        )
+        .value =
+        idea.name;
+
+
+    document
+        .getElementById(
+            "ideaCategory"
+        )
+        .value =
+        idea.category;
+
+
+    document
+        .getElementById(
+            "ideaDescription"
+        )
+        .value =
+        idea.description;
+
+
+    document
+        .getElementById(
+            "ideaCost"
+        )
+        .value =
+        idea.cost;
+
+
+    document
+        .getElementById(
+            "ideaRevenue"
+        )
+        .value =
+        idea.revenue;
+
+
+    document
+        .getElementById(
+            "ideaStatus"
+        )
+        .value =
+        idea.status;
+
+
+    ideaModalOverlay.classList.add(
+        "show"
+    );
+
+}
+
+
+function closeIdeaModal() {
+
+    ideaModalOverlay.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =====================================================
+   SAVE IDEA
+===================================================== */
+
+document
+    .getElementById(
+        "ideaForm"
+    )
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById(
+                        "ideaName"
+                    )
+                    .value
+                    .trim();
+
+
+            const category =
+                document
+                    .getElementById(
+                        "ideaCategory"
+                    )
+                    .value;
+
+
+            const description =
+                document
+                    .getElementById(
+                        "ideaDescription"
+                    )
+                    .value
+                    .trim();
+
+
+            const cost =
+                document
+                    .getElementById(
+                        "ideaCost"
+                    )
+                    .value
+                    .trim();
+
+
+            const revenue =
+                document
+                    .getElementById(
+                        "ideaRevenue"
+                    )
+                    .value
+                    .trim();
+
+
+            const status =
+                document
+                    .getElementById(
+                        "ideaStatus"
+                    )
+                    .value;
+
+
+            if (!name) {
+
+                alert(
+                    "Please enter a business idea."
+                );
+
+                return;
+
+            }
+
+
+            if (editingIdeaId) {
+
+                const idea =
+                    businessIdeas.find(
+                        item =>
+                            item.id ===
+                            editingIdeaId
+                    );
+
+
+                if (!idea) return;
+
+
+                idea.name =
+                    name;
+
+                idea.category =
+                    category;
+
+                idea.description =
+                    description;
+
+                idea.cost =
+                    cost;
+
+                idea.revenue =
+                    revenue;
+
+                idea.status =
+                    status;
+
+            } else {
+
+                businessIdeas.push({
+
+                    id:
+                        Date.now().toString(),
+
+                    name:
+                        name,
+
+                    category:
+                        category,
+
+                    description:
+                        description,
+
+                    cost:
+                        cost,
+
+                    revenue:
+                        revenue,
+
+                    status:
+                        status,
+
+                    createdAt:
+                        new Date().toISOString()
+
+                });
+
+            }
+
+
+            saveIdeas();
+
+            closeIdeaModal();
+
+            renderIdeas();
+
+        }
+    );
+
+
+/* =====================================================
+   DELETE IDEA
+===================================================== */
+
+function deleteIdea(id) {
+
+    const idea =
+        businessIdeas.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!idea) return;
+
+
+    const confirmed =
+        confirm(
+            `Delete "${idea.name}"?`
+        );
+
+
+    if (!confirmed) return;
+
+
+    businessIdeas =
+        businessIdeas.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveIdeas();
+
+    renderIdeas();
+
+}
+
+
+/* =====================================================
+   UTILITIES
+===================================================== */
+
+function getInitials(name) {
+
+    return name
+        .split(" ")
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(
+            word =>
+                word
+                    .charAt(0)
+                    .toUpperCase()
+        )
+        .join("");
+
+}
+
+
+function escapeHTML(text) {
+
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* =====================================================
+   MODAL EVENTS
+===================================================== */
+
+modalOverlay.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            modalOverlay
+        ) {
+
+            closeModal();
+
+        }
 
     }
+);
+
+
+ideaModalOverlay.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target ===
+            ideaModalOverlay
+        ) {
+
+            closeIdeaModal();
+
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeModal();
+
+            closeIdeaModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+renderBrandList();
+
+
+if (brands.length > 0) {
+
+    selectedBrandId =
+        brands[0].id;
+
+    renderBrand();
+
+} else {
+
+    renderEmptyState();
+
+}
 
 </script>
 

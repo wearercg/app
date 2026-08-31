@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -2119,3 +2120,2126 @@
 </body>
 </html>
 ```
+=======
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Command — Organization Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f4f4f4;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+
+            --sidebar-width: 250px;
+            --header-height: 70px;
+        }
+
+        body {
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background: var(--gray-100);
+            color: var(--black);
+            min-height: 100vh;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        /* =========================
+           APP LAYOUT
+        ========================== */
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--black);
+            color: var(--white);
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .logo {
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            padding: 0 22px;
+            border-bottom: 1px solid #292929;
+        }
+
+        .logo-mark {
+            width: 34px;
+            height: 34px;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        .navigation {
+            padding: 20px 12px;
+            flex: 1;
+        }
+
+        .nav-section {
+            margin-bottom: 24px;
+        }
+
+        .nav-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #666;
+            letter-spacing: 1.5px;
+            padding: 0 12px 8px;
+        }
+
+        .nav-item {
+            width: 100%;
+            border: 0;
+            background: transparent;
+            color: #aaa;
+            padding: 11px 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            text-align: left;
+            margin-bottom: 3px;
+        }
+
+        .nav-item:hover {
+            background: #181818;
+            color: white;
+        }
+
+        .nav-item.active {
+            background: white;
+            color: black;
+            font-weight: 700;
+        }
+
+        .nav-icon {
+            width: 18px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .sidebar-footer {
+            border-top: 1px solid #292929;
+            padding: 15px;
+        }
+
+        .system-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            color: #999;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .main {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            min-height: 100vh;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .header {
+            height: var(--header-height);
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .page-title {
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .page-path {
+            font-size: 11px;
+            color: var(--gray-500);
+            margin-top: 3px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-icon {
+            width: 35px;
+            height: 35px;
+            border: 1px solid var(--gray-200);
+            background: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            border-radius: 50%;
+        }
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        .content {
+            padding: 30px;
+            max-width: 1600px;
+        }
+
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-heading h1 {
+            font-size: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-heading p {
+            color: var(--gray-500);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================== */
+
+        .btn {
+            border: 1px solid var(--black);
+            padding: 10px 15px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.15s;
+        }
+
+        .btn-primary {
+            background: black;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #333;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: black;
+            border-color: var(--gray-300);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gray-100);
+        }
+
+        .btn-danger {
+            background: black;
+            color: white;
+            border-color: black;
+        }
+
+        .btn-small {
+            padding: 7px 10px;
+            font-size: 11px;
+        }
+
+        /* =========================
+           DASHBOARD
+        ========================== */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            padding: 20px;
+            min-height: 125px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            letter-spacing: 0.7px;
+            margin-bottom: 12px;
+        }
+
+        .stat-value {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .stat-change {
+            margin-top: 9px;
+            font-size: 11px;
+            color: var(--gray-500);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            background: white;
+            border: 1px solid var(--gray-200);
+        }
+
+        .panel-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-title {
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .panel-body {
+            padding: 20px;
+        }
+
+        .activity {
+            display: flex;
+            gap: 12px;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .activity:last-child {
+            border-bottom: 0;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .activity-text {
+            font-size: 12px;
+        }
+
+        .activity-time {
+            color: var(--gray-500);
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .org-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .org-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .org-avatar {
+            width: 34px;
+            height: 34px;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .org-name {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .org-type {
+            font-size: 10px;
+            color: var(--gray-500);
+            margin-top: 2px;
+        }
+
+        /* =========================
+           GLOSSARY
+        ========================== */
+
+        .toolbar {
+            background: white;
+            border: 1px solid var(--gray-200);
+            padding: 15px;
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .search-wrapper {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            height: 40px;
+            border: 1px solid var(--gray-300);
+            padding: 0 13px;
+            outline: none;
+            font-size: 12px;
+        }
+
+        .search-wrapper input:focus {
+            border-color: black;
+        }
+
+        .filter-select {
+            height: 40px;
+            border: 1px solid var(--gray-300);
+            padding: 0 30px 0 12px;
+            background: white;
+            outline: none;
+            min-width: 150px;
+            font-size: 12px;
+        }
+
+        .glossary-table-wrapper {
+            background: white;
+            border: 1px solid var(--gray-200);
+            overflow-x: auto;
+        }
+
+        .glossary-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .glossary-table th {
+            text-align: left;
+            padding: 13px 15px;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--gray-600);
+        }
+
+        .glossary-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--gray-100);
+            font-size: 12px;
+            vertical-align: top;
+        }
+
+        .glossary-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .glossary-table tr:hover {
+            background: #fcfcfc;
+        }
+
+        .term-name {
+            font-weight: 800;
+            font-size: 13px;
+        }
+
+        .term-definition {
+            color: var(--gray-600);
+            line-height: 1.5;
+            max-width: 500px;
+        }
+
+        .category-badge {
+            display: inline-block;
+            border: 1px solid var(--gray-300);
+            padding: 4px 7px;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+
+        .actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-btn {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: 1px solid var(--gray-300);
+            font-size: 12px;
+        }
+
+        .action-btn:hover {
+            background: black;
+            color: white;
+            border-color: black;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--gray-500);
+        }
+
+        .empty-state-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+            color: black;
+        }
+
+        .empty-state h3 {
+            color: black;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .empty-state p {
+            font-size: 12px;
+        }
+
+        /* =========================
+           OTHER VIEWS
+        ========================== */
+
+        .placeholder {
+            background: white;
+            border: 1px solid var(--gray-200);
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .placeholder h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .placeholder p {
+            color: var(--gray-500);
+            font-size: 13px;
+        }
+
+        /* =========================
+           MODAL
+        ========================== */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.65);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 500;
+            padding: 20px;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+            max-width: 650px;
+            background: white;
+            border: 1px solid black;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-size: 16px;
+        }
+
+        .close-btn {
+            background: none;
+            border: 0;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            border: 1px solid var(--gray-300);
+            padding: 11px;
+            outline: none;
+            font-size: 12px;
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: black;
+        }
+
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        .mobile-menu {
+            display: none;
+        }
+
+        @media (max-width: 1100px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.2s;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .mobile-menu {
+                display: block;
+                margin-right: 12px;
+                border: 0;
+                background: none;
+                font-size: 20px;
+            }
+
+            .header {
+                padding: 0 15px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            .toolbar {
+                flex-direction: column;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-actions .header-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <div class="logo-mark">C</div>
+
+            <div>
+                <div class="logo-text">CENTRAL COMMAND</div>
+                <div class="logo-subtitle">ORGANIZATION SYSTEM</div>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <div class="nav-section">
+                <div class="nav-title">Main</div>
+
+                <button class="nav-item active" data-view="dashboard">
+                    <span class="nav-icon">▦</span>
+                    Dashboard
+                </button>
+
+                <button class="nav-item" data-view="organizations">
+                    <span class="nav-icon">□</span>
+                    Organizations
+                </button>
+
+                <button class="nav-item" data-view="finance">
+                    <span class="nav-icon">◈</span>
+                    Finance
+                </button>
+
+                <button class="nav-item" data-view="resources">
+                    <span class="nav-icon">◇</span>
+                    Resources
+                </button>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Knowledge</div>
+
+                <button class="nav-item" data-view="glossary">
+                    <span class="nav-icon">≡</span>
+                    Business Glossary
+                </button>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">System</div>
+
+                <button class="nav-item" data-view="reports">
+                    <span class="nav-icon">▤</span>
+                    Reports
+                </button>
+
+                <button class="nav-item" data-view="settings">
+                    <span class="nav-icon">⚙</span>
+                    Settings
+                </button>
+            </div>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System operational
+            </div>
+        </div>
+
+    </aside>
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+        <header class="header">
+
+            <div style="display:flex;align-items:center;">
+
+                <button class="mobile-menu" id="mobileMenu">
+                    ☰
+                </button>
+
+                <div>
+                    <div class="page-title" id="pageTitle">
+                        Central Dashboard
+                    </div>
+
+                    <div class="page-path" id="pagePath">
+                        Central Command / Dashboard
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="header-actions">
+                <button class="header-icon">⌕</button>
+                <button class="header-icon">◔</button>
+                <div class="avatar">RC</div>
+            </div>
+
+        </header>
+
+        <div class="content">
+
+            <!-- =========================
+                 DASHBOARD
+            ========================== -->
+
+            <section class="view active" id="dashboard">
+
+                <div class="section-heading">
+                    <div>
+                        <h1>Overview</h1>
+                        <p>Central view of your organizations and operations.</p>
+                    </div>
+
+                    <button class="btn btn-primary"
+                            onclick="showView('organizations')">
+                        + Add Organization
+                    </button>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-label">Organizations</div>
+                        <div class="stat-value" id="statOrganizations">4</div>
+                        <div class="stat-change">Active entities under management</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">Revenue</div>
+                        <div class="stat-value">$2.84M</div>
+                        <div class="stat-change">Current reporting period</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">Resources</div>
+                        <div class="stat-value">184</div>
+                        <div class="stat-change">Tracked resources</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">Glossary Terms</div>
+                        <div class="stat-value" id="statTerms">0</div>
+                        <div class="stat-change">Central business vocabulary</div>
+                    </div>
+
+                </div>
+
+                <div class="dashboard-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div class="panel-title">Recent Activity</div>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <div class="activity">
+                                <div class="activity-icon">+</div>
+
+                                <div>
+                                    <div class="activity-text">
+                                        New organization added to central system.
+                                    </div>
+                                    <div class="activity-time">
+                                        Today · 10:42
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="activity">
+                                <div class="activity-icon">$</div>
+
+                                <div>
+                                    <div class="activity-text">
+                                        Financial reporting data updated.
+                                    </div>
+                                    <div class="activity-time">
+                                        Today · 09:15
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="activity">
+                                <div class="activity-icon">G</div>
+
+                                <div>
+                                    <div class="activity-text">
+                                        Business glossary initialized.
+                                    </div>
+                                    <div class="activity-time">
+                                        Yesterday · 16:30
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div class="panel-title">Organizations</div>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <div class="org-row">
+
+                                <div class="org-info">
+                                    <div class="org-avatar">01</div>
+
+                                    <div>
+                                        <div class="org-name">
+                                            Organization Alpha
+                                        </div>
+
+                                        <div class="org-type">
+                                            Operating Company
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <strong>$1.2M</strong>
+
+                            </div>
+
+                            <div class="org-row">
+
+                                <div class="org-info">
+                                    <div class="org-avatar">02</div>
+
+                                    <div>
+                                        <div class="org-name">
+                                            Organization Beta
+                                        </div>
+
+                                        <div class="org-type">
+                                            Investment
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <strong>$840K</strong>
+
+                            </div>
+
+                            <div class="org-row">
+
+                                <div class="org-info">
+                                    <div class="org-avatar">03</div>
+
+                                    <div>
+                                        <div class="org-name">
+                                            Organization Gamma
+                                        </div>
+
+                                        <div class="org-type">
+                                            Services
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <strong>$510K</strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ORGANIZATIONS
+            ========================== -->
+
+            <section class="view" id="organizations">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h1>Organizations</h1>
+                        <p>Manage all entities connected to the central system.</p>
+                    </div>
+
+                    <button class="btn btn-primary">
+                        + Add Organization
+                    </button>
+
+                </div>
+
+                <div class="placeholder">
+
+                    <h2>Organization Management</h2>
+
+                    <p>
+                        This module is prepared for Version 2.
+                        Organizations, ownership, executives, departments,
+                        financials and relationships will live here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 FINANCE
+            ========================== -->
+
+            <section class="view" id="finance">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h1>Finance</h1>
+                        <p>Central financial status and performance.</p>
+                    </div>
+
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-label">Total Revenue</div>
+                        <div class="stat-value">$2.84M</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">Expenses</div>
+                        <div class="stat-value">$1.18M</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">Net Income</div>
+                        <div class="stat-value">$1.66M</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-label">Cash Position</div>
+                        <div class="stat-value">$920K</div>
+                    </div>
+
+                </div>
+
+                <div class="placeholder">
+                    <h2>Financial Management Module</h2>
+
+                    <p>
+                        Detailed revenue, expenses, cash flow, budgets,
+                        assets, liabilities and organization-level financial
+                        reporting will be added here.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 RESOURCES
+            ========================== -->
+
+            <section class="view" id="resources">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h1>Resources</h1>
+                        <p>Track people, assets, equipment and other resources.</p>
+                    </div>
+
+                </div>
+
+                <div class="placeholder">
+
+                    <h2>Resource Management</h2>
+
+                    <p>
+                        Resource allocation, ownership, availability,
+                        utilization and inventory will be managed here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 GLOSSARY
+            ========================== -->
+
+            <section class="view" id="glossary">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h1>Business Glossary</h1>
+
+                        <p>
+                            Central dictionary of terms, definitions and
+                            organizational language.
+                        </p>
+                    </div>
+
+                    <button class="btn btn-primary"
+                            onclick="openAddModal()">
+                        + Add Term
+                    </button>
+
+                </div>
+
+
+                <!-- TOOLBAR -->
+
+                <div class="toolbar">
+
+                    <div class="search-wrapper">
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search terms, definitions, examples..."
+                            oninput="renderGlossary()"
+                        >
+                    </div>
+
+                    <select
+                        id="categoryFilter"
+                        class="filter-select"
+                        onchange="renderGlossary()"
+                    >
+                        <option value="all">All Categories</option>
+                    </select>
+
+                </div>
+
+
+                <!-- TABLE -->
+
+                <div class="glossary-table-wrapper">
+
+                    <table class="glossary-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                                <th>Category</th>
+                                <th>Owner</th>
+                                <th>Updated</th>
+                                <th>Actions</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="glossaryBody"></tbody>
+
+                    </table>
+
+                    <div
+                        class="empty-state"
+                        id="emptyState"
+                        style="display:none;"
+                    >
+
+                        <div class="empty-state-icon">≡</div>
+
+                        <h3>No terms found</h3>
+
+                        <p>
+                            Add your first business term or change your search.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 REPORTS
+            ========================== -->
+
+            <section class="view" id="reports">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h1>Reports</h1>
+                        <p>Centralized organizational reporting.</p>
+                    </div>
+
+                </div>
+
+                <div class="placeholder">
+                    <h2>Reporting Center</h2>
+                    <p>
+                        Financial, operational and organization reports
+                        will be available here.
+                    </p>
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SETTINGS
+            ========================== -->
+
+            <section class="view" id="settings">
+
+                <div class="section-heading">
+
+                    <div>
+                        <h1>Settings</h1>
+                        <p>Configure your central management system.</p>
+                    </div>
+
+                </div>
+
+                <div class="placeholder">
+                    <h2>System Settings</h2>
+                    <p>
+                        Users, permissions, system preferences,
+                        integrations and security will be configured here.
+                    </p>
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     ADD / EDIT MODAL
+========================== -->
+
+<div class="modal-overlay" id="termModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">Add Business Term</h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <form id="termForm">
+
+            <div class="modal-body">
+
+                <input
+                    type="hidden"
+                    id="termId"
+                >
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Term *
+                    </label>
+
+                    <input
+                        class="form-input"
+                        id="termName"
+                        required
+                        placeholder="e.g. EBITDA"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Definition *
+                    </label>
+
+                    <textarea
+                        class="form-textarea"
+                        id="termDefinition"
+                        required
+                        placeholder="Explain what this term means..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            Category
+                        </label>
+
+                        <input
+                            class="form-input"
+                            id="termCategory"
+                            placeholder="Finance"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label class="form-label">
+                            Owner
+                        </label>
+
+                        <input
+                            class="form-input"
+                            id="termOwner"
+                            placeholder="Finance Department"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Example / Usage
+                    </label>
+
+                    <textarea
+                        class="form-textarea"
+                        id="termExample"
+                        placeholder="Show how the term is used..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Notes
+                    </label>
+
+                    <textarea
+                        class="form-textarea"
+                        id="termNotes"
+                        placeholder="Additional notes..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="closeModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save Term
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =====================================================
+       INITIAL GLOSSARY DATA
+    ====================================================== */
+
+    const defaultTerms = [
+
+        {
+            id: crypto.randomUUID(),
+            name: "Revenue",
+            definition: "The total amount of income generated by an organization from its normal business activities before expenses are deducted.",
+            category: "Finance",
+            owner: "Finance",
+            example: "The organization generated $2.8 million in revenue this year.",
+            notes: "",
+            updated: "2026-08-31"
+        },
+
+        {
+            id: crypto.randomUUID(),
+            name: "EBITDA",
+            definition: "Earnings before interest, taxes, depreciation and amortization. It is commonly used to evaluate operating performance.",
+            category: "Finance",
+            owner: "Finance",
+            example: "EBITDA increased by 14% compared with the previous year.",
+            notes: "",
+            updated: "2026-08-31"
+        },
+
+        {
+            id: crypto.randomUUID(),
+            name: "Asset",
+            definition: "A resource controlled by an organization that is expected to provide future economic value.",
+            category: "Finance",
+            owner: "Finance",
+            example: "Company vehicles are recorded as fixed assets.",
+            notes: "",
+            updated: "2026-08-31"
+        },
+
+        {
+            id: crypto.randomUUID(),
+            name: "Operating Expense",
+            definition: "A cost incurred through the normal operation of an organization that is not directly classified as a cost of producing goods or services.",
+            category: "Finance",
+            owner: "Finance",
+            example: "Rent and administrative salaries are operating expenses.",
+            notes: "",
+            updated: "2026-08-31"
+        },
+
+        {
+            id: crypto.randomUUID(),
+            name: "KPI",
+            definition: "A key performance indicator used to measure progress toward an organizational or operational objective.",
+            category: "Management",
+            owner: "Executive Office",
+            example: "Customer retention is a major KPI for the services division.",
+            notes: "",
+            updated: "2026-08-31"
+        }
+
+    ];
+
+
+    /* =====================================================
+       STORAGE
+    ====================================================== */
+
+    let terms =
+        JSON.parse(localStorage.getItem("centralGlossary")) ||
+        defaultTerms;
+
+
+    function saveTerms() {
+
+        localStorage.setItem(
+            "centralGlossary",
+            JSON.stringify(terms)
+        );
+
+    }
+
+
+    /* =====================================================
+       GLOSSARY RENDERING
+    ====================================================== */
+
+    function renderGlossary() {
+
+        const body =
+            document.getElementById("glossaryBody");
+
+        const empty =
+            document.getElementById("emptyState");
+
+        const search =
+            document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+        const category =
+            document.getElementById("categoryFilter").value;
+
+
+        let filtered = terms.filter(term => {
+
+            const matchesSearch =
+                !search ||
+                term.name.toLowerCase().includes(search) ||
+                term.definition.toLowerCase().includes(search) ||
+                term.category.toLowerCase().includes(search) ||
+                term.example.toLowerCase().includes(search);
+
+            const matchesCategory =
+                category === "all" ||
+                term.category === category;
+
+            return matchesSearch && matchesCategory;
+
+        });
+
+
+        body.innerHTML = "";
+
+
+        if (filtered.length === 0) {
+
+            empty.style.display = "block";
+
+        } else {
+
+            empty.style.display = "none";
+
+            filtered.forEach(term => {
+
+                const row =
+                    document.createElement("tr");
+
+                row.innerHTML = `
+
+                    <td>
+                        <div class="term-name">
+                            ${escapeHTML(term.name)}
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="term-definition">
+                            ${escapeHTML(term.definition)}
+                        </div>
+                    </td>
+
+                    <td>
+                        <span class="category-badge">
+                            ${escapeHTML(term.category || "General")}
+                        </span>
+                    </td>
+
+                    <td>
+                        ${escapeHTML(term.owner || "—")}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(term.updated || "—")}
+                    </td>
+
+                    <td>
+
+                        <div class="actions">
+
+                            <button
+                                class="action-btn"
+                                title="Edit"
+                                onclick="editTerm('${term.id}')"
+                            >
+                                ✎
+                            </button>
+
+                            <button
+                                class="action-btn"
+                                title="Delete"
+                                onclick="deleteTerm('${term.id}')"
+                            >
+                                ×
+                            </button>
+
+                        </div>
+
+                    </td>
+                `;
+
+                body.appendChild(row);
+
+            });
+
+        }
+
+
+        updateCategoryFilter();
+
+        document.getElementById("statTerms").textContent =
+            terms.length;
+
+    }
+
+
+    /* =====================================================
+       CATEGORY FILTER
+    ====================================================== */
+
+    function updateCategoryFilter() {
+
+        const select =
+            document.getElementById("categoryFilter");
+
+        const current =
+            select.value;
+
+        const categories =
+            [...new Set(
+                terms
+                    .map(term => term.category)
+                    .filter(Boolean)
+            )].sort();
+
+        select.innerHTML =
+            '<option value="all">All Categories</option>';
+
+        categories.forEach(category => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = category;
+            option.textContent = category;
+
+            select.appendChild(option);
+
+        });
+
+        if (categories.includes(current)) {
+            select.value = current;
+        }
+
+    }
+
+
+    /* =====================================================
+       ADD TERM
+    ====================================================== */
+
+    function openAddModal() {
+
+        document.getElementById("modalTitle").textContent =
+            "Add Business Term";
+
+        document.getElementById("termForm").reset();
+
+        document.getElementById("termId").value = "";
+
+        document
+            .getElementById("termModal")
+            .classList.add("open");
+
+        setTimeout(() => {
+            document.getElementById("termName").focus();
+        }, 100);
+
+    }
+
+
+    /* =====================================================
+       EDIT TERM
+    ====================================================== */
+
+    function editTerm(id) {
+
+        const term =
+            terms.find(item => item.id === id);
+
+        if (!term) return;
+
+
+        document.getElementById("modalTitle").textContent =
+            "Edit Business Term";
+
+        document.getElementById("termId").value =
+            term.id;
+
+        document.getElementById("termName").value =
+            term.name;
+
+        document.getElementById("termDefinition").value =
+            term.definition;
+
+        document.getElementById("termCategory").value =
+            term.category;
+
+        document.getElementById("termOwner").value =
+            term.owner;
+
+        document.getElementById("termExample").value =
+            term.example;
+
+        document.getElementById("termNotes").value =
+            term.notes;
+
+
+        document
+            .getElementById("termModal")
+            .classList.add("open");
+
+    }
+
+
+    /* =====================================================
+       SAVE TERM
+    ====================================================== */
+
+    document
+        .getElementById("termForm")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+
+            const id =
+                document.getElementById("termId").value;
+
+            const data = {
+
+                name:
+                    document
+                        .getElementById("termName")
+                        .value
+                        .trim(),
+
+                definition:
+                    document
+                        .getElementById("termDefinition")
+                        .value
+                        .trim(),
+
+                category:
+                    document
+                        .getElementById("termCategory")
+                        .value
+                        .trim() || "General",
+
+                owner:
+                    document
+                        .getElementById("termOwner")
+                        .value
+                        .trim() || "Unassigned",
+
+                example:
+                    document
+                        .getElementById("termExample")
+                        .value
+                        .trim(),
+
+                notes:
+                    document
+                        .getElementById("termNotes")
+                        .value
+                        .trim(),
+
+                updated:
+                    new Date()
+                        .toISOString()
+                        .split("T")[0]
+
+            };
+
+
+            if (id) {
+
+                const index =
+                    terms.findIndex(item => item.id === id);
+
+                if (index !== -1) {
+
+                    terms[index] = {
+                        ...terms[index],
+                        ...data
+                    };
+
+                }
+
+            } else {
+
+                terms.unshift({
+
+                    id: crypto.randomUUID(),
+
+                    ...data
+
+                });
+
+            }
+
+
+            saveTerms();
+
+            closeModal();
+
+            renderGlossary();
+
+        });
+
+
+    /* =====================================================
+       DELETE TERM
+    ====================================================== */
+
+    function deleteTerm(id) {
+
+        const term =
+            terms.find(item => item.id === id);
+
+        if (!term) return;
+
+
+        const confirmed =
+            confirm(
+                `Delete "${term.name}" from the glossary?`
+            );
+
+        if (!confirmed) return;
+
+
+        terms =
+            terms.filter(item => item.id !== id);
+
+        saveTerms();
+
+        renderGlossary();
+
+    }
+
+
+    /* =====================================================
+       MODAL
+    ====================================================== */
+
+    function closeModal() {
+
+        document
+            .getElementById("termModal")
+            .classList.remove("open");
+
+    }
+
+
+    document
+        .getElementById("termModal")
+        .addEventListener("click", function(event) {
+
+            if (event.target === this) {
+                closeModal();
+            }
+
+        });
+
+
+    /* =====================================================
+       NAVIGATION
+    ====================================================== */
+
+    const pageNames = {
+
+        dashboard: [
+            "Central Dashboard",
+            "Central Command / Dashboard"
+        ],
+
+        organizations: [
+            "Organizations",
+            "Central Command / Organizations"
+        ],
+
+        finance: [
+            "Finance",
+            "Central Command / Finance"
+        ],
+
+        resources: [
+            "Resources",
+            "Central Command / Resources"
+        ],
+
+        glossary: [
+            "Business Glossary",
+            "Central Command / Knowledge / Glossary"
+        ],
+
+        reports: [
+            "Reports",
+            "Central Command / Reports"
+        ],
+
+        settings: [
+            "Settings",
+            "Central Command / Settings"
+        ]
+
+    };
+
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(button => {
+
+            button.addEventListener("click", function() {
+
+                const view =
+                    this.dataset.view;
+
+                showView(view);
+
+            });
+
+        });
+
+
+    function showView(view) {
+
+        document
+            .querySelectorAll(".view")
+            .forEach(section => {
+
+                section.classList.remove("active");
+
+            });
+
+
+        const selected =
+            document.getElementById(view);
+
+        if (selected) {
+            selected.classList.add("active");
+        }
+
+
+        document
+            .querySelectorAll(".nav-item")
+            .forEach(item => {
+
+                item.classList.remove("active");
+
+                if (item.dataset.view === view) {
+                    item.classList.add("active");
+                }
+
+            });
+
+
+        if (pageNames[view]) {
+
+            document.getElementById("pageTitle").textContent =
+                pageNames[view][0];
+
+            document.getElementById("pagePath").textContent =
+                pageNames[view][1];
+
+        }
+
+
+        document
+            .getElementById("sidebar")
+            .classList.remove("open");
+
+    }
+
+
+    /* =====================================================
+       MOBILE MENU
+    ====================================================== */
+
+    document
+        .getElementById("mobileMenu")
+        .addEventListener("click", function() {
+
+            document
+                .getElementById("sidebar")
+                .classList.toggle("open");
+
+        });
+
+
+    /* =====================================================
+       SECURITY / HTML ESCAPING
+    ====================================================== */
+
+    function escapeHTML(value) {
+
+        return String(value || "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+    ====================================================== */
+
+    renderGlossary();
+
+</script>
+
+</body>
+</html>
+```
+>>>>>>> 61fc01dfe5965bfbb717594b3679f0573383a576

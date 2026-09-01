@@ -914,6 +914,1302 @@ button {
     display: none;
 }
 
+
+/* =========================
+   ACCOUNT / PROFILE
+========================= */
+
+.profile-card {
+    position: relative;
+    padding: 10px 10px 6px;
+    border-top: 1px solid var(--border);
+}
+
+.profile-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: 9px;
+    color: var(--text);
+    text-align: left;
+}
+
+.profile-button:hover {
+    background: var(--hover);
+}
+
+.profile-avatar {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--accent);
+    color: var(--accentText);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.profile-avatar.large {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+}
+
+.profile-avatar.xl {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-info strong,
+.profile-menu-header strong,
+.account-preview strong {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.profile-info span,
+.profile-menu-header span,
+.account-preview span {
+    color: var(--muted);
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-chevron {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.profile-menu {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: calc(100% - 2px);
+    display: none;
+    padding: 7px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.18);
+    z-index: 150;
+}
+
+.profile-menu.show {
+    display: block;
+}
+
+.profile-menu-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile-menu-header > div:last-child {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-menu-item {
+    width: 100%;
+    padding: 9px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 7px;
+    color: var(--text);
+    text-align: left;
+    font-size: 12px;
+}
+
+.profile-menu-item:hover {
+    background: var(--hover);
+}
+
+.logout-item {
+    color: var(--danger);
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings-modal {
+    width: 560px;
+}
+
+.modal-subtitle {
+    color: var(--muted);
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+.settings-section {
+    margin-bottom: 25px;
+}
+
+.settings-section-title {
+    margin-bottom: 10px;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 9px;
+}
+
+.setting-row > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.setting-row strong {
+    font-size: 13px;
+}
+
+.setting-row span {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.theme-select {
+    width: 140px;
+}
+
+.account-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 9px;
+}
+
+.account-preview > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.profile-photo-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#profileImageInput {
+    display: none;
+}
+
+/* =========================
+   THEME VARIABLES
+========================= */
+
+:root {
+    --accent: #000;
+    --accentText: #fff;
+    --danger: #b42318;
+}
+
+body.light-theme {
+    --black: #ffffff;
+    --dark: #ffffff;
+    --panel: #ffffff;
+    --border: #e5e7eb;
+    --hover: #f3f4f6;
+    --text: #111827;
+    --muted: #6b7280;
+    --accent: #111827;
+    --accentText: #ffffff;
+    --danger: #b42318;
+}
+
+body.dark-theme {
+    --black: #000000;
+    --dark: #080808;
+    --panel: #101010;
+    --border: #242424;
+    --hover: #181818;
+    --text: #ffffff;
+    --muted: #888888;
+    --accent: #ffffff;
+    --accentText: #000000;
+    --danger: #fca5a5;
+}
+
+body.light-theme .sidebar {
+    background: #f8f9fa;
+}
+
+body.light-theme .new-button,
+body.light-theme .primary-button,
+body.light-theme .save-button {
+    background: #111827;
+    color: #ffffff;
+}
+
+body.light-theme .new-button:hover,
+body.light-theme .primary-button:hover,
+body.light-theme .save-button:hover {
+    background: #374151;
+}
+
+body.light-theme .nav-button,
+body.light-theme .brand-item {
+    color: #6b7280;
+}
+
+body.light-theme .nav-button:hover,
+body.light-theme .brand-item:hover {
+    color: #111827;
+}
+
+body.light-theme .nav-button.active,
+body.light-theme .brand-item.active {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+body.light-theme .search,
+body.light-theme .idea-card,
+body.light-theme .metric,
+body.light-theme .form-input,
+body.light-theme .form-textarea,
+body.light-theme .form-select,
+body.light-theme .modal {
+    background: #ffffff;
+    color: #111827;
+}
+
+body.light-theme .idea-description,
+body.light-theme .description {
+    color: #4b5563;
+}
+
+body.light-theme .secondary-button,
+body.light-theme .small-button,
+body.light-theme .cancel-button {
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+body.light-theme .secondary-button:hover,
+body.light-theme .small-button:hover,
+body.light-theme .cancel-button:hover {
+    background: #f3f4f6;
+}
+
+body.light-theme .modal-overlay {
+    background: rgba(17,24,39,.35);
+}
+
+body.system-theme {
+    --black: #ffffff;
+    --dark: #ffffff;
+    --panel: #ffffff;
+    --border: #e5e7eb;
+    --hover: #f3f4f6;
+    --text: #111827;
+    --muted: #6b7280;
+    --accent: #111827;
+    --accentText: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.system-theme {
+        --black: #000000;
+        --dark: #080808;
+        --panel: #101010;
+        --border: #242424;
+        --hover: #181818;
+        --text: #ffffff;
+        --muted: #888888;
+        --accent: #ffffff;
+        --accentText: #000000;
+    }
+}
+
+body.system-theme .new-button,
+body.system-theme .primary-button,
+body.system-theme .save-button {
+    background: var(--accent);
+    color: var(--accentText);
+}
+
+body.system-theme .modal-overlay {
+    background: rgba(0,0,0,.45);
+}
+
+
+/* =========================
+   DOCUMENTS
+========================= */
+
+.document-modal {
+    width: 700px;
+}
+
+.document-content-input {
+    min-height: 260px;
+    line-height: 1.6;
+}
+
+.document-toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.document-filter {
+    width: 190px;
+}
+
+.document-card {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 18px;
+    margin-bottom: 10px;
+    transition: border-color .15s, transform .15s;
+}
+
+.document-card:hover {
+    border-color: #9ca3af;
+    transform: translateY(-1px);
+}
+
+.document-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.document-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.document-card-type {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.document-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 13px;
+    padding: 5px 8px;
+    background: var(--hover);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 10px;
+}
+
+.document-brand-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.document-description {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 13px;
+}
+
+.document-preview {
+    margin-top: 14px;
+    padding: 12px;
+    background: var(--hover);
+    border-radius: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    max-height: 90px;
+    overflow: hidden;
+}
+
+.document-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.document-date {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.document-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.document-empty {
+    border: 1px dashed var(--border);
+    padding: 55px 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.document-empty-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.document-empty h2 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.document-empty p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+body.light-theme .document-card:hover {
+    border-color: #9ca3af;
+}
+
+
+/* =========================
+   DOCUMENTS INSIDE BRAND
+========================= */
+
+.brand-documents-panel {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.brand-documents-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 14px;
+}
+
+.brand-documents-panel-header h2 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.brand-documents-panel-header p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.brand-document-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.brand-document-card {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--panel);
+}
+
+.brand-document-open {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    text-align: left;
+}
+
+.brand-document-card-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--muted);
+}
+
+.brand-document-card-info {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.brand-document-card-info strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.brand-document-card-info span {
+    color: var(--muted);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+}
+
+.brand-document-card-arrow {
+    color: var(--muted);
+    font-size: 18px;
+}
+
+.brand-document-card p {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+    margin: 9px 0 0 44px;
+}
+
+.brand-document-empty {
+    grid-column: 1 / -1;
+    padding: 30px 20px;
+    border: 1px dashed var(--border);
+    border-radius: 9px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.brand-document-empty-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    color: var(--muted);
+    margin-bottom: 3px;
+}
+
+.brand-document-empty strong {
+    font-size: 12px;
+}
+
+.brand-document-empty span {
+    max-width: 430px;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+    margin-bottom: 7px;
+}
+
+@media (max-width: 760px) {
+    .brand-document-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .brand-documents-panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+/* =========================
+   BANK ACCOUNTS
+========================= */
+
+.bank-account-modal {
+    width: 720px;
+}
+
+.bank-account-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+    margin-bottom: 20px;
+}
+
+.bank-summary-card {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--panel);
+}
+
+.bank-summary-label {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.bank-summary-value {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.bank-account-card {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 10px;
+    padding: 17px;
+    margin-bottom: 9px;
+}
+
+.bank-account-card:hover {
+    border-color: #9ca3af;
+}
+
+.bank-account-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.bank-account-heading {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+}
+
+.bank-account-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.bank-account-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.bank-account-bank {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.bank-account-status {
+    padding: 4px 7px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.bank-account-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 13px;
+    padding: 5px 8px;
+    background: var(--hover);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 9px;
+}
+
+.bank-account-brand-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.bank-account-details {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 15px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border);
+}
+
+.bank-detail-label {
+    color: var(--muted);
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin-bottom: 4px;
+}
+
+.bank-detail-value {
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bank-account-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.bank-account-notes {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.bank-account-actions {
+    display: flex;
+    gap: 7px;
+    flex: 0 0 auto;
+}
+
+.bank-empty {
+    padding: 55px 30px;
+    text-align: center;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+}
+
+.bank-empty-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.bank-empty h2 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.bank-empty p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   BANK ACCOUNTS INSIDE BRAND
+========================= */
+
+.brand-bank-accounts-panel {
+    margin-top: 27px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.brand-bank-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 13px;
+}
+
+.brand-bank-header h2 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.brand-bank-header p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.brand-bank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.brand-bank-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel);
+}
+
+.brand-bank-item-icon {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.brand-bank-item-info {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.brand-bank-item-info strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+}
+
+.brand-bank-item-info span {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.brand-bank-item-balance {
+    min-width: 105px;
+    text-align: right;
+}
+
+.brand-bank-item-balance strong {
+    display: block;
+    font-size: 11px;
+}
+
+.brand-bank-item-balance small {
+    color: var(--muted);
+    font-size: 8px;
+}
+
+.brand-bank-edit {
+    padding: 5px 7px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.brand-bank-edit:hover {
+    background: var(--hover);
+    color: var(--text);
+}
+
+.brand-bank-empty {
+    padding: 18px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 9px;
+}
+
+@media (max-width: 760px) {
+    .bank-account-details {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .brand-bank-item {
+        flex-wrap: wrap;
+    }
+
+    .brand-bank-item-balance {
+        margin-left: 42px;
+        text-align: left;
+    }
+}
+
+
+/* =========================
+   SALES
+========================= */
+
+.sale-modal {
+    width: 700px;
+}
+
+.sales-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    margin-bottom: 18px;
+}
+
+.sales-summary-card {
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--panel);
+}
+
+.sales-summary-label {
+    color: var(--muted);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+.sales-summary-value {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sales-period-tabs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-bottom: 13px;
+}
+
+.sales-period-button {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.sales-period-button:hover,
+.sales-period-button.active {
+    background: var(--hover);
+    color: var(--text);
+    border-color: #9ca3af;
+}
+
+.sales-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.sales-toolbar .search {
+    flex: 1;
+}
+
+.sales-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--panel);
+}
+
+.sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 720px;
+}
+
+.sales-table th {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.sales-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.sales-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.sales-table tbody tr:hover {
+    background: var(--hover);
+}
+
+.sale-brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 7px;
+    border-radius: 5px;
+    background: var(--hover);
+    font-size: 9px;
+}
+
+.sale-brand-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.sale-name-cell {
+    font-weight: 600;
+}
+
+.sale-secondary {
+    color: var(--muted);
+    font-size: 9px;
+    margin-top: 3px;
+}
+
+.sale-amount {
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.sale-actions {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.sale-empty {
+    padding: 55px 30px;
+    text-align: center;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+}
+
+.sale-empty-icon {
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+.sale-empty h2 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.sale-empty p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+.brand-sales-panel {
+    margin-top: 27px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.brand-sales-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 13px;
+}
+
+.brand-sales-header h2 {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.brand-sales-header p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.brand-sales-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-bottom: 10px;
+}
+
+.brand-sales-stat {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--panel);
+}
+
+.brand-sales-stat span {
+    display: block;
+    color: var(--muted);
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin-bottom: 4px;
+}
+
+.brand-sales-stat strong {
+    font-size: 13px;
+}
+
+.brand-sales-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.brand-sale-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--panel);
+}
+
+.brand-sale-icon {
+    width: 31px;
+    height: 31px;
+    flex: 0 0 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--muted);
+}
+
+.brand-sale-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.brand-sale-info strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+}
+
+.brand-sale-info span {
+    display: block;
+    color: var(--muted);
+    font-size: 8px;
+    margin-top: 3px;
+}
+
+.brand-sale-amount {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.brand-sale-edit {
+    padding: 5px 7px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.brand-sale-edit:hover {
+    background: var(--hover);
+    color: var(--text);
+}
+
+.brand-sales-empty {
+    padding: 17px;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+}
+
 /* =========================
    MOBILE
 ========================= */
@@ -972,6 +2268,31 @@ button {
     .brand-name,
     .sidebar-footer {
         display: none;
+    }
+
+    .profile-card {
+        margin-top: auto;
+    }
+
+    .profile-card {
+        padding: 8px 5px;
+    }
+
+    .profile-button {
+        justify-content: center;
+        padding: 7px 0;
+    }
+
+    .profile-info,
+    .profile-chevron {
+        display: none;
+    }
+
+    .profile-menu {
+        left: 6px;
+        right: 6px;
+        bottom: 55px;
+        width: 210px;
     }
 
     .nav-button {
@@ -1035,6 +2356,30 @@ button {
                 Business Ideas
             </button>
 
+            <button
+                id="documentsNav"
+                class="nav-button"
+                onclick="showDocuments()"
+            >
+                Documents
+            </button>
+
+            <button
+                id="bankAccountsNav"
+                class="nav-button"
+                onclick="showBankAccounts()"
+            >
+                Bank Accounts
+            </button>
+
+            <button
+                id="salesNav"
+                class="nav-button"
+                onclick="showSales()"
+            >
+                Sales
+            </button>
+
         </div>
 
 
@@ -1049,8 +2394,33 @@ button {
         </div>
 
 
+        <!-- ACCOUNT / PROFILE -->
+        <div class="profile-card" id="profileCard">
+            <button class="profile-button" onclick="toggleProfileMenu()" aria-label="Open account menu">
+                <div class="profile-avatar" id="profileAvatar">RC</div>
+                <div class="profile-info">
+                    <strong id="profileName">RCG</strong>
+                    <span id="profileEmail">Signed in</span>
+                </div>
+                <span class="profile-chevron">⌄</span>
+            </button>
+
+            <div class="profile-menu" id="profileMenu">
+                <div class="profile-menu-header">
+                    <div class="profile-avatar large" id="menuAvatar">RC</div>
+                    <div>
+                        <strong id="menuName">RCG</strong>
+                        <span id="menuEmail">Signed in</span>
+                    </div>
+                </div>
+                <button class="profile-menu-item" onclick="openProfileSettings()">👤 Account</button>
+                <button class="profile-menu-item" onclick="openSettings()">⚙ Settings</button>
+                <button class="profile-menu-item logout-item" onclick="signOut()">↪ Sign out</button>
+            </div>
+        </div>
+
         <div class="sidebar-footer">
-            Central Command V0.2.0
+            Central Command V0.3.0
         </div>
 
     </aside>
@@ -1086,6 +2456,76 @@ button {
 
 </div>
 
+
+<!-- =========================
+     SETTINGS / ACCOUNT MODAL
+========================= -->
+
+<div id="settingsOverlay" class="modal-overlay">
+    <div class="modal settings-modal">
+        <div class="modal-header">
+            <div>
+                <h2 id="settingsTitle">Settings</h2>
+                <p class="modal-subtitle">Customize your Central Command workspace.</p>
+            </div>
+            <button class="close-button" onclick="closeSettings()">×</button>
+        </div>
+
+        <div id="settingsPanel">
+            <div class="settings-section">
+                <div class="settings-section-title">APPEARANCE</div>
+
+                <div class="setting-row">
+                    <div>
+                        <strong>Theme</strong>
+                        <span>Choose how Central Command looks.</span>
+                    </div>
+                    <select id="themeSelect" class="form-select theme-select" onchange="changeTheme(this.value)">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="system">System</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <div class="settings-section-title">ACCOUNT</div>
+
+                <div class="account-preview">
+                    <div class="profile-avatar xl" id="settingsAvatar">RC</div>
+                    <div>
+                        <strong id="settingsName">RCG</strong>
+                        <span id="settingsEmail">Signed in</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Display Name</label>
+                    <input id="settingsNameInput" class="form-input" type="text" placeholder="Your name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email / Account</label>
+                    <input id="settingsEmailInput" class="form-input" type="email" placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Profile Photo</label>
+                    <div class="profile-photo-row">
+                        <div class="profile-avatar" id="settingsPhotoPreview">RC</div>
+                        <label for="profileImageInput" class="upload-label">Choose Image</label>
+                        <input id="profileImageInput" type="file" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="cancel-button" onclick="closeSettings()">Cancel</button>
+                <button type="button" class="save-button" onclick="saveSettings()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- =========================
      MODAL
@@ -1448,6 +2888,398 @@ button {
 
 </div>
 
+<!-- =========================
+     DOCUMENT MODAL
+========================= -->
+
+<div
+    id="documentModalOverlay"
+    class="modal-overlay"
+>
+    <div class="modal document-modal">
+        <div class="modal-header">
+            <div>
+                <h2 id="documentModalTitle">New Document</h2>
+                <p class="modal-subtitle">Create a document and connect it to a brand.</p>
+            </div>
+            <button
+                class="close-button"
+                onclick="closeDocumentModal()"
+            >
+                ×
+            </button>
+        </div>
+
+        <form id="documentForm">
+
+            <div class="form-group">
+                <label>Document Name</label>
+                <input
+                    id="documentName"
+                    class="form-input"
+                    type="text"
+                    placeholder="Example: 2026 Business Plan"
+                    required
+                >
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Document Type</label>
+                    <select id="documentType" class="form-select">
+                        <option value="Business Plan">Business Plan</option>
+                        <option value="Brand Guideline">Brand Guideline</option>
+                        <option value="Marketing Plan">Marketing Plan</option>
+                        <option value="Financial Plan">Financial Plan</option>
+                        <option value="Product Strategy">Product Strategy</option>
+                        <option value="Market Research">Market Research</option>
+                        <option value="Project Plan">Project Plan</option>
+                        <option value="Meeting Notes">Meeting Notes</option>
+                        <option value="Strategy">Strategy</option>
+                        <option value="Proposal">Proposal</option>
+                        <option value="Report">Report</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Belongs To Brand</label>
+                    <select id="documentBrand" class="form-select" required>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea
+                    id="documentDescription"
+                    class="form-textarea"
+                    placeholder="What is this document about?"
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Document Content</label>
+                <textarea
+                    id="documentContent"
+                    class="form-textarea document-content-input"
+                    placeholder="Start writing your document..."
+                ></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button
+                    type="button"
+                    class="cancel-button"
+                    onclick="closeDocumentModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    Save Document
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+
+<!-- =========================
+     BANK ACCOUNT MODAL
+========================= -->
+
+<div id="bankAccountModalOverlay" class="modal-overlay">
+    <div class="modal bank-account-modal">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="bankAccountModalTitle">New Bank Account</h2>
+                <p class="modal-subtitle">
+                    Add and manage a bank account for one of your brands.
+                </p>
+            </div>
+
+            <button class="close-button" onclick="closeBankAccountModal()">
+                ×
+            </button>
+        </div>
+
+        <form id="bankAccountForm">
+
+            <div class="form-group">
+                <label>Account Name</label>
+                <input
+                    id="bankAccountName"
+                    class="form-input"
+                    type="text"
+                    placeholder="Example: Main Operating Account"
+                    required
+                >
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>Bank Name</label>
+                    <input
+                        id="bankName"
+                        class="form-input"
+                        type="text"
+                        placeholder="Example: Commercial Bank"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Belongs To Brand</label>
+                    <select
+                        id="bankAccountBrand"
+                        class="form-select"
+                        required
+                    ></select>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>Account Type</label>
+                    <select id="bankAccountType" class="form-select">
+                        <option value="Checking">Checking</option>
+                        <option value="Savings">Savings</option>
+                        <option value="Business Checking">Business Checking</option>
+                        <option value="Business Savings">Business Savings</option>
+                        <option value="Credit">Credit</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Currency</label>
+                    <input
+                        id="bankAccountCurrency"
+                        class="form-input"
+                        type="text"
+                        value="USD"
+                        maxlength="8"
+                        placeholder="USD"
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>Account Number</label>
+                    <input
+                        id="bankAccountNumber"
+                        class="form-input"
+                        type="text"
+                        placeholder="Enter account number"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Routing / Sort Code</label>
+                    <input
+                        id="bankRoutingNumber"
+                        class="form-input"
+                        type="text"
+                        placeholder="Optional"
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label>Current Balance</label>
+                    <input
+                        id="bankAccountBalance"
+                        class="form-input"
+                        type="number"
+                        step="0.01"
+                        value="0"
+                        placeholder="0.00"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="bankAccountStatus" class="form-select">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea
+                    id="bankAccountNotes"
+                    class="form-textarea"
+                    placeholder="Optional notes about this account..."
+                ></textarea>
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-button"
+                    onclick="closeBankAccountModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    Save Bank Account
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+
+<!-- =========================
+     SALE MODAL
+========================= -->
+
+<div id="saleModalOverlay" class="modal-overlay">
+    <div class="modal sale-modal">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="saleModalTitle">New Sale</h2>
+                <p class="modal-subtitle">
+                    Record a sale and assign it to a brand.
+                </p>
+            </div>
+
+            <button class="close-button" onclick="closeSaleModal()">×</button>
+        </div>
+
+        <form id="saleForm">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Sale Name</label>
+                    <input
+                        id="saleName"
+                        class="form-input"
+                        type="text"
+                        placeholder="Example: Website Order #1042"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Brand</label>
+                    <select id="saleBrand" class="form-select" required></select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Sale Date</label>
+                    <input
+                        id="saleDate"
+                        class="form-input"
+                        type="date"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input
+                        id="saleAmount"
+                        class="form-input"
+                        type="number"
+                        step="0.01"
+                        min="0"
+                        placeholder="0.00"
+                        required
+                    >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Currency</label>
+                    <input
+                        id="saleCurrency"
+                        class="form-input"
+                        type="text"
+                        value="USD"
+                        maxlength="8"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Channel</label>
+                    <select id="saleChannel" class="form-select">
+                        <option value="Online">Online</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Wholesale">Wholesale</option>
+                        <option value="Marketplace">Marketplace</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Customer / Reference</label>
+                <input
+                    id="saleCustomer"
+                    class="form-input"
+                    type="text"
+                    placeholder="Optional customer or order reference"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Notes</label>
+                <textarea
+                    id="saleNotes"
+                    class="form-textarea"
+                    placeholder="Optional notes..."
+                ></textarea>
+            </div>
+
+            <div class="modal-actions">
+                <button
+                    type="button"
+                    class="cancel-button"
+                    onclick="closeSaleModal()"
+                >
+                    Cancel
+                </button>
+
+                <button type="submit" class="save-button">
+                    Save Sale
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 <script>
 
@@ -1810,6 +3642,281 @@ function renderBrand() {
             </div>
 
 
+
+            <div class="brand-documents-panel">
+
+                <div class="brand-documents-panel-header">
+                    <div>
+                        <h2>Documents</h2>
+                        <p>Documents belonging to this brand.</p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openCreateDocumentForBrand('${brand.id}')"
+                    >
+                        + New Document
+                    </button>
+                </div>
+
+                <div class="brand-document-grid">
+                    ${
+                        getDocumentsForBrand(brand.id).length
+                        ?
+                        getDocumentsForBrand(brand.id).map(documentItem => `
+                            <div class="brand-document-card">
+                                <button
+                                    class="brand-document-open"
+                                    onclick="openEditDocumentModal('${documentItem.id}')"
+                                >
+                                    <div class="brand-document-card-icon">▤</div>
+
+                                    <div class="brand-document-card-info">
+                                        <strong>${escapeHTML(documentItem.name)}</strong>
+                                        <span>${escapeHTML(documentItem.type)}</span>
+                                    </div>
+
+                                    <span class="brand-document-card-arrow">›</span>
+                                </button>
+
+                                ${
+                                    documentItem.description
+                                    ?
+                                    `<p>${escapeHTML(documentItem.description)}</p>`
+                                    : ""
+                                }
+                            </div>
+                        `).join("")
+                        :
+                        `
+                            <div class="brand-document-empty">
+                                <div class="brand-document-empty-icon">▤</div>
+                                <strong>No documents yet</strong>
+                                <span>
+                                    Create a business plan, brand guideline,
+                                    strategy, or another document for this brand.
+                                </span>
+
+                                <button
+                                    class="secondary-button"
+                                    onclick="openCreateDocumentForBrand('${brand.id}')"
+                                >
+                                    Create Document
+                                </button>
+                            </div>
+                        `
+                    }
+                </div>
+
+            </div>
+
+
+
+            <div class="brand-bank-accounts-panel">
+
+                <div class="brand-bank-header">
+
+                    <div>
+                        <h2>Bank Accounts</h2>
+                        <p>Accounts belonging to this brand.</p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openCreateBankAccountModal('${brand.id}')"
+                    >
+                        + New Account
+                    </button>
+
+                </div>
+
+                <div class="brand-bank-list">
+
+                    ${
+                        getBankAccountsForBrand(brand.id).length
+                        ?
+                        getBankAccountsForBrand(brand.id).map(account => `
+                            <div class="brand-bank-item">
+
+                                <div class="brand-bank-item-icon">
+                                    ₿
+                                </div>
+
+                                <div class="brand-bank-item-info">
+
+                                    <strong>
+                                        ${escapeHTML(account.name)}
+                                    </strong>
+
+                                    <span>
+                                        ${escapeHTML(account.bankName)}
+                                        ·
+                                        ${escapeHTML(account.type)}
+                                    </span>
+
+                                </div>
+
+                                <div class="brand-bank-item-balance">
+                                    <strong>
+                                        ${formatBankBalance(
+                                            account.balance,
+                                            account.currency
+                                        )}
+                                    </strong>
+
+                                    <small>
+                                        ${escapeHTML(
+                                            maskBankAccountNumber(
+                                                account.accountNumber
+                                            )
+                                        )}
+                                    </small>
+                                </div>
+
+                                <button
+                                    class="brand-bank-edit"
+                                    onclick="openEditBankAccountModal('${account.id}')"
+                                >
+                                    Edit
+                                </button>
+
+                            </div>
+                        `).join("")
+                        :
+                        `
+                            <div class="brand-bank-empty">
+                                <span>No bank accounts for this brand yet.</span>
+
+                                <button
+                                    class="secondary-button"
+                                    onclick="openCreateBankAccountModal('${brand.id}')"
+                                >
+                                    Add Bank Account
+                                </button>
+                            </div>
+                        `
+                    }
+
+                </div>
+
+            </div>
+
+
+            <div class="brand-sales-panel">
+
+                <div class="brand-sales-header">
+                    <div>
+                        <h2>Sales</h2>
+                        <p>Sales belonging to this brand.</p>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="openCreateSaleModal('${brand.id}')"
+                    >
+                        + New Sale
+                    </button>
+                </div>
+
+                <div class="brand-sales-stats">
+
+                    <div class="brand-sales-stat">
+                        <span>Lifetime Sales</span>
+                        <strong>
+                            ${getSalesForBrand(brand.id).length}
+                        </strong>
+                    </div>
+
+                    <div class="brand-sales-stat">
+                        <span>Lifetime Revenue</span>
+                        <strong>
+                            ${formatSaleCurrency(
+                                getSalesForBrand(brand.id)
+                                    .reduce(
+                                        (sum, sale) =>
+                                            sum + Number(sale.amount || 0),
+                                        0
+                                    ),
+                                getSalesForBrand(brand.id)[0]?.currency || "USD"
+                            )}
+                        </strong>
+                    </div>
+
+                    <div class="brand-sales-stat">
+                        <span>Year to Date</span>
+                        <strong>
+                            ${formatSaleCurrency(
+                                filterSalesByPeriod("ytd")
+                                    .filter(
+                                        sale =>
+                                            sale.brandId === brand.id
+                                    )
+                                    .reduce(
+                                        (sum, sale) =>
+                                            sum + Number(sale.amount || 0),
+                                        0
+                                    ),
+                                getSalesForBrand(brand.id)[0]?.currency || "USD"
+                            )}
+                        </strong>
+                    </div>
+
+                </div>
+
+                <div class="brand-sales-list">
+
+                    ${
+                        getSalesForBrand(brand.id).length
+                        ?
+                        getSalesForBrand(brand.id)
+                            .slice(0, 8)
+                            .map(sale => `
+                                <div class="brand-sale-item">
+
+                                    <div class="brand-sale-icon">
+                                        ₿
+                                    </div>
+
+                                    <div class="brand-sale-info">
+                                        <strong>
+                                            ${escapeHTML(sale.name)}
+                                        </strong>
+                                        <span>
+                                            ${escapeHTML(sale.date)}
+                                            ·
+                                            ${escapeHTML(sale.channel || "Sale")}
+                                        </span>
+                                    </div>
+
+                                    <div class="brand-sale-amount">
+                                        ${formatSaleCurrency(
+                                            sale.amount,
+                                            sale.currency
+                                        )}
+                                    </div>
+
+                                    <button
+                                        class="brand-sale-edit"
+                                        onclick="openEditSaleModal('${sale.id}')"
+                                    >
+                                        Edit
+                                    </button>
+
+                                </div>
+                            `)
+                            .join("")
+                        :
+                        `
+                            <div class="brand-sales-empty">
+                                No sales for this brand yet.
+                            </div>
+                        `
+                    }
+
+                </div>
+
+            </div>
+
             <div class="actions">
 
                 <button
@@ -2168,12 +4275,33 @@ function deleteBrand(id) {
                 item.id !== id
         );
 
+    bankAccounts =
+        bankAccounts.filter(
+            account =>
+                account.brandId !== id
+        );
+
+    sales =
+        sales.filter(
+            sale =>
+                sale.brandId !== id
+        );
+
+    saveBankAccounts();
+    saveSales();
+
+    documents =
+        documents.filter(
+            item =>
+                item.brandId !== id
+        );
 
     selectedBrandId =
         null;
 
 
     saveBrands();
+    saveDocuments();
 
     renderBrandList();
 
@@ -2433,6 +4561,1731 @@ function createIdeaCard(idea) {
 
 }
 
+
+
+
+/* =====================================================
+   BRAND DOCUMENT HELPERS
+===================================================== */
+
+function getDocumentsForBrand(brandId) {
+    return documents
+        .filter(documentItem => documentItem.brandId === brandId)
+        .sort((a, b) =>
+            new Date(b.updatedAt || b.createdAt || 0) -
+            new Date(a.updatedAt || a.createdAt || 0)
+        );
+}
+
+function openCreateDocumentForBrand(brandId) {
+    if (!brands.some(brand => brand.id === brandId)) {
+        return;
+    }
+
+    openCreateDocumentModal();
+
+    const select = document.getElementById("documentBrand");
+
+    if (select) {
+        select.value = brandId;
+    }
+}
+
+function showDocumentsForBrand(brandId) {
+    const brand = brands.find(item => item.id === brandId);
+
+    if (!brand) {
+        showDocuments();
+        return;
+    }
+
+    setActiveNav("documentsNav");
+    topbarTitle.textContent = "Documents";
+
+    const brandDocuments = getDocumentsForBrand(brandId);
+
+    contentInner.innerHTML = `
+        <div>
+
+            <div class="page-header">
+                <h1>${escapeHTML(brand.name)} Documents</h1>
+                <p>Documents belonging to ${escapeHTML(brand.name)}.</p>
+            </div>
+
+            <div class="document-toolbar">
+
+                <button
+                    class="secondary-button"
+                    onclick="showBrands()"
+                >
+                    ← Back to Brands
+                </button>
+
+                <button
+                    class="primary-button"
+                    onclick="openCreateDocumentForBrand('${brandId}')"
+                >
+                    + New Document
+                </button>
+
+            </div>
+
+            ${
+                brandDocuments.length
+                ?
+                brandDocuments
+                    .map(item => createDocumentCard(item))
+                    .join("")
+                :
+                `
+                    <div class="document-empty">
+                        <div class="document-empty-icon">▤</div>
+                        <h2>No documents for this brand</h2>
+                        <p>
+                            Create the first document for
+                            ${escapeHTML(brand.name)}.
+                        </p>
+
+                        <button
+                            class="primary-button"
+                            onclick="openCreateDocumentForBrand('${brandId}')"
+                        >
+                            + Create First Document
+                        </button>
+                    </div>
+                `
+            }
+
+        </div>
+    `;
+}
+
+
+/* =====================================================
+   BANK ACCOUNTS
+===================================================== */
+
+let bankAccounts =
+    JSON.parse(
+        localStorage.getItem("centralCommandBankAccounts")
+    ) || [];
+
+let editingBankAccountId = null;
+
+function saveBankAccounts() {
+    localStorage.setItem(
+        "centralCommandBankAccounts",
+        JSON.stringify(bankAccounts)
+    );
+}
+
+function getBankAccountsForBrand(brandId) {
+    return bankAccounts
+        .filter(account => account.brandId === brandId)
+        .sort((a, b) =>
+            new Date(b.updatedAt || b.createdAt || 0) -
+            new Date(a.updatedAt || a.createdAt || 0)
+        );
+}
+
+function getBankAccountBrandName(account) {
+    const brand = brands.find(item => item.id === account.brandId);
+    return brand ? brand.name : "Unassigned";
+}
+
+function maskBankAccountNumber(value) {
+    if (!value) return "Not added";
+
+    const text = String(value);
+
+    if (text.length <= 4) {
+        return "•••• " + text;
+    }
+
+    return "•••• " + text.slice(-4);
+}
+
+function formatBankBalance(value, currency) {
+    const amount = Number(value || 0);
+
+    return new Intl.NumberFormat(undefined, {
+        style: "currency",
+        currency: currency || "USD",
+        maximumFractionDigits: 2
+    }).format(amount);
+}
+
+function populateBankAccountBrands(selectedId = "") {
+    const select = document.getElementById("bankAccountBrand");
+
+    if (!select) return;
+
+    if (brands.length === 0) {
+        select.innerHTML = `<option value="">No brands available</option>`;
+        select.disabled = true;
+        return;
+    }
+
+    select.disabled = false;
+
+    select.innerHTML = `
+        <option value="">Choose a brand...</option>
+        ${brands.map(brand => `
+            <option value="${escapeHTML(brand.id)}">
+                ${escapeHTML(brand.name)}
+            </option>
+        `).join("")}
+    `;
+
+    if (selectedId) {
+        select.value = selectedId;
+    }
+}
+
+function showBankAccounts() {
+    setActiveNav("bankAccountsNav");
+    renderBankAccounts();
+}
+
+function renderBankAccounts(searchQuery = "", brandFilter = "All") {
+    topbarTitle.textContent = "Bank Accounts";
+
+    const query = searchQuery.toLowerCase().trim();
+
+    const filteredAccounts = bankAccounts.filter(account => {
+        const brandName = getBankAccountBrandName(account);
+
+        const matchesSearch =
+            !query ||
+            account.name.toLowerCase().includes(query) ||
+            account.bankName.toLowerCase().includes(query) ||
+            account.type.toLowerCase().includes(query) ||
+            brandName.toLowerCase().includes(query);
+
+        const matchesBrand =
+            brandFilter === "All" ||
+            account.brandId === brandFilter;
+
+        return matchesSearch && matchesBrand;
+    });
+
+    const totalBalance = filteredAccounts.reduce(
+        (sum, account) =>
+            sum + Number(account.balance || 0),
+        0
+    );
+
+    contentInner.innerHTML = `
+        <div>
+
+            <div class="page-header">
+                <h1>Bank Accounts</h1>
+                <p>
+                    Manage multiple bank accounts and connect each one to a brand.
+                </p>
+            </div>
+
+            <div class="bank-account-summary">
+
+                <div class="bank-summary-card">
+                    <div class="bank-summary-label">
+                        Accounts
+                    </div>
+                    <div class="bank-summary-value">
+                        ${filteredAccounts.length}
+                    </div>
+                </div>
+
+                <div class="bank-summary-card">
+                    <div class="bank-summary-label">
+                        Brands
+                    </div>
+                    <div class="bank-summary-value">
+                        ${
+                            new Set(
+                                filteredAccounts.map(
+                                    account => account.brandId
+                                )
+                            ).size
+                        }
+                    </div>
+                </div>
+
+                <div class="bank-summary-card">
+                    <div class="bank-summary-label">
+                        Total Balance
+                    </div>
+                    <div class="bank-summary-value">
+                        ${formatBankBalance(
+                            totalBalance,
+                            filteredAccounts[0]?.currency || "USD"
+                        )}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="document-toolbar">
+
+                <input
+                    id="bankAccountSearch"
+                    class="search"
+                    type="text"
+                    placeholder="Search bank accounts..."
+                    value="${escapeHTML(searchQuery)}"
+                >
+
+                <select
+                    id="bankAccountBrandFilter"
+                    class="form-select document-filter"
+                >
+                    <option value="All">All brands</option>
+                    ${brands.map(brand => `
+                        <option
+                            value="${escapeHTML(brand.id)}"
+                            ${brand.id === brandFilter ? "selected" : ""}
+                        >
+                            ${escapeHTML(brand.name)}
+                        </option>
+                    `).join("")}
+                </select>
+
+                <button
+                    class="primary-button"
+                    onclick="openCreateBankAccountModal()"
+                >
+                    + New Bank Account
+                </button>
+
+            </div>
+
+            ${
+                brands.length === 0
+                ?
+                `
+                    <div class="bank-empty">
+                        <div class="bank-empty-icon">₿</div>
+                        <h2>Create a brand first</h2>
+                        <p>
+                            Every bank account in the system must belong to a brand.
+                        </p>
+                        <button
+                            class="primary-button"
+                            onclick="openCreateBrandModal()"
+                        >
+                            + Create Brand
+                        </button>
+                    </div>
+                `
+                :
+                filteredAccounts.length
+                ?
+                filteredAccounts
+                    .map(account => createBankAccountCard(account))
+                    .join("")
+                :
+                `
+                    <div class="bank-empty">
+                        <div class="bank-empty-icon">₿</div>
+                        <h2>No bank accounts yet</h2>
+                        <p>
+                            Add your first account and assign it to a brand.
+                        </p>
+                        <button
+                            class="primary-button"
+                            onclick="openCreateBankAccountModal()"
+                        >
+                            + Add Bank Account
+                        </button>
+                    </div>
+                `
+            }
+
+        </div>
+    `;
+
+    document
+        .getElementById("bankAccountSearch")
+        .addEventListener("input", function() {
+            renderBankAccounts(
+                this.value,
+                document.getElementById("bankAccountBrandFilter").value
+            );
+        });
+
+    document
+        .getElementById("bankAccountBrandFilter")
+        .addEventListener("change", function() {
+            renderBankAccounts(
+                document.getElementById("bankAccountSearch").value,
+                this.value
+            );
+        });
+}
+
+function createBankAccountCard(account) {
+    const brandName = getBankAccountBrandName(account);
+
+    return `
+        <div class="bank-account-card">
+
+            <div class="bank-account-card-top">
+
+                <div class="bank-account-heading">
+
+                    <div class="bank-account-icon">
+                        ₿
+                    </div>
+
+                    <div>
+                        <div class="bank-account-name">
+                            ${escapeHTML(account.name)}
+                        </div>
+
+                        <div class="bank-account-bank">
+                            ${escapeHTML(account.bankName)}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bank-account-status">
+                    ${escapeHTML(account.status)}
+                </div>
+
+            </div>
+
+            <div class="bank-account-brand">
+                <span class="bank-account-brand-dot"></span>
+                ${escapeHTML(brandName)}
+            </div>
+
+            <div class="bank-account-details">
+
+                <div>
+                    <div class="bank-detail-label">Type</div>
+                    <div class="bank-detail-value">
+                        ${escapeHTML(account.type)}
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bank-detail-label">Currency</div>
+                    <div class="bank-detail-value">
+                        ${escapeHTML(account.currency)}
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bank-detail-label">Account</div>
+                    <div class="bank-detail-value">
+                        ${escapeHTML(
+                            maskBankAccountNumber(account.accountNumber)
+                        )}
+                    </div>
+                </div>
+
+                <div>
+                    <div class="bank-detail-label">Balance</div>
+                    <div class="bank-detail-value">
+                        ${formatBankBalance(
+                            account.balance,
+                            account.currency
+                        )}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bank-account-card-footer">
+
+                <div class="bank-account-notes">
+                    ${escapeHTML(account.notes || "")}
+                </div>
+
+                <div class="bank-account-actions">
+
+                    <button
+                        class="small-button"
+                        onclick="openEditBankAccountModal('${account.id}')"
+                    >
+                        Edit
+                    </button>
+
+                    <button
+                        class="small-button"
+                        onclick="deleteBankAccount('${account.id}')"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+    `;
+}
+
+function openCreateBankAccountModal(brandId = "") {
+    if (brands.length === 0) {
+        alert("Create a brand first so this bank account can belong to a brand.");
+        return;
+    }
+
+    editingBankAccountId = null;
+
+    document.getElementById("bankAccountModalTitle").textContent =
+        "New Bank Account";
+
+    document.getElementById("bankAccountForm").reset();
+
+    document.getElementById("bankAccountCurrency").value = "USD";
+    document.getElementById("bankAccountBalance").value = "0";
+    document.getElementById("bankAccountStatus").value = "Active";
+
+    populateBankAccountBrands(
+        brandId || selectedBrandId || brands[0].id
+    );
+
+    document
+        .getElementById("bankAccountModalOverlay")
+        .classList.add("show");
+}
+
+function openEditBankAccountModal(id) {
+    const account = bankAccounts.find(item => item.id === id);
+
+    if (!account) return;
+
+    editingBankAccountId = id;
+
+    document.getElementById("bankAccountModalTitle").textContent =
+        "Edit Bank Account";
+
+    document.getElementById("bankAccountName").value =
+        account.name;
+
+    document.getElementById("bankName").value =
+        account.bankName;
+
+    document.getElementById("bankAccountType").value =
+        account.type;
+
+    document.getElementById("bankAccountCurrency").value =
+        account.currency;
+
+    document.getElementById("bankAccountNumber").value =
+        account.accountNumber || "";
+
+    document.getElementById("bankRoutingNumber").value =
+        account.routingNumber || "";
+
+    document.getElementById("bankAccountBalance").value =
+        account.balance || 0;
+
+    document.getElementById("bankAccountStatus").value =
+        account.status || "Active";
+
+    document.getElementById("bankAccountNotes").value =
+        account.notes || "";
+
+    populateBankAccountBrands(account.brandId);
+
+    document
+        .getElementById("bankAccountModalOverlay")
+        .classList.add("show");
+}
+
+function closeBankAccountModal() {
+    document
+        .getElementById("bankAccountModalOverlay")
+        .classList.remove("show");
+}
+
+document
+    .getElementById("bankAccountForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("bankAccountName")
+                .value.trim();
+
+        const bankName =
+            document.getElementById("bankName")
+                .value.trim();
+
+        const brandId =
+            document.getElementById("bankAccountBrand")
+                .value;
+
+        if (!name || !bankName || !brandId) {
+            alert(
+                "Please enter an account name, bank name, and brand."
+            );
+            return;
+        }
+
+        const data = {
+            name: name,
+            bankName: bankName,
+            brandId: brandId,
+            type: document.getElementById("bankAccountType").value,
+            currency:
+                document.getElementById("bankAccountCurrency")
+                    .value.trim()
+                    .toUpperCase() || "USD",
+            accountNumber:
+                document.getElementById("bankAccountNumber").value.trim(),
+            routingNumber:
+                document.getElementById("bankRoutingNumber").value.trim(),
+            balance:
+                Number(
+                    document.getElementById("bankAccountBalance").value
+                ) || 0,
+            status:
+                document.getElementById("bankAccountStatus").value,
+            notes:
+                document.getElementById("bankAccountNotes")
+                    .value.trim()
+        };
+
+        if (editingBankAccountId) {
+
+            const account = bankAccounts.find(
+                item => item.id === editingBankAccountId
+            );
+
+            if (!account) return;
+
+            Object.assign(account, data);
+            account.updatedAt = new Date().toISOString();
+
+        } else {
+
+            bankAccounts.push({
+                id: Date.now().toString(),
+                ...data,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            });
+
+        }
+
+        saveBankAccounts();
+        closeBankAccountModal();
+        renderBankAccounts();
+    });
+
+function deleteBankAccount(id) {
+    const account = bankAccounts.find(item => item.id === id);
+
+    if (!account) return;
+
+    if (!confirm(`Delete "${account.name}"?`)) {
+        return;
+    }
+
+    bankAccounts =
+        bankAccounts.filter(
+            item => item.id !== id
+        );
+
+    saveBankAccounts();
+    renderBankAccounts();
+}
+
+document
+    .getElementById("bankAccountModalOverlay")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeBankAccountModal();
+        }
+
+    });
+
+
+/* =====================================================
+   SALES
+===================================================== */
+
+let sales =
+    JSON.parse(
+        localStorage.getItem("centralCommandSales")
+    ) || [];
+
+let editingSaleId = null;
+
+let activeSalesPeriod = "ytd";
+
+function saveSales() {
+    localStorage.setItem(
+        "centralCommandSales",
+        JSON.stringify(sales)
+    );
+}
+
+function getSalesForBrand(brandId) {
+    return sales
+        .filter(sale => sale.brandId === brandId)
+        .sort((a, b) =>
+            new Date(b.date) - new Date(a.date)
+        );
+}
+
+function getSalesPeriodStart(period) {
+    const now = new Date();
+    const start = new Date(now);
+    start.setHours(0, 0, 0, 0);
+
+    if (period === "today") {
+        return start;
+    }
+
+    if (period === "week") {
+        const day = start.getDay();
+        const diff = day === 0 ? 6 : day - 1;
+        start.setDate(start.getDate() - diff);
+        return start;
+    }
+
+    if (period === "month") {
+        start.setDate(1);
+        return start;
+    }
+
+    if (period === "quarter") {
+        const quarterMonth = Math.floor(start.getMonth() / 3) * 3;
+        start.setMonth(quarterMonth, 1);
+        return start;
+    }
+
+    if (period === "year" || period === "ytd") {
+        start.setMonth(0, 1);
+        return start;
+    }
+
+    // Lifetime
+    return null;
+}
+
+function filterSalesByPeriod(period) {
+    if (period === "lifetime") {
+        return [...sales];
+    }
+
+    const start = getSalesPeriodStart(period);
+
+    return sales.filter(sale => {
+        const date = new Date(sale.date + "T00:00:00");
+        return date >= start;
+    });
+}
+
+function formatSaleCurrency(amount, currency = "USD") {
+    try {
+        return new Intl.NumberFormat(undefined, {
+            style: "currency",
+            currency: currency || "USD",
+            maximumFractionDigits: 2
+        }).format(Number(amount || 0));
+    } catch {
+        return `${currency || "USD"} ${Number(amount || 0).toFixed(2)}`;
+    }
+}
+
+function populateSaleBrands(selectedId = "") {
+    const select = document.getElementById("saleBrand");
+
+    if (!select) return;
+
+    if (brands.length === 0) {
+        select.innerHTML =
+            `<option value="">Create a brand first</option>`;
+        select.disabled = true;
+        return;
+    }
+
+    select.disabled = false;
+
+    select.innerHTML = `
+        <option value="">Choose a brand...</option>
+        ${brands.map(brand => `
+            <option value="${escapeHTML(brand.id)}">
+                ${escapeHTML(brand.name)}
+            </option>
+        `).join("")}
+    `;
+
+    if (selectedId) {
+        select.value = selectedId;
+    }
+}
+
+function showSales() {
+    setActiveNav("salesNav");
+    renderSales();
+}
+
+function renderSales(
+    period = activeSalesPeriod,
+    brandFilter = "All",
+    searchQuery = ""
+) {
+    activeSalesPeriod = period;
+    topbarTitle.textContent = "Sales";
+
+    const periodSales = filterSalesByPeriod(period);
+
+    const query = searchQuery.toLowerCase().trim();
+
+    const filteredSales = periodSales.filter(sale => {
+        const brandName =
+            brands.find(brand => brand.id === sale.brandId)?.name ||
+            "Unassigned";
+
+        const matchesBrand =
+            brandFilter === "All" ||
+            sale.brandId === brandFilter;
+
+        const matchesSearch =
+            !query ||
+            sale.name.toLowerCase().includes(query) ||
+            brandName.toLowerCase().includes(query) ||
+            (sale.channel || "").toLowerCase().includes(query) ||
+            (sale.customer || "").toLowerCase().includes(query);
+
+        return matchesBrand && matchesSearch;
+    });
+
+    const totalSales = filteredSales.reduce(
+        (sum, sale) => sum + Number(sale.amount || 0),
+        0
+    );
+
+    const averageSale =
+        filteredSales.length
+        ? totalSales / filteredSales.length
+        : 0;
+
+    const brandCount =
+        new Set(
+            filteredSales.map(sale => sale.brandId)
+        ).size;
+
+    contentInner.innerHTML = `
+        <div>
+
+            <div class="page-header">
+                <h1>Sales</h1>
+                <p>
+                    Track sales across every brand and view performance by time period.
+                </p>
+            </div>
+
+            <div class="sales-period-tabs">
+
+                <button
+                    class="sales-period-button ${period === "today" ? "active" : ""}"
+                    onclick="setSalesPeriod('today', '${brandFilter}')"
+                >
+                    Today
+                </button>
+
+                <button
+                    class="sales-period-button ${period === "week" ? "active" : ""}"
+                    onclick="setSalesPeriod('week', '${brandFilter}')"
+                >
+                    This Week
+                </button>
+
+                <button
+                    class="sales-period-button ${period === "month" ? "active" : ""}"
+                    onclick="setSalesPeriod('month', '${brandFilter}')"
+                >
+                    This Month
+                </button>
+
+                <button
+                    class="sales-period-button ${period === "quarter" ? "active" : ""}"
+                    onclick="setSalesPeriod('quarter', '${brandFilter}')"
+                >
+                    This Quarter
+                </button>
+
+                <button
+                    class="sales-period-button ${period === "ytd" ? "active" : ""}"
+                    onclick="setSalesPeriod('ytd', '${brandFilter}')"
+                >
+                    Year to Date
+                </button>
+
+                <button
+                    class="sales-period-button ${period === "lifetime" ? "active" : ""}"
+                    onclick="setSalesPeriod('lifetime', '${brandFilter}')"
+                >
+                    Lifetime
+                </button>
+
+            </div>
+
+            <div class="sales-summary">
+
+                <div class="sales-summary-card">
+                    <div class="sales-summary-label">Sales</div>
+                    <div class="sales-summary-value">
+                        ${filteredSales.length}
+                    </div>
+                </div>
+
+                <div class="sales-summary-card">
+                    <div class="sales-summary-label">Revenue</div>
+                    <div class="sales-summary-value">
+                        ${formatSaleCurrency(
+                            totalSales,
+                            filteredSales[0]?.currency || "USD"
+                        )}
+                    </div>
+                </div>
+
+                <div class="sales-summary-card">
+                    <div class="sales-summary-label">Average Sale</div>
+                    <div class="sales-summary-value">
+                        ${formatSaleCurrency(
+                            averageSale,
+                            filteredSales[0]?.currency || "USD"
+                        )}
+                    </div>
+                </div>
+
+                <div class="sales-summary-card">
+                    <div class="sales-summary-label">Brands</div>
+                    <div class="sales-summary-value">
+                        ${brandCount}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="sales-toolbar">
+
+                <input
+                    id="salesSearch"
+                    class="search"
+                    type="text"
+                    placeholder="Search sales..."
+                    value="${escapeHTML(searchQuery)}"
+                >
+
+                <select
+                    id="salesBrandFilter"
+                    class="form-select document-filter"
+                >
+                    <option value="All">All brands</option>
+                    ${brands.map(brand => `
+                        <option
+                            value="${escapeHTML(brand.id)}"
+                            ${brand.id === brandFilter ? "selected" : ""}
+                        >
+                            ${escapeHTML(brand.name)}
+                        </option>
+                    `).join("")}
+                </select>
+
+                <button
+                    class="primary-button"
+                    onclick="openCreateSaleModal()"
+                >
+                    + New Sale
+                </button>
+
+            </div>
+
+            ${
+                filteredSales.length
+                ?
+                `
+                    <div class="sales-table-wrap">
+
+                        <table class="sales-table">
+
+                            <thead>
+                                <tr>
+                                    <th>Sale</th>
+                                    <th>Brand</th>
+                                    <th>Date</th>
+                                    <th>Channel</th>
+                                    <th>Customer</th>
+                                    <th style="text-align:right">Amount</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                ${filteredSales.map(sale => {
+
+                                    const brand =
+                                        brands.find(
+                                            item =>
+                                                item.id === sale.brandId
+                                        );
+
+                                    return `
+                                        <tr>
+
+                                            <td>
+                                                <div class="sale-name-cell">
+                                                    ${escapeHTML(sale.name)}
+                                                </div>
+                                                ${
+                                                    sale.notes
+                                                    ?
+                                                    `<div class="sale-secondary">
+                                                        ${escapeHTML(sale.notes)}
+                                                     </div>`
+                                                    : ""
+                                                }
+                                            </td>
+
+                                            <td>
+                                                <span class="sale-brand-pill">
+                                                    <span class="sale-brand-dot"></span>
+                                                    ${escapeHTML(
+                                                        brand?.name ||
+                                                        "Unassigned"
+                                                    )}
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                ${escapeHTML(sale.date)}
+                                            </td>
+
+                                            <td>
+                                                ${escapeHTML(sale.channel || "—")}
+                                            </td>
+
+                                            <td>
+                                                ${escapeHTML(sale.customer || "—")}
+                                            </td>
+
+                                            <td class="sale-amount">
+                                                ${formatSaleCurrency(
+                                                    sale.amount,
+                                                    sale.currency
+                                                )}
+                                            </td>
+
+                                            <td class="sale-actions">
+
+                                                <button
+                                                    class="small-button"
+                                                    onclick="openEditSaleModal('${sale.id}')"
+                                                >
+                                                    Edit
+                                                </button>
+
+                                                <button
+                                                    class="small-button"
+                                                    onclick="deleteSale('${sale.id}')"
+                                                >
+                                                    Delete
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+                                    `;
+
+                                }).join("")}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                `
+                :
+                `
+                    <div class="sale-empty">
+
+                        <div class="sale-empty-icon">₿</div>
+
+                        <h2>No sales found</h2>
+
+                        <p>
+                            There are no sales matching this period and filter.
+                        </p>
+
+                        <button
+                            class="primary-button"
+                            onclick="openCreateSaleModal()"
+                        >
+                            + Record First Sale
+                        </button>
+
+                    </div>
+                `
+            }
+
+        </div>
+    `;
+
+    document
+        .getElementById("salesSearch")
+        .addEventListener("input", function() {
+
+            renderSales(
+                activeSalesPeriod,
+                document.getElementById("salesBrandFilter").value,
+                this.value
+            );
+
+        });
+
+    document
+        .getElementById("salesBrandFilter")
+        .addEventListener("change", function() {
+
+            renderSales(
+                activeSalesPeriod,
+                this.value,
+                document.getElementById("salesSearch").value
+            );
+
+        });
+}
+
+function setSalesPeriod(period, brandFilter = "All") {
+    activeSalesPeriod = period;
+
+    renderSales(
+        period,
+        brandFilter,
+        document.getElementById("salesSearch")?.value || ""
+    );
+}
+
+function openCreateSaleModal(brandId = "") {
+    if (brands.length === 0) {
+        alert(
+            "Create a brand first so this sale can belong to a brand."
+        );
+        return;
+    }
+
+    editingSaleId = null;
+
+    document.getElementById("saleModalTitle").textContent =
+        "New Sale";
+
+    document.getElementById("saleForm").reset();
+
+    const today =
+        new Date().toISOString().slice(0, 10);
+
+    document.getElementById("saleDate").value = today;
+    document.getElementById("saleCurrency").value = "USD";
+
+    populateSaleBrands(
+        brandId ||
+        selectedBrandId ||
+        brands[0].id
+    );
+
+    document
+        .getElementById("saleModalOverlay")
+        .classList.add("show");
+}
+
+function openEditSaleModal(id) {
+    const sale = sales.find(item => item.id === id);
+
+    if (!sale) return;
+
+    editingSaleId = id;
+
+    document.getElementById("saleModalTitle").textContent =
+        "Edit Sale";
+
+    document.getElementById("saleName").value =
+        sale.name;
+
+    document.getElementById("saleBrand").value =
+        sale.brandId;
+
+    document.getElementById("saleDate").value =
+        sale.date;
+
+    document.getElementById("saleAmount").value =
+        sale.amount;
+
+    document.getElementById("saleCurrency").value =
+        sale.currency || "USD";
+
+    document.getElementById("saleChannel").value =
+        sale.channel || "Online";
+
+    document.getElementById("saleCustomer").value =
+        sale.customer || "";
+
+    document.getElementById("saleNotes").value =
+        sale.notes || "";
+
+    populateSaleBrands(sale.brandId);
+
+    document
+        .getElementById("saleModalOverlay")
+        .classList.add("show");
+}
+
+function closeSaleModal() {
+    document
+        .getElementById("saleModalOverlay")
+        .classList.remove("show");
+}
+
+document
+    .getElementById("saleForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("saleName")
+                .value.trim();
+
+        const brandId =
+            document.getElementById("saleBrand")
+                .value;
+
+        const date =
+            document.getElementById("saleDate")
+                .value;
+
+        const amount =
+            Number(
+                document.getElementById("saleAmount")
+                    .value
+            );
+
+        if (!name || !brandId || !date || !Number.isFinite(amount)) {
+            alert(
+                "Please enter a sale name, brand, date, and amount."
+            );
+            return;
+        }
+
+        const data = {
+            name,
+            brandId,
+            date,
+            amount,
+            currency:
+                document.getElementById("saleCurrency")
+                    .value.trim()
+                    .toUpperCase() || "USD",
+            channel:
+                document.getElementById("saleChannel")
+                    .value,
+            customer:
+                document.getElementById("saleCustomer")
+                    .value.trim(),
+            notes:
+                document.getElementById("saleNotes")
+                    .value.trim()
+        };
+
+        if (editingSaleId) {
+
+            const sale =
+                sales.find(
+                    item =>
+                        item.id === editingSaleId
+                );
+
+            if (!sale) return;
+
+            Object.assign(sale, data);
+            sale.updatedAt =
+                new Date().toISOString();
+
+        } else {
+
+            sales.push({
+                id: Date.now().toString(),
+                ...data,
+                createdAt:
+                    new Date().toISOString(),
+                updatedAt:
+                    new Date().toISOString()
+            });
+
+        }
+
+        saveSales();
+        closeSaleModal();
+        renderSales();
+    });
+
+function deleteSale(id) {
+    const sale = sales.find(item => item.id === id);
+
+    if (!sale) return;
+
+    if (!confirm(`Delete "${sale.name}"?`)) {
+        return;
+    }
+
+    sales =
+        sales.filter(
+            item => item.id !== id
+        );
+
+    saveSales();
+    renderSales();
+}
+
+document
+    .getElementById("saleModalOverlay")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+            closeSaleModal();
+        }
+
+    });
+
+/* =====================================================
+   DOCUMENTS
+===================================================== */
+
+let documents =
+    JSON.parse(
+        localStorage.getItem("centralCommandDocuments")
+    ) || [];
+
+let selectedDocumentId = null;
+let editingDocumentId = null;
+
+const documentModalOverlay =
+    document.getElementById("documentModalOverlay");
+
+function saveDocuments() {
+    localStorage.setItem(
+        "centralCommandDocuments",
+        JSON.stringify(documents)
+    );
+}
+
+function setActiveNav(active) {
+    document
+        .getElementById("brandsNav")
+        .classList.remove("active");
+
+    document
+        .getElementById("ideasNav")
+        .classList.remove("active");
+
+    document
+        .getElementById("documentsNav")
+        .classList.remove("active");
+
+    document
+        .getElementById(active)
+        .classList.add("active");
+}
+
+function showDocuments() {
+    setActiveNav("documentsNav");
+    renderDocuments();
+}
+
+function populateDocumentBrands(selectedId = "") {
+    const select = document.getElementById("documentBrand");
+
+    if (brands.length === 0) {
+        select.innerHTML = `
+            <option value="">No brands available</option>
+        `;
+        select.disabled = true;
+        return;
+    }
+
+    select.disabled = false;
+
+    select.innerHTML = `
+        <option value="">Choose a brand...</option>
+        ${brands.map(brand => `
+            <option value="${escapeHTML(brand.id)}">
+                ${escapeHTML(brand.name)}
+            </option>
+        `).join("")}
+    `;
+
+    if (selectedId) {
+        select.value = selectedId;
+    }
+}
+
+function getDocumentBrandName(documentItem) {
+    const brand = brands.find(
+        item => item.id === documentItem.brandId
+    );
+
+    return brand ? brand.name : "Unassigned";
+}
+
+function renderDocuments(searchQuery = "", typeFilter = "All") {
+    topbarTitle.textContent = "Documents";
+
+    const query = searchQuery.toLowerCase().trim();
+
+    const filteredDocuments = documents.filter(documentItem => {
+        const matchesSearch =
+            !query ||
+            documentItem.name.toLowerCase().includes(query) ||
+            (documentItem.description || "").toLowerCase().includes(query) ||
+            documentItem.type.toLowerCase().includes(query) ||
+            getDocumentBrandName(documentItem).toLowerCase().includes(query);
+
+        const matchesType =
+            typeFilter === "All" ||
+            documentItem.type === typeFilter;
+
+        return matchesSearch && matchesType;
+    });
+
+    const documentTypes = [
+        ...new Set(documents.map(item => item.type))
+    ];
+
+    contentInner.innerHTML = `
+        <div>
+            <div class="page-header">
+                <h1>Documents</h1>
+                <p>Create and organize important documents for each brand.</p>
+            </div>
+
+            <div class="document-toolbar">
+                <input
+                    id="documentSearch"
+                    class="search"
+                    type="text"
+                    placeholder="Search documents..."
+                    value="${escapeHTML(searchQuery)}"
+                >
+
+                <select
+                    id="documentTypeFilter"
+                    class="form-select document-filter"
+                >
+                    <option value="All">All document types</option>
+                    ${documentTypes.map(type => `
+                        <option value="${escapeHTML(type)}"
+                            ${type === typeFilter ? "selected" : ""}>
+                            ${escapeHTML(type)}
+                        </option>
+                    `).join("")}
+                </select>
+
+                <button
+                    class="primary-button"
+                    onclick="openCreateDocumentModal()"
+                >
+                    + New Document
+                </button>
+            </div>
+
+            <div>
+                ${
+                    brands.length === 0
+                    ?
+                    `
+                        <div class="document-empty">
+                            <div class="document-empty-icon">◇</div>
+                            <h2>Create a brand first</h2>
+                            <p>
+                                Documents can be connected to a brand,
+                                so create at least one brand before making a document.
+                            </p>
+                            <button
+                                class="primary-button"
+                                onclick="openCreateBrandModal()"
+                            >
+                                + Create Brand
+                            </button>
+                        </div>
+                    `
+                    :
+                    filteredDocuments.length === 0
+                    ?
+                    `
+                        <div class="document-empty">
+                            <div class="document-empty-icon">▤</div>
+                            <h2>No documents yet</h2>
+                            <p>
+                                Create a business plan, brand guideline,
+                                strategy, report, or any other document.
+                            </p>
+                            <button
+                                class="primary-button"
+                                onclick="openCreateDocumentModal()"
+                            >
+                                + New Document
+                            </button>
+                        </div>
+                    `
+                    :
+                    filteredDocuments
+                        .map(documentItem => createDocumentCard(documentItem))
+                        .join("")
+                }
+            </div>
+        </div>
+    `;
+
+    document
+        .getElementById("documentSearch")
+        .addEventListener("input", function() {
+            renderDocuments(
+                this.value,
+                document.getElementById("documentTypeFilter").value
+            );
+        });
+
+    document
+        .getElementById("documentTypeFilter")
+        .addEventListener("change", function() {
+            renderDocuments(
+                document.getElementById("documentSearch").value,
+                this.value
+            );
+        });
+}
+
+function createDocumentCard(documentItem) {
+    const brandName = getDocumentBrandName(documentItem);
+
+    const date = documentItem.updatedAt
+        ? new Date(documentItem.updatedAt).toLocaleDateString()
+        : "";
+
+    return `
+        <div class="document-card">
+            <div class="document-card-top">
+                <div>
+                    <div class="document-card-title">
+                        ${escapeHTML(documentItem.name)}
+                    </div>
+
+                    <div class="document-card-type">
+                        ${escapeHTML(documentItem.type)}
+                    </div>
+
+                    <div class="document-brand">
+                        <span class="document-brand-dot"></span>
+                        ${escapeHTML(brandName)}
+                    </div>
+                </div>
+            </div>
+
+            ${
+                documentItem.description
+                ?
+                `
+                    <div class="document-description">
+                        ${escapeHTML(documentItem.description)}
+                    </div>
+                `
+                : ""
+            }
+
+            ${
+                documentItem.content
+                ?
+                `
+                    <div class="document-preview">
+                        ${escapeHTML(documentItem.content)}
+                    </div>
+                `
+                : ""
+            }
+
+            <div class="document-meta">
+                <div class="document-date">
+                    Updated ${escapeHTML(date)}
+                </div>
+
+                <div class="document-actions">
+                    <button
+                        class="small-button"
+                        onclick="openEditDocumentModal('${documentItem.id}')"
+                    >
+                        Edit
+                    </button>
+
+                    <button
+                        class="small-button"
+                        onclick="deleteDocument('${documentItem.id}')"
+                    >
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function openCreateDocumentModal() {
+    if (brands.length === 0) {
+        alert("Create a brand first so this document can belong to a brand.");
+        return;
+    }
+
+    editingDocumentId = null;
+
+    document.getElementById("documentModalTitle").textContent =
+        "New Document";
+
+    document.getElementById("documentForm").reset();
+
+    populateDocumentBrands(
+        selectedBrandId || brands[0].id
+    );
+
+    documentModalOverlay.classList.add("show");
+}
+
+function openEditDocumentModal(id) {
+    const documentItem = documents.find(
+        item => item.id === id
+    );
+
+    if (!documentItem) return;
+
+    editingDocumentId = id;
+
+    document.getElementById("documentModalTitle").textContent =
+        "Edit Document";
+
+    document.getElementById("documentName").value =
+        documentItem.name;
+
+    document.getElementById("documentType").value =
+        documentItem.type;
+
+    document.getElementById("documentDescription").value =
+        documentItem.description || "";
+
+    document.getElementById("documentContent").value =
+        documentItem.content || "";
+
+    populateDocumentBrands(documentItem.brandId);
+
+    documentModalOverlay.classList.add("show");
+}
+
+function closeDocumentModal() {
+    documentModalOverlay.classList.remove("show");
+}
+
+document.getElementById("documentForm").addEventListener(
+    "submit",
+    function(event) {
+        event.preventDefault();
+
+        const name =
+            document.getElementById("documentName").value.trim();
+
+        const type =
+            document.getElementById("documentType").value;
+
+        const brandId =
+            document.getElementById("documentBrand").value;
+
+        const description =
+            document.getElementById("documentDescription").value.trim();
+
+        const content =
+            document.getElementById("documentContent").value.trim();
+
+        if (!name) {
+            alert("Please enter a document name.");
+            return;
+        }
+
+        if (!brandId) {
+            alert("Please choose which brand this document belongs to.");
+            return;
+        }
+
+        if (editingDocumentId) {
+            const documentItem = documents.find(
+                item => item.id === editingDocumentId
+            );
+
+            if (!documentItem) return;
+
+            documentItem.name = name;
+            documentItem.type = type;
+            documentItem.brandId = brandId;
+            documentItem.description = description;
+            documentItem.content = content;
+            documentItem.updatedAt = new Date().toISOString();
+
+        } else {
+            documents.push({
+                id: Date.now().toString(),
+                name: name,
+                type: type,
+                brandId: brandId,
+                description: description,
+                content: content,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            });
+        }
+
+        saveDocuments();
+        closeDocumentModal();
+        renderDocuments();
+    }
+);
+
+function deleteDocument(id) {
+    const documentItem = documents.find(
+        item => item.id === id
+    );
+
+    if (!documentItem) return;
+
+    const confirmed = confirm(
+        `Delete "${documentItem.name}"?`
+    );
+
+    if (!confirmed) return;
+
+    documents = documents.filter(
+        item => item.id !== id
+    );
+
+    saveDocuments();
+    renderDocuments();
+}
+
+documentModalOverlay.addEventListener(
+    "click",
+    function(event) {
+        if (event.target === documentModalOverlay) {
+            closeDocumentModal();
+        }
+    }
+);
 
 /* =====================================================
    CREATE IDEA
@@ -2745,6 +6598,181 @@ function deleteIdea(id) {
 }
 
 
+
+/* =====================================================
+   ACCOUNT / SETTINGS
+===================================================== */
+
+let userProfile = JSON.parse(
+    localStorage.getItem("centralCommandUserProfile")
+) || {
+    name: "RCG",
+    email: "Signed in",
+    photo: ""
+};
+
+let savedTheme = localStorage.getItem("centralCommandTheme") || "light";
+
+function getProfileInitials(name) {
+    return getInitials(name || "RCG") || "RC";
+}
+
+function updateProfileUI() {
+    const initials = getProfileInitials(userProfile.name);
+
+    const profileAvatar = document.getElementById("profileAvatar");
+    const menuAvatar = document.getElementById("menuAvatar");
+    const settingsAvatar = document.getElementById("settingsAvatar");
+    const settingsPhotoPreview = document.getElementById("settingsPhotoPreview");
+
+    [profileAvatar, menuAvatar, settingsAvatar, settingsPhotoPreview].forEach(el => {
+        if (!el) return;
+
+        if (userProfile.photo) {
+            el.innerHTML = `<img src="${userProfile.photo}" alt="Profile">`;
+        } else {
+            el.textContent = initials;
+        }
+    });
+
+    document.getElementById("profileName").textContent = userProfile.name || "RCG";
+    document.getElementById("profileEmail").textContent = userProfile.email || "Signed in";
+    document.getElementById("menuName").textContent = userProfile.name || "RCG";
+    document.getElementById("menuEmail").textContent = userProfile.email || "Signed in";
+    document.getElementById("settingsName").textContent = userProfile.name || "RCG";
+    document.getElementById("settingsEmail").textContent = userProfile.email || "Signed in";
+}
+
+function toggleProfileMenu() {
+    document.getElementById("profileMenu").classList.toggle("show");
+}
+
+function closeProfileMenu() {
+    document.getElementById("profileMenu").classList.remove("show");
+}
+
+function openSettings() {
+    closeProfileMenu();
+
+    document.getElementById("settingsTitle").textContent = "Settings";
+    document.getElementById("settingsNameInput").value = userProfile.name || "";
+    document.getElementById("settingsEmailInput").value = userProfile.email || "";
+    document.getElementById("themeSelect").value = savedTheme;
+    updateProfileUI();
+
+    document.getElementById("settingsOverlay").classList.add("show");
+}
+
+function openProfileSettings() {
+    openSettings();
+}
+
+function closeSettings() {
+    document.getElementById("settingsOverlay").classList.remove("show");
+}
+
+function saveSettings() {
+    const name = document.getElementById("settingsNameInput").value.trim();
+    const email = document.getElementById("settingsEmailInput").value.trim();
+
+    userProfile.name = name || "RCG";
+    userProfile.email = email || "Signed in";
+
+    localStorage.setItem(
+        "centralCommandUserProfile",
+        JSON.stringify(userProfile)
+    );
+
+    savedTheme = document.getElementById("themeSelect").value;
+    localStorage.setItem("centralCommandTheme", savedTheme);
+    applyTheme(savedTheme);
+
+    updateProfileUI();
+    closeSettings();
+}
+
+function changeTheme(theme) {
+    savedTheme = theme;
+    localStorage.setItem("centralCommandTheme", theme);
+    applyTheme(theme);
+}
+
+function applyTheme(theme) {
+    document.body.classList.remove(
+        "light-theme",
+        "dark-theme",
+        "system-theme"
+    );
+
+    if (theme === "dark") {
+        document.body.classList.add("dark-theme");
+    } else if (theme === "system") {
+        document.body.classList.add("system-theme");
+    } else {
+        document.body.classList.add("light-theme");
+    }
+}
+
+function signOut() {
+    closeProfileMenu();
+
+    // This is a local demo account, so sign-out resets the UI
+    // rather than contacting a real authentication server.
+    userProfile = {
+        name: "Guest",
+        email: "Not signed in",
+        photo: ""
+    };
+
+    localStorage.setItem(
+        "centralCommandUserProfile",
+        JSON.stringify(userProfile)
+    );
+
+    updateProfileUI();
+    alert("You are now signed out of this local demo.");
+}
+
+document.addEventListener("click", function(event) {
+    const profileCard = document.getElementById("profileCard");
+
+    if (
+        profileCard &&
+        !profileCard.contains(event.target)
+    ) {
+        closeProfileMenu();
+    }
+});
+
+document.getElementById("settingsOverlay").addEventListener(
+    "click",
+    function(event) {
+        if (event.target === this) {
+            closeSettings();
+        }
+    }
+);
+
+document.getElementById("profileImageInput").addEventListener(
+    "change",
+    function() {
+        const file = this.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            userProfile.photo = event.target.result;
+            updateProfileUI();
+        };
+
+        reader.readAsDataURL(file);
+    }
+);
+
+applyTheme(savedTheme);
+updateProfileUI();
+
 /* =====================================================
    UTILITIES
 ===================================================== */
@@ -2828,6 +6856,12 @@ document.addEventListener(
             closeModal();
 
             closeIdeaModal();
+
+            closeDocumentModal();
+
+            closeBankAccountModal();
+
+            closeSettings();
 
         }
 

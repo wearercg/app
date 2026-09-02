@@ -1,0 +1,3232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RCG Workspace</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080a0f;
+    --panel: #10131a;
+    --panel2: #151922;
+    --border: #272c36;
+    --text: #f5f7fb;
+    --muted: #9299a7;
+    --purple: #8b5cf6;
+    --purple2: #a78bfa;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    overflow: hidden;
+}
+
+/* =========================================
+   APP
+========================================= */
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.topbar {
+    height: 74px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 22px;
+
+    background: rgba(8,10,15,.96);
+
+    border-bottom: 1px solid #20242d;
+
+    position: relative;
+
+    z-index: 2000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    min-width: 210px;
+}
+
+.logo-mark {
+    width: 30px;
+    height: 30px;
+
+    border: 2px solid #8b5cf6;
+
+    transform: rotate(30deg);
+
+    border-radius: 5px;
+
+    position: relative;
+}
+
+.logo-mark::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 6px;
+
+    border: 1px solid #8b5cf6;
+}
+
+.logo span {
+    color: #a78bfa;
+}
+
+.board-select {
+    height: 42px;
+
+    min-width: 190px;
+
+    background: #151922;
+
+    border: 1px solid #282e39;
+
+    border-radius: 8px;
+
+    color: white;
+
+    padding: 0 14px;
+
+    font-size: 14px;
+
+    outline: none;
+}
+
+.top-add {
+    width: 42px;
+    height: 42px;
+
+    margin-left: 12px;
+
+    border-radius: 8px;
+
+    border: 1px solid #282e39;
+
+    background: #151922;
+
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+}
+
+.top-add:hover {
+    background: #202530;
+}
+
+.saved {
+    margin-left: 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: #d4d8df;
+
+    font-size: 13px;
+}
+
+.saved-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow: 0 0 12px rgba(34,197,94,.7);
+}
+
+.top-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.avatars {
+    display: flex;
+
+    margin-right: 12px;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+
+    border: 2px solid #10131a;
+
+    margin-left: -7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    background: #343b49;
+}
+
+.avatar:first-child {
+    margin-left: 0;
+}
+
+.share {
+    height: 40px;
+
+    padding: 0 16px;
+
+    border: 0;
+
+    border-radius: 7px;
+
+    background: #7c3aed;
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.share:hover {
+    background: #8b5cf6;
+}
+
+.icon-btn {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 8px;
+
+    border: 1px solid #282e39;
+
+    background: #151922;
+
+    color: #d9dde5;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.icon-btn:hover {
+    background: #202530;
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+.main {
+    flex: 1;
+
+    display: flex;
+
+    min-height: 0;
+}
+
+/* =========================================
+   LEFT TOOLBAR
+========================================= */
+
+.sidebar {
+    width: 158px;
+
+    position: absolute;
+
+    left: 18px;
+    top: 84px;
+
+    bottom: 18px;
+
+    z-index: 1500;
+
+    padding: 10px;
+
+    border-radius: 9px;
+
+    background: rgba(18,21,28,.96);
+
+    border: 1px solid #2a303a;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35);
+
+    overflow-y: auto;
+}
+
+.sidebar-title {
+    font-size: 11px;
+
+    color: #777f8d;
+
+    padding: 7px 10px 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+.tool {
+    width: 100%;
+
+    height: 49px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 10px;
+
+    border-radius: 7px;
+
+    color: #d9dde5;
+
+    cursor: pointer;
+
+    font-size: 13px;
+}
+
+.tool:hover {
+    background: #242934;
+}
+
+.tool.active {
+    background: rgba(124,58,237,.18);
+
+    color: white;
+}
+
+.tool-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: #202631;
+
+    font-size: 15px;
+}
+
+.tool:hover .tool-icon {
+    background: #303744;
+}
+
+.tool-separator {
+    height: 1px;
+
+    background: #292f39;
+
+    margin: 8px 5px;
+}
+
+/* =========================================
+   VIEWPORT
+========================================= */
+
+.viewport {
+    position: relative;
+
+    flex: 1;
+
+    overflow: hidden;
+
+    cursor: grab;
+
+    background-color: #0c0f15;
+
+    /*
+       WHITE DOT GRID
+    */
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.78) 1.25px,
+            transparent 1.25px
+        );
+
+    background-size: 24px 24px;
+}
+
+.viewport::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            transparent 35%,
+            rgba(0,0,0,.22) 100%
+        );
+}
+
+.viewport.dragging {
+    cursor: grabbing;
+}
+
+/* =========================================
+   CANVAS
+========================================= */
+
+.canvas {
+    position: absolute;
+
+    width: 6000px;
+    height: 6000px;
+
+    transform-origin: 0 0;
+
+    left: 0;
+    top: 0;
+
+    z-index: 10;
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+    position: absolute;
+
+    width: 285px;
+
+    min-height: 130px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #181c24,
+            #12151b
+        );
+
+    border: 1px solid #343a46;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.32);
+
+    overflow: hidden;
+
+    user-select: none;
+
+    transition:
+        border .15s,
+        box-shadow .15s;
+}
+
+.card:hover {
+    border-color: #4b5361;
+
+    box-shadow:
+        0 22px 50px rgba(0,0,0,.42);
+}
+
+.card.selected {
+    border-color: #8b5cf6;
+
+    box-shadow:
+        0 0 0 2px rgba(139,92,246,.16),
+        0 25px 60px rgba(0,0,0,.4);
+}
+
+.card-header {
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 13px;
+
+    border-bottom: 1px solid #292e38;
+
+    cursor: move;
+}
+
+.card-title-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+}
+
+.card-icon {
+    width: 18px;
+    height: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+}
+
+.card-type {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.more {
+    border: 0;
+
+    background: transparent;
+
+    color: #8d95a3;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    padding: 2px 4px;
+}
+
+.more:hover {
+    color: white;
+}
+
+/* =========================================
+   NOTE
+========================================= */
+
+.note {
+    background:
+        linear-gradient(
+            145deg,
+            #262034,
+            #181622
+        );
+
+    border-color: #7149bd;
+}
+
+.note .card-icon {
+    background: #9b6cff;
+}
+
+.note-body {
+    padding: 17px 18px 20px;
+}
+
+.note-heading {
+    font-size: 17px;
+
+    font-weight: 750;
+
+    margin-bottom: 13px;
+
+    outline: none;
+}
+
+.note-text {
+    color: #d0cadf;
+
+    line-height: 1.65;
+
+    font-size: 13px;
+
+    outline: none;
+}
+
+.format-bar {
+    display: flex;
+
+    gap: 13px;
+
+    margin-top: 17px;
+
+    color: #bdb5ce;
+
+    font-size: 13px;
+}
+
+/* =========================================
+   CHECKLIST
+========================================= */
+
+.checklist {
+    border-color: #4e8c63;
+
+    background:
+        linear-gradient(
+            145deg,
+            #17221d,
+            #141b18
+        );
+}
+
+.checklist .card-icon {
+    background: #35c878;
+}
+
+.check-body {
+    padding: 15px 16px;
+}
+
+.check-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 11px 0;
+
+    color: #d2d7dd;
+
+    font-size: 13px;
+}
+
+.check-row input {
+    appearance: none;
+
+    width: 17px;
+    height: 17px;
+
+    border: 1px solid #647078;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.check-row input:checked {
+    background: #20a95e;
+
+    border-color: #20a95e;
+}
+
+.check-row input:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    left: 3px;
+    top: -1px;
+
+    font-size: 12px;
+
+    color: white;
+}
+
+.add-task {
+    color: #4ade80;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    margin-top: 12px;
+}
+
+/* =========================================
+   IMAGE CARD
+========================================= */
+
+.image-card {
+    border-color: #367bc0;
+}
+
+.image-card .card-icon {
+    background: #2784d9;
+}
+
+.image-preview {
+    height: 190px;
+
+    margin: 10px;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #38204c,
+            #151c35 50%,
+            #321a43
+        );
+
+    position: relative;
+}
+
+.image-preview::before {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 100px;
+
+    left: 60px;
+    top: 55px;
+
+    background:
+        linear-gradient(
+            150deg,
+            #684ca3,
+            #191b3b
+        );
+
+    border-radius: 3px;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.5);
+}
+
+.image-preview::after {
+    content: "⌁";
+
+    position: absolute;
+
+    left: 110px;
+    top: 75px;
+
+    font-size: 55px;
+
+    color: #bca6ff;
+}
+
+/* =========================================
+   BRAND CARD
+========================================= */
+
+.brand-card {
+    border-color: #3186d1;
+}
+
+.brand-card .card-icon {
+    background: #2784d9;
+}
+
+.brand-body {
+    padding: 14px 15px 17px;
+}
+
+.brand-label {
+    color: #aeb5c1;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+.sales-number {
+    font-size: 28px;
+
+    color: #43a7ff;
+
+    font-weight: 800;
+
+    letter-spacing: -.03em;
+
+    margin-bottom: 14px;
+}
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    border-top: 1px solid #29313c;
+
+    border-bottom: 1px solid #29313c;
+}
+
+.stat {
+    padding: 10px 8px;
+
+    border-right: 1px solid #29313c;
+}
+
+.stat:last-child {
+    border-right: 0;
+}
+
+.stat-label {
+    color: #929aa7;
+
+    font-size: 10px;
+
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.open-brand {
+    color: #42a5ff;
+
+    font-size: 12px;
+
+    margin-top: 13px;
+
+    cursor: pointer;
+}
+
+/* =========================================
+   STICKY NOTE
+========================================= */
+
+.sticky {
+    background:
+        linear-gradient(
+            145deg,
+            #f5cf66,
+            #e9bb4c
+        );
+
+    color: #19150a;
+
+    border-color: #f7d675;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.35);
+}
+
+.sticky .card-header {
+    border-color: rgba(0,0,0,.12);
+}
+
+.sticky .card-type {
+    color: #17130a;
+}
+
+.sticky .more {
+    color: #28200c;
+}
+
+.sticky-body {
+    padding: 18px;
+
+    line-height: 1.65;
+
+    font-size: 14px;
+}
+
+.sticky-title {
+    font-size: 16px;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+/* =========================================
+   LINK
+========================================= */
+
+.link-card {
+    border-color: #9b6825;
+}
+
+.link-card .card-icon {
+    background: #bd791c;
+}
+
+.link-body {
+    padding: 15px;
+}
+
+.link-title {
+    font-size: 15px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.link-url {
+    color: #f59e0b;
+
+    font-size: 12px;
+
+    word-break: break-all;
+}
+
+/* =========================================
+   FILE
+========================================= */
+
+.file-body {
+    padding: 15px;
+}
+
+.file-name {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.file-size {
+    color: #8d96a5;
+
+    font-size: 12px;
+
+    margin-bottom: 14px;
+}
+
+.file-actions {
+    display: flex;
+
+    gap: 8px;
+}
+
+.file-btn {
+    width: 38px;
+    height: 34px;
+
+    border-radius: 7px;
+
+    border: 1px solid #303744;
+
+    background: #202631;
+
+    color: #dbe0e7;
+
+    cursor: pointer;
+}
+
+/* =========================================
+   MARKETING BOARD
+========================================= */
+
+.marketing {
+    width: 535px;
+
+    border-color: #343a45;
+}
+
+.marketing-body {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+}
+
+.kanban-column {
+    min-height: 170px;
+
+    padding: 13px;
+
+    border-right: 1px solid #292f38;
+}
+
+.kanban-column:last-child {
+    border-right: 0;
+}
+
+.kanban-head {
+    font-size: 11px;
+
+    color: #aeb5c0;
+
+    margin-bottom: 13px;
+}
+
+.dot {
+    display: inline-block;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    margin-right: 7px;
+}
+
+.yellow {
+    background: #facc15;
+}
+
+.purple {
+    background: #a855f7;
+}
+
+.green {
+    background: #22c55e;
+}
+
+.kanban-card {
+    padding: 9px;
+
+    border-radius: 5px;
+
+    background: #252a31;
+
+    margin-bottom: 7px;
+
+    font-size: 11px;
+}
+
+.yellow-card {
+    background: rgba(180,140,20,.32);
+}
+
+.purple-card {
+    background: rgba(116,76,160,.4);
+}
+
+.green-card {
+    background: rgba(38,105,62,.42);
+}
+
+.add-kanban {
+    color: #777f8b;
+
+    font-size: 11px;
+
+    margin-top: 10px;
+}
+
+/* =========================================
+   RESIZE HANDLE
+========================================= */
+
+.resize {
+    position: absolute;
+
+    right: 4px;
+    bottom: 4px;
+
+    width: 13px;
+    height: 13px;
+
+    cursor: nwse-resize;
+
+    opacity: .45;
+}
+
+.resize::after {
+    content: "↘";
+
+    font-size: 12px;
+
+    color: #a5adba;
+}
+
+/* =========================================
+   MINIMAP
+========================================= */
+
+.minimap {
+    position: absolute;
+
+    left: 30px;
+    bottom: 22px;
+
+    width: 225px;
+    height: 175px;
+
+    z-index: 1000;
+
+    border: 1px solid #313743;
+
+    border-radius: 8px;
+
+    background: rgba(14,17,23,.95);
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.35);
+}
+
+.minimap-content {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+}
+
+.mini-block {
+    position: absolute;
+
+    background: #373d49;
+
+    border-radius: 2px;
+}
+
+.mini-view {
+    position: absolute;
+
+    border: 1px solid #cbd0d8;
+
+    background: rgba(255,255,255,.04);
+}
+
+/* =========================================
+   ZOOM
+========================================= */
+
+.zoom-controls {
+    position: absolute;
+
+    right: 25px;
+    bottom: 23px;
+
+    z-index: 1500;
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 2px;
+
+    padding: 5px;
+
+    border: 1px solid #2c323d;
+
+    background: rgba(17,20,27,.96);
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.3);
+}
+
+.zoom-controls button {
+    width: 40px;
+    height: 40px;
+
+    border: 0;
+
+    background: transparent;
+
+    color: white;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.zoom-controls button:hover {
+    background: #272d38;
+}
+
+.zoom-level {
+    width: 60px;
+
+    text-align: center;
+
+    color: #d6dae1;
+
+    font-size: 13px;
+}
+
+/* =========================================
+   FLOATING HINT
+========================================= */
+
+.hint {
+    position: absolute;
+
+    right: 25px;
+    top: 18px;
+
+    z-index: 500;
+
+    padding: 8px 12px;
+
+    border-radius: 7px;
+
+    background: rgba(15,18,24,.75);
+
+    border: 1px solid #292f39;
+
+    color: #777f8c;
+
+    font-size: 11px;
+
+    backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px) {
+
+    .sidebar {
+        width: 65px;
+    }
+
+    .tool {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .tool span:not(.tool-icon) {
+        display: none;
+    }
+
+    .sidebar-title {
+        display: none;
+    }
+
+    .logo {
+        min-width: auto;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    .saved {
+        display: none;
+    }
+
+    .avatars {
+        display: none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =========================================
+     TOP BAR
+========================================= -->
+
+<header class="topbar">
+
+    <div class="logo">
+
+        <div class="logo-mark"></div>
+
+        <div class="logo-text">
+            <span>RCG</span> Workspace
+        </div>
+
+    </div>
+
+
+    <select class="board-select">
+        <option>Main Board</option>
+        <option>Marketing</option>
+        <option>Projects</option>
+        <option>Ideas</option>
+    </select>
+
+
+    <button class="top-add" onclick="addNote()">
+        +
+    </button>
+
+
+    <div class="saved">
+
+        <div class="saved-dot"></div>
+
+        <span id="saveStatus">
+            All changes saved
+        </span>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <div class="avatars">
+
+            <div class="avatar">RC</div>
+            <div class="avatar">AM</div>
+            <div class="avatar">JD</div>
+
+        </div>
+
+
+        <button class="share">
+            ⤴ Share
+        </button>
+
+        <button class="icon-btn">
+            💬
+        </button>
+
+        <button class="icon-btn">
+            ♧
+        </button>
+
+        <button class="icon-btn">
+            ⋯
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main class="main">
+
+
+<!-- =========================================
+     SIDEBAR
+========================================= -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-title">
+        Tools
+    </div>
+
+
+    <div class="tool" onclick="addNote()">
+
+        <div class="tool-icon">＋</div>
+
+        <span>Add New</span>
+
+    </div>
+
+
+    <div class="tool-separator"></div>
+
+
+    <div class="tool" onclick="addNote()">
+
+        <div class="tool-icon">▤</div>
+
+        <span>Note</span>
+
+    </div>
+
+
+    <div class="tool" onclick="addChecklist()">
+
+        <div class="tool-icon">✓</div>
+
+        <span>Checklist</span>
+
+    </div>
+
+
+    <div class="tool" onclick="addImage()">
+
+        <div class="tool-icon">▧</div>
+
+        <span>Image</span>
+
+    </div>
+
+
+    <div class="tool" onclick="addColumn()">
+
+        <div class="tool-icon">▥</div>
+
+        <span>Column</span>
+
+    </div>
+
+
+    <div class="tool" onclick="addLink()">
+
+        <div class="tool-icon">↗</div>
+
+        <span>Link</span>
+
+    </div>
+
+
+    <div class="tool" onclick="addFile()">
+
+        <div class="tool-icon">□</div>
+
+        <span>File</span>
+
+    </div>
+
+
+    <div class="tool" onclick="addArrow()">
+
+        <div class="tool-icon">↗</div>
+
+        <span>Line / Arrow</span>
+
+    </div>
+
+
+    <div class="tool" onclick="drawMode()">
+
+        <div class="tool-icon">✎</div>
+
+        <span>Draw</span>
+
+    </div>
+
+
+    <div class="tool" onclick="addFrame()">
+
+        <div class="tool-icon">□</div>
+
+        <span>Frame</span>
+
+    </div>
+
+
+    <div class="tool-separator"></div>
+
+
+    <div class="tool" onclick="clearBoard()">
+
+        <div class="tool-icon">♲</div>
+
+        <span>Trash</span>
+
+    </div>
+
+</aside>
+
+
+<!-- =========================================
+     VIEWPORT
+========================================= -->
+
+<section
+    class="viewport"
+    id="viewport"
+>
+
+    <div class="hint">
+        Drag canvas to move • Scroll to zoom
+    </div>
+
+
+    <div
+        class="canvas"
+        id="canvas"
+    ></div>
+
+
+    <!-- MINIMAP -->
+
+    <div class="minimap">
+
+        <div
+            class="minimap-content"
+            id="minimap"
+        ></div>
+
+    </div>
+
+
+    <!-- ZOOM -->
+
+    <div class="zoom-controls">
+
+        <button onclick="zoomOut()">
+            −
+        </button>
+
+        <div
+            class="zoom-level"
+            id="zoomLevel"
+        >
+            100%
+        </div>
+
+        <button onclick="zoomIn()">
+            +
+        </button>
+
+        <button onclick="resetView()">
+            ⛶
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   STATE
+========================================= */
+
+let cards = [];
+
+let scale = 1;
+
+let panX = 180;
+
+let panY = 120;
+
+let selectedCard = null;
+
+let isPanning = false;
+
+let panStartX = 0;
+
+let panStartY = 0;
+
+let startPanX = 0;
+
+let startPanY = 0;
+
+let idCounter = 1;
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const viewport =
+    document.getElementById("viewport");
+
+const canvas =
+    document.getElementById("canvas");
+
+const zoomLevel =
+    document.getElementById("zoomLevel");
+
+const saveStatus =
+    document.getElementById("saveStatus");
+
+const minimap =
+    document.getElementById("minimap");
+
+
+/* =========================================
+   TRANSFORM
+========================================= */
+
+function updateCanvas() {
+
+    canvas.style.transform =
+        `translate(${panX}px, ${panY}px) scale(${scale})`;
+
+    zoomLevel.innerText =
+        Math.round(scale * 100) + "%";
+
+}
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+function saveBoard() {
+
+    localStorage.setItem(
+        "rcg_milanote_workspace",
+        JSON.stringify({
+            cards,
+            scale,
+            panX,
+            panY
+        })
+    );
+
+    saveStatus.innerText =
+        "All changes saved";
+
+    updateMinimap();
+
+}
+
+
+/* =========================================
+   LOAD
+========================================= */
+
+function loadBoard() {
+
+    const saved =
+        localStorage.getItem(
+            "rcg_milanote_workspace"
+        );
+
+    if (!saved) {
+
+        createDemo();
+
+        return;
+
+    }
+
+    try {
+
+        const data =
+            JSON.parse(saved);
+
+        cards =
+            data.cards || [];
+
+        scale =
+            data.scale || 1;
+
+        panX =
+            data.panX ?? 180;
+
+        panY =
+            data.panY ?? 120;
+
+        cards.forEach(renderCard);
+
+        updateCanvas();
+
+        updateMinimap();
+
+    } catch {
+
+        createDemo();
+
+    }
+
+}
+
+
+/* =========================================
+   CARD FACTORY
+========================================= */
+
+function newCard(type, x, y, extra = {}) {
+
+    const card = {
+
+        id: Date.now() + idCounter++,
+
+        type,
+
+        x: x ?? 400,
+
+        y: y ?? 250,
+
+        width: extra.width || 285,
+
+        title: extra.title || "New Item",
+
+        text: extra.text || "",
+
+        items: extra.items || [],
+
+        url: extra.url || ""
+
+    };
+
+    cards.push(card);
+
+    renderCard(card);
+
+    saveBoard();
+
+    return card;
+
+}
+
+
+/* =========================================
+   RENDER
+========================================= */
+
+function renderCard(data) {
+
+    const existing =
+        document.querySelector(
+            `[data-id="${data.id}"]`
+        );
+
+    if (existing)
+        existing.remove();
+
+
+    const el =
+        document.createElement("div");
+
+    el.className =
+        "card " + data.type;
+
+    el.dataset.id =
+        data.id;
+
+    el.style.left =
+        data.x + "px";
+
+    el.style.top =
+        data.y + "px";
+
+    el.style.width =
+        data.width + "px";
+
+
+    el.innerHTML =
+        cardHTML(data);
+
+
+    canvas.appendChild(el);
+
+
+    setupDrag(el, data);
+
+    setupResize(el, data);
+
+    setupSelection(el);
+
+
+    return el;
+
+}
+
+
+/* =========================================
+   CARD HTML
+========================================= */
+
+function cardHTML(data) {
+
+    if (data.type === "note") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    ▤
+                </div>
+
+                <div class="card-type">
+                    ${safe(data.title)}
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="note-body">
+
+            <div
+                class="note-heading"
+                contenteditable="true"
+                oninput="editCard(${data.id}, 'title', this.innerText)"
+            >
+                ${safe(data.title)}
+            </div>
+
+            <div
+                class="note-text"
+                contenteditable="true"
+                oninput="editCard(${data.id}, 'text', this.innerText)"
+            >
+                ${safe(data.text)}
+            </div>
+
+            <div class="format-bar">
+                <b>B</b>
+                <i>I</i>
+                <u>U</u>
+                ☷
+                ≡
+                🔗
+            </div>
+
+        </div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    if (data.type === "checklist") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    ✓
+                </div>
+
+                <div class="card-type">
+                    ${safe(data.title)}
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="check-body">
+
+            ${data.items.map(
+                (item,index) => `
+
+                <div class="check-row">
+
+                    <input
+                        type="checkbox"
+                    >
+
+                    <span
+                        contenteditable="true"
+                        oninput="
+                        editItem(
+                            ${data.id},
+                            ${index},
+                            this.innerText
+                        )"
+                    >
+                        ${safe(item)}
+                    </span>
+
+                </div>
+
+            `).join("")}
+
+            <div
+                class="add-task"
+                onclick="addTask(${data.id})"
+            >
+                ＋ Add new task
+            </div>
+
+        </div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    if (data.type === "image") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    ▧
+                </div>
+
+                <div class="card-type">
+                    ${safe(data.title)}
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="image-preview"></div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    if (data.type === "brand") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    🏢
+                </div>
+
+                <div class="card-type">
+                    ${safe(data.title)}
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="brand-body">
+
+            <div class="brand-label">
+                Total Sales
+            </div>
+
+            <div class="sales-number">
+                $125,430
+            </div>
+
+            <div class="stats">
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Bank Balance
+                    </div>
+
+                    <div class="stat-value">
+                        $42,800
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Orders
+                    </div>
+
+                    <div class="stat-value">
+                        1,284
+                    </div>
+
+                </div>
+
+                <div class="stat">
+
+                    <div class="stat-label">
+                        Products
+                    </div>
+
+                    <div class="stat-value">
+                        38
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="open-brand">
+                Open Brand Dashboard →
+            </div>
+
+        </div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    if (data.type === "sticky") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    💡
+                </div>
+
+                <div class="card-type">
+                    Big Idea
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="sticky-body">
+
+            <div class="sticky-title">
+                Big Idea 💡
+            </div>
+
+            Create a platform that helps businesses manage everything in one place beautifully.
+
+        </div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    if (data.type === "link") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    🔗
+                </div>
+
+                <div class="card-type">
+                    Useful Link
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="link-body">
+
+            <div class="link-title">
+                ${safe(data.title)}
+            </div>
+
+            <div class="link-url">
+                ${safe(data.url)}
+            </div>
+
+        </div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    if (data.type === "file") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    📄
+                </div>
+
+                <div class="card-type">
+                    Project File
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="file-body">
+
+            <div class="file-name">
+                Project Brief.pdf
+            </div>
+
+            <div class="file-size">
+                1.4 MB
+            </div>
+
+            <div class="file-actions">
+
+                <button class="file-btn">
+                    ↓
+                </button>
+
+                <button class="file-btn">
+                    ◉
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    if (data.type === "marketing") {
+
+        return `
+
+        <div class="card-header">
+
+            <div class="card-title-area">
+
+                <div class="card-icon">
+                    ▣
+                </div>
+
+                <div class="card-type">
+                    Marketing Plan
+                </div>
+
+            </div>
+
+            <button
+                class="more"
+                onclick="deleteCard(${data.id})"
+            >
+                ⋯
+            </button>
+
+        </div>
+
+        <div class="marketing-body">
+
+            <div class="kanban-column">
+
+                <div class="kanban-head">
+                    <span class="dot yellow"></span>
+                    Ideas
+                </div>
+
+                <div class="kanban-card yellow-card">
+                    Social Media Campaign
+                </div>
+
+                <div class="kanban-card yellow-card">
+                    Influencer Collaboration
+                </div>
+
+                <div class="kanban-card yellow-card">
+                    Email Marketing
+                </div>
+
+                <div class="add-kanban">
+                    ＋ Add card
+                </div>
+
+            </div>
+
+
+            <div class="kanban-column">
+
+                <div class="kanban-head">
+                    <span class="dot purple"></span>
+                    In Progress
+                </div>
+
+                <div class="kanban-card purple-card">
+                    Ad Design
+                </div>
+
+                <div class="kanban-card purple-card">
+                    Landing Page
+                </div>
+
+                <div class="add-kanban">
+                    ＋ Add card
+                </div>
+
+            </div>
+
+
+            <div class="kanban-column">
+
+                <div class="kanban-head">
+                    <span class="dot green"></span>
+                    Done
+                </div>
+
+                <div class="kanban-card green-card">
+                    Market Research
+                </div>
+
+                <div class="add-kanban">
+                    ＋ Add card
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="resize"></div>
+
+        `;
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================
+   DRAG CARD
+========================================= */
+
+function setupDrag(el, data) {
+
+    const header =
+        el.querySelector(".card-header");
+
+    if (!header)
+        return;
+
+
+    header.addEventListener(
+        "mousedown",
+        e => {
+
+            if (
+                e.target.closest(".more")
+            )
+                return;
+
+
+            e.preventDefault();
+
+            selectedCard = data.id;
+
+            document
+                .querySelectorAll(".card")
+                .forEach(c =>
+                    c.classList.remove("selected")
+                );
+
+            el.classList.add("selected");
+
+
+            const startX = e.clientX;
+
+            const startY = e.clientY;
+
+            const originalX = data.x;
+
+            const originalY = data.y;
+
+
+            function move(ev) {
+
+                data.x =
+                    originalX +
+                    (ev.clientX - startX) / scale;
+
+                data.y =
+                    originalY +
+                    (ev.clientY - startY) / scale;
+
+
+                el.style.left =
+                    data.x + "px";
+
+                el.style.top =
+                    data.y + "px";
+
+
+                updateMinimap();
+
+            }
+
+
+            function stop() {
+
+                document.removeEventListener(
+                    "mousemove",
+                    move
+                );
+
+                document.removeEventListener(
+                    "mouseup",
+                    stop
+                );
+
+                saveBoard();
+
+            }
+
+
+            document.addEventListener(
+                "mousemove",
+                move
+            );
+
+            document.addEventListener(
+                "mouseup",
+                stop
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   RESIZE
+========================================= */
+
+function setupResize(el, data) {
+
+    const handle =
+        el.querySelector(".resize");
+
+    if (!handle)
+        return;
+
+
+    handle.addEventListener(
+        "mousedown",
+        e => {
+
+            e.stopPropagation();
+
+            e.preventDefault();
+
+            const startX =
+                e.clientX;
+
+            const originalWidth =
+                data.width;
+
+
+            function move(ev) {
+
+                const newWidth =
+                    originalWidth +
+                    (ev.clientX - startX) / scale;
+
+
+                data.width =
+                    Math.max(
+                        220,
+                        Math.min(
+                            700,
+                            newWidth
+                        )
+                    );
+
+
+                el.style.width =
+                    data.width + "px";
+
+            }
+
+
+            function stop() {
+
+                document.removeEventListener(
+                    "mousemove",
+                    move
+                );
+
+                document.removeEventListener(
+                    "mouseup",
+                    stop
+                );
+
+                saveBoard();
+
+            }
+
+
+            document.addEventListener(
+                "mousemove",
+                move
+            );
+
+            document.addEventListener(
+                "mouseup",
+                stop
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   SELECTION
+========================================= */
+
+function setupSelection(el) {
+
+    el.addEventListener(
+        "mousedown",
+        e => {
+
+            if (
+                e.target.isContentEditable ||
+                e.target.tagName === "INPUT"
+            )
+                return;
+
+            document
+                .querySelectorAll(".card")
+                .forEach(c =>
+                    c.classList.remove("selected")
+                );
+
+            el.classList.add("selected");
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   EDIT
+========================================= */
+
+function editCard(
+    id,
+    field,
+    value
+) {
+
+    const card =
+        cards.find(
+            c => c.id == id
+        );
+
+    if (!card)
+        return;
+
+    card[field] =
+        value;
+
+    saveBoard();
+
+}
+
+
+function editItem(
+    id,
+    index,
+    value
+) {
+
+    const card =
+        cards.find(
+            c => c.id == id
+        );
+
+    if (!card)
+        return;
+
+    card.items[index] =
+        value;
+
+    saveBoard();
+
+}
+
+
+/* =========================================
+   ADD TASK
+========================================= */
+
+function addTask(id) {
+
+    const card =
+        cards.find(
+            c => c.id == id
+        );
+
+    if (!card)
+        return;
+
+    card.items.push(
+        "New task"
+    );
+
+    rerender(id);
+
+}
+
+
+/* =========================================
+   RERENDER
+========================================= */
+
+function rerender(id) {
+
+    const card =
+        cards.find(
+            c => c.id == id
+        );
+
+    if (!card)
+        return;
+
+    renderCard(card);
+
+    saveBoard();
+
+}
+
+
+/* =========================================
+   DELETE
+========================================= */
+
+function deleteCard(id) {
+
+    cards =
+        cards.filter(
+            c => c.id != id
+        );
+
+
+    const el =
+        document.querySelector(
+            `[data-id="${id}"]`
+        );
+
+    if (el)
+        el.remove();
+
+
+    saveBoard();
+
+}
+
+
+/* =========================================
+   ADD TOOLS
+========================================= */
+
+function addNote() {
+
+    newCard(
+        "note",
+        430 - panX / scale,
+        220 - panY / scale,
+        {
+            title: "Project Ideas",
+            text:
+                "Write your ideas, plans and inspirations here."
+        }
+    );
+
+}
+
+
+function addChecklist() {
+
+    newCard(
+        "checklist",
+        500 - panX / scale,
+        250 - panY / scale,
+        {
+            title: "To Do List",
+            items: [
+                "Research market",
+                "Create wireframes",
+                "Design system",
+                "Develop",
+                "Launch 🚀"
+            ]
+        }
+    );
+
+}
+
+
+function addImage() {
+
+    newCard(
+        "image",
+        600 - panX / scale,
+        300 - panY / scale,
+        {
+            title: "Inspiration",
+            width: 370
+        }
+    );
+
+}
+
+
+function addColumn() {
+
+    newCard(
+        "note",
+        500 - panX / scale,
+        500 - panY / scale,
+        {
+            title: "New Column",
+            text:
+                "Use this area to organize your project."
+        }
+    );
+
+}
+
+
+function addLink() {
+
+    const url =
+        prompt(
+            "Enter the website URL:",
+            "https://"
+        );
+
+    if (!url)
+        return;
+
+
+    newCard(
+        "link",
+        700 - panX / scale,
+        300 - panY / scale,
+        {
+            title: "Useful Link",
+            url
+        }
+    );
+
+}
+
+
+function addFile() {
+
+    newCard(
+        "file",
+        500 - panX / scale,
+        650 - panY / scale
+    );
+
+}
+
+
+function addArrow() {
+
+    alert(
+        "Line / Arrow tool is ready for the next canvas upgrade."
+    );
+
+}
+
+
+function drawMode() {
+
+    alert(
+        "Drawing mode can be connected to the canvas in the next upgrade."
+    );
+
+}
+
+
+function addFrame() {
+
+    alert(
+        "Frame tool is ready for the next canvas upgrade."
+    );
+
+}
+
+
+/* =========================================
+   DEMO BOARD
+========================================= */
+
+function createDemo() {
+
+    newCard(
+        "note",
+        390,
+        120,
+        {
+            title: "Project Ideas",
+            text:
+                "This is where we can write all our big ideas, plans and inspirations."
+        }
+    );
+
+
+    newCard(
+        "checklist",
+        750,
+        120,
+        {
+            title: "To Do List",
+            items: [
+                "Research market",
+                "Create wireframes",
+                "Design system",
+                "Develop",
+                "Launch 🚀"
+            ]
+        }
+    );
+
+
+    newCard(
+        "image",
+        1120,
+        130,
+        {
+            title: "Inspiration",
+            width: 370
+        }
+    );
+
+
+    newCard(
+        "brand",
+        390,
+        440,
+        {
+            title: "Brand A",
+            width: 285
+        }
+    );
+
+
+    newCard(
+        "sticky",
+        790,
+        470,
+        {
+            title: "Big Idea",
+            width: 205
+        }
+    );
+
+
+    newCard(
+        "link",
+        1110,
+        430,
+        {
+            title: "Useful Link",
+            url:
+                "https://rcg-dashboard.com/ui-kit",
+            width: 350
+        }
+    );
+
+
+    newCard(
+        "file",
+        500,
+        800,
+        {
+            width: 230
+        }
+    );
+
+
+    newCard(
+        "marketing",
+        950,
+        700,
+        {
+            width: 535
+        }
+    );
+
+}
+
+
+/* =========================================
+   CANVAS PAN
+========================================= */
+
+viewport.addEventListener(
+    "mousedown",
+    e => {
+
+        if (
+            e.target !== viewport
+        )
+            return;
+
+
+        isPanning = true;
+
+        viewport.classList.add(
+            "dragging"
+        );
+
+
+        panStartX =
+            e.clientX;
+
+        panStartY =
+            e.clientY;
+
+        startPanX =
+            panX;
+
+        startPanY =
+            panY;
+
+    }
+);
+
+
+document.addEventListener(
+    "mousemove",
+    e => {
+
+        if (!isPanning)
+            return;
+
+
+        panX =
+            startPanX +
+            e.clientX -
+            panStartX;
+
+        panY =
+            startPanY +
+            e.clientY -
+            panStartY;
+
+
+        updateCanvas();
+
+        updateMinimap();
+
+    }
+);
+
+
+document.addEventListener(
+    "mouseup",
+    () => {
+
+        if (!isPanning)
+            return;
+
+        isPanning = false;
+
+        viewport.classList.remove(
+            "dragging"
+        );
+
+        saveBoard();
+
+    }
+);
+
+
+/* =========================================
+   MOUSE WHEEL ZOOM
+========================================= */
+
+viewport.addEventListener(
+    "wheel",
+    e => {
+
+        e.preventDefault();
+
+        const amount =
+            e.deltaY > 0
+                ? -0.08
+                : 0.08;
+
+
+        scale =
+            Math.max(
+                .35,
+                Math.min(
+                    2.2,
+                    scale + amount
+                )
+            );
+
+
+        updateCanvas();
+
+        updateMinimap();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================================
+   ZOOM BUTTONS
+========================================= */
+
+function zoomIn() {
+
+    scale =
+        Math.min(
+            2.2,
+            scale + .1
+        );
+
+    updateCanvas();
+
+    saveBoard();
+
+}
+
+
+function zoomOut() {
+
+    scale =
+        Math.max(
+            .35,
+            scale - .1
+        );
+
+    updateCanvas();
+
+    saveBoard();
+
+}
+
+
+function resetView() {
+
+    scale = 1;
+
+    panX = 180;
+
+    panY = 120;
+
+    updateCanvas();
+
+    saveBoard();
+
+}
+
+
+/* =========================================
+   MINIMAP
+========================================= */
+
+function updateMinimap() {
+
+    minimap.innerHTML = "";
+
+
+    const factor =
+        .065;
+
+
+    cards.forEach(card => {
+
+        const mini =
+            document.createElement("div");
+
+        mini.className =
+            "mini-block";
+
+        mini.style.left =
+            (card.x * factor + 15) + "px";
+
+        mini.style.top =
+            (card.y * factor + 10) + "px";
+
+        mini.style.width =
+            Math.max(
+                10,
+                card.width * factor
+            ) + "px";
+
+        mini.style.height =
+            "9px";
+
+
+        minimap.appendChild(mini);
+
+    });
+
+
+    const view =
+        document.createElement("div");
+
+    view.className =
+        "mini-view";
+
+    view.style.left =
+        Math.max(
+            0,
+            -panX * factor + 30
+        ) + "px";
+
+    view.style.top =
+        Math.max(
+            0,
+            -panY * factor + 20
+        ) + "px";
+
+    view.style.width =
+        Math.min(
+            190,
+            viewport.clientWidth *
+            factor /
+            scale
+        ) + "px";
+
+    view.style.height =
+        Math.min(
+            140,
+            viewport.clientHeight *
+            factor /
+            scale
+        ) + "px";
+
+
+    minimap.appendChild(view);
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearBoard() {
+
+    const ok =
+        confirm(
+            "Move all workspace items to Trash?"
+        );
+
+    if (!ok)
+        return;
+
+
+    cards = [];
+
+    canvas.innerHTML = "";
+
+    saveBoard();
+
+}
+
+
+/* =========================================
+   SAFE HTML
+========================================= */
+
+function safe(value) {
+
+    return String(value || "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================
+   KEYBOARD SHORTCUTS
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    e => {
+
+        if (
+            e.target.isContentEditable
+        )
+            return;
+
+
+        if (
+            e.key === "Delete" &&
+            selectedCard
+        ) {
+
+            deleteCard(
+                selectedCard
+            );
+
+            selectedCard = null;
+
+        }
+
+
+        if (
+            e.key === "+" ||
+            e.key === "="
+        ) {
+
+            zoomIn();
+
+        }
+
+
+        if (
+            e.key === "-"
+        ) {
+
+            zoomOut();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+loadBoard();
+
+updateCanvas();
+
+updateMinimap();
+
+</script>
+
+</body>
+</html>
+```
